@@ -3,7 +3,7 @@
 session_start();
 
 include "connect.php";
-include "./functions/userFunctions.php";
+include "./functions/Gebruikerfuncties.php";
 if (isset($_SESSION["login"])) {
     header("location:index.php");
 }
@@ -42,7 +42,7 @@ require 'lang.php';
 </head>
 <body class="min-h-screen bg-[#F1FAEE]">
 <div class="flex justify-start items-start">
-        <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">2nd chance auctions</a>
+        <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">TCG-Game</a>
         <div class="card w-full max-w-lg h-screen shadow-2xl bg-white ml-auto">
         <form class="card-body" method="post" action="login.php">
         <?php

@@ -5,7 +5,7 @@
     require 'lang.php';
 ?>
 <!DOCTYPE html>
-<html lang="en" class="bg-[#F1FAEE]">
+<html lang="en" class="bg-[#000000]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="flex justify-start items-start">
-    <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">2nd chance auctions</a> 
+    <a href="index.php" class="btn btn-ghost normal-case text-xl text-black"></a> 
     <div class="card w-full max-w-xl h-screen shadow-2xl bg-white ml-auto">
     <form class="card-body" method="post" action="registreren.php" enctype="multipart/form-data">
         <div class="form-control">

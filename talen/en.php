@@ -1,0 +1,5 @@
+<?php
+// engels standaard
+$taal = [];
+
+?>
