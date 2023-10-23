@@ -1,0 +1,5 @@
+<?php
+//chinees
+$taal = [];
+
+?>
