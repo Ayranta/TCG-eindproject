@@ -19,4 +19,22 @@ $routes = [
     'nav' => true,
     'footer' => true,
   ],
+  '/account/login' => [
+    'view' => '/account/login.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/account/register' => [
+    'view' => '/account/register.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/account/registreren' => [
+    'view' => '/account/registreren.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => true,
+  ],
 ];

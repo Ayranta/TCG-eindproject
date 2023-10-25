@@ -1,8 +1,7 @@
 <?php
 
-session_start();
 
-include "connect.php";
+
 include "./functions/Gebruikerfuncties.php";
 if (isset($_SESSION["login"])) {
     header("location:index.php");
@@ -32,7 +31,7 @@ if (isset($_POST["submit"])) {
 
 ?>
 <?php
-require 'lang.php';
+//require 'src\lang.php';
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -40,7 +39,7 @@ require 'lang.php';
 <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-[#F1FAEE]">
+<body >
 <div class="flex justify-start items-start">
         <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">TCG-Game</a>
         <div class="card w-full max-w-lg h-screen shadow-2xl bg-white ml-auto">
@@ -66,7 +65,7 @@ require 'lang.php';
             <input type="submit" name="submit" value=login class="btn text-black bg-white mt-3 w-full border-white hover:text-white hover:bg-black"/>
         </form>
         <div class="flex justify-center mt-2">
-            <a href="registreren.php" class="link text-black">I don't have an account</a>
+            <a href="/account/register" class="link text-black">I don't have an account</a>
         </div>
     </div>
 </div>

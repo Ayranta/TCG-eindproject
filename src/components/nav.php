@@ -1,3 +1,18 @@
+<?php 
+
+
+$user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+
+if ($user) {
+  $change_theme = fetch("SELECT theme from tblgebruikers Where id = ?",
+ ['type' => 'i', 'value' => $_SESSION["login"]]);
+  var_dump(change_theme);
+
+  $theme = ($user["theme"] === 'dark') ? 'light' : 'dark';
+}
+
+?>
+
 <div class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
@@ -11,12 +26,13 @@
           <ul class="p-2">
             <li><a>Submenu 1</a></li>
             <li><a>Submenu 2</a></li>
+            <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
           </ul>
         </li>
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a href="/" class="btn btn-ghost normal-case text-xl">PHP Skeleton</a>
+    <a href="/" class="btn btn-ghost normal-case text-xl">Trading Card Game</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -34,6 +50,8 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn">Button</a>
+  <?php echo isset($_SESSION['user'])
+      ? 'help':
+      '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
 </div>
