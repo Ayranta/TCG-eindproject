@@ -4,11 +4,12 @@
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
 if ($user) {
-  $change_theme = fetch("SELECT theme from tblgebruikers Where id = ?",
- ['type' => 'i', 'value' => $_SESSION["login"]]);
-  var_dump(change_theme);
+  $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $_SESSION["login"]]);
 
-  $theme = ($user["theme"] === 'dark') ? 'light' : 'dark';
+
+  $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
+  $themetest='dark';
 }
 
 ?>
@@ -26,10 +27,11 @@ if ($user) {
           <ul class="p-2">
             <li><a>Submenu 1</a></li>
             <li><a>Submenu 2</a></li>
-            <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
+            
           </ul>
         </li>
         <li><a>Item 3</a></li>
+        
       </ul>
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl">Trading Card Game</a>
@@ -47,11 +49,12 @@ if ($user) {
         </details>
       </li>
       <li><a>Item 3</a></li>
+      <li><a href="/src/lib/user/member/change-theme.php" >Switch to <?php echo  $theme ?></a></li>
     </ul>
   </div>
   <div class="navbar-end">
-  <?php echo isset($_SESSION['user'])
-      ? 'help':
+  <?php echo isset($_SESSION['login'])
+      ? '<a href="/" class="btn">help</a>':
       '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
 </div>
