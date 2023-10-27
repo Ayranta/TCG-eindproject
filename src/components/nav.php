@@ -49,12 +49,13 @@ if ($user) {
         </details>
       </li>
       <li><a>Item 3</a></li>
-      <li><a href="/src/lib/user/member/change-theme.php" >Switch to <?php echo  $theme ?></a></li>
+      
     </ul>
   </div>
   <div class="navbar-end">
   <?php echo isset($_SESSION['login'])
-      ? '<a href="/" class="btn">help</a>':
+      ? '<a href="/account/logout" class="btn">logout</a>
+      <a href="/src/lib/user/member/change-theme.php" class="btn" >Switch to ' . $theme .'</a>':
       '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
 </div>
