@@ -10,8 +10,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
 
 $route = array_key_exists($uri, $routes) ? $routes[$uri] : $routes['/404'];
 
-$_SESSION['login']=12;
-
 $userid = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
 $data = fetch('SELECT * FROM tblgebruiker_profile WHERE userid = ?', [

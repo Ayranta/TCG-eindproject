@@ -43,7 +43,7 @@ if (isset($_POST["submit"])) {
 <div class="flex justify-start items-start">
         <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">TCG-Game</a>
         <div class="card w-full max-w-lg h-screen shadow-2xl bg-white ml-auto">
-        <form class="card-body" method="post" action="login.php">
+        <form class="card-body" method="post" action="/account/login">
         <?php
             if(isset($_GET["error"])){
                 print'<div class="alert alert-error">

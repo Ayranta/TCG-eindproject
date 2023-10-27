@@ -37,4 +37,11 @@ $routes = [
     'nav' => true,
     'footer' => true,
   ],
+  '/account/logout' => [
+    'view' => '/account/logout.php',
+    'title' => 'About',
+    'nav' => false,
+    'footer' => false,
+  ],
+  
 ];
