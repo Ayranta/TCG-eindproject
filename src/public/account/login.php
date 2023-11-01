@@ -3,9 +3,9 @@
 
 
 include "./functions/Gebruikerfuncties.php";
-if (isset($_SESSION["login"])) {
-    header("location:index.php");
-}
+// if (isset($_SESSION["login"])) {
+//     header("location: / ");
+// }
 
 
 if (isset($_POST["submit"])) {
@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
              if(checkIfAdmin($mysqli,$email)){
                 $_SESSION["admin"] = "true";
              }
-             header("Location:index.php");
+             header("Location: / ");
          } else {
 
         
@@ -33,13 +33,6 @@ if (isset($_POST["submit"])) {
 <?php
 //require 'src\lang.php';
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-<head>
-<link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body >
 <div class="flex justify-start items-start">
         <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">TCG-Game</a>
         <div class="card w-full max-w-lg h-screen shadow-2xl bg-white ml-auto">
@@ -69,5 +62,3 @@ if (isset($_POST["submit"])) {
         </div>
     </div>
 </div>
-</body>
-</html>
