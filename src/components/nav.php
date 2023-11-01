@@ -5,8 +5,12 @@ $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
 if ($user) {
   $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
-  ['type' => 'i', 'value' => $_SESSION["login"]]);
+  ['type' => 'i', 'value' => $user]);
 
+  $data = fetch('SELECT * FROM tblgebruikers WHERE gebruikerid = ?', [
+    'type' => 'i',
+    'value' => $userid,
+  ]);
 
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
   $themetest='dark';
@@ -49,13 +53,30 @@ if ($user) {
         </details>
       </li>
       <li><a>Item 3</a></li>
+      <li><a href = "/account/settings/edit">settings</a></li>
       
     </ul>
   </div>
   <div class="navbar-end">
   <?php echo isset($_SESSION['login'])
-      ? '<a href="/account/logout" class="btn">logout</a>
-      <a href="/src/lib/user/member/change-theme.php" class="btn" >Switch to ' . $theme .'</a>':
+      ? '
+      <p>'.$data['gebruikernaam'].'</p>
+      <details class="dropdown dropdown-end">
+      <summary class="m-1 btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img src="'.$change_theme['profielfoto'].'" />
+        </div>
+      </summary>
+      <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
+        <li><a class="justify-between">Profile</a></li>
+        <li><a href = "/account/logout">logout</a></li>
+        <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
+        <li><a href="/dashboard/products/review?seller=' . $data['gebruikernaam'] . '">Reviews</a></li>
+        <li><a href="/account/favorites">Favorites</a></li>      
+        <li><a href="/account/settings/edit">Settings</a></li>
+      </ul>
+    </details>
+        ':
       '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
 </div>

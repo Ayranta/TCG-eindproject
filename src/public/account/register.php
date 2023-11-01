@@ -3,18 +3,10 @@
     // include "functions/buyerFunctions.php";
     // require 'lang.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Register</title>
-</head>
-<body>
+
+
 <?php
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['login'])) {
   header('Location: /');
   exit();
 } ?>
@@ -74,5 +66,3 @@ if (isset($_SESSION['user'])) {
     <a class="link" href="/account/login">I already have an account</a>
   </div>
 </div>
-</body>
-</html>

@@ -8,7 +8,7 @@ $routes = [
     'footer' => false,
   ],
   '/' => [
-    'view' => 'index.php',
+    'view' => 'home.php',
     'title' => 'Home',
     'nav' => true,
     'footer' => true,
@@ -23,7 +23,7 @@ $routes = [
     'view' => '/account/login.php',
     'title' => 'About',
     'nav' => true,
-    'footer' => false,
+    'footer' =>false,
   ],
   '/account/register' => [
     'view' => '/account/register.php',
@@ -35,7 +35,7 @@ $routes = [
     'view' => '/account/registreren.php',
     'title' => 'About',
     'nav' => true,
-    'footer' => true,
+    'footer' => false,
   ],
   '/account/logout' => [
     'view' => '/account/logout.php',
@@ -43,5 +43,10 @@ $routes = [
     'nav' => false,
     'footer' => false,
   ],
-  
+  '/account/settings/edit' => [
+    'view' => '/account/settings.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => false,
+  ],
 ];
