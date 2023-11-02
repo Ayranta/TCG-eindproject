@@ -13,7 +13,7 @@ if ($user) {
   ]);
 
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
-  $themetest='dark';
+
 }
 
 ?>
