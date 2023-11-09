@@ -39,6 +39,9 @@ function register($formData) {
     header('Location: /account/register?error=password');
     exit();
   }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header('Location: /account/register?error=email');
+  }
   
   $password = password_hash($password, PASSWORD_ARGON2ID);
   $initialized = insertUser($username, $password, $email);
