@@ -8,7 +8,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once LIB . '/catalog/users.php';
 
 $users = users($userid);
-
 echo'
 <div class="min-h-[80svh] w-full flex flex-col  px-8 py-8">
   <div class="w-full flex justify-center text-sm breadcrumbs mb-2">
@@ -51,10 +50,10 @@ foreach ($users as $user) {
       <div class="card-actions justify-between items-center">
         <p class="text-xl text-left font-bold">admin : ' . $admin . '</p>
         <div class="flex flex-row gap-2">
-          <a href="" class="btn btn-primary">wijzigen</a>
-          <button class="btn btn-circle btn-outline">
+          <a href="/admin/users/edit?gebruikerid='.$user['gebruikerid'].'" class="btn btn-primary">wijzigen</a>
+          <a href="\src\public\user\admin\delete_user.php?gebruikerid='.$user['gebruikerid'].'"><button class="btn btn-circle btn-outline">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
+         </button></a>
         </div>
       </div>
     </div>
