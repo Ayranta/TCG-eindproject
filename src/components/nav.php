@@ -13,7 +13,7 @@ if ($user) {
   ]);
 
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
-
+  $_SESSION['profielfoto'] = $change_theme['profielfoto'];
 }
 
 ?>
@@ -74,6 +74,14 @@ if ($user) {
         <li><a href="/dashboard/products/review?seller=' . $data['gebruikernaam'] . '">Reviews</a></li>
         <li><a href="/account/favorites">Favorites</a></li>      
         <li><a href="/account/settings/edit">Settings</a></li>
+        <li>
+        <details class="dropdown dropdown-left">
+          <summary class="m-1">Admin Dashboard</summary>
+          <ul class="mr-4 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
+            <li><a href="">Remove cards</a></li>
+            <li><a href="/dashboard/users">gebruikers</a></li>
+            
+            
       </ul>
     </details>
         ':

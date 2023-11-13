@@ -49,4 +49,16 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/dashboard/users' => [
+    'view' => '/user/admin/gebruikers.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/admin/users/edit' => [
+    'view' => '/user/admin/change_user.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => false,
+  ],
 ];
