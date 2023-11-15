@@ -27,9 +27,9 @@ foreach($categorieen as $categorie){
         <tr>
             <th><?php echo $categorie['id'] ?></th>
             <td><?php echo $categorie['naam'] ?></td>
-            <td class=""><span class="shadow rounded-full bg-red p-2 bg-black"><?php echo $categorie['kleur hexadeximaal'] ?></span></td>
-            <td ><a><button class="btn btn-primary">wijzigen</button></a></td>
-            <td ><a><button class="btn btnc-red">delete</button></a></td>
+            <td class=""><span class="shadow rounded-full bg-red p-2 bg-#ff0000"><?php echo $categorie['kleur hexadeximaal'] ?></span></td>
+            <td ><a href="/dashboard/categorieen/change"><button class="btn btn-primary">wijzigen</button></a></td>
+            <td ><a href="/dashboard/categorieen/delete"><button class="btn btnc-red">delete</button></a></td>
         </tr>
         </tbody>
     </table>
