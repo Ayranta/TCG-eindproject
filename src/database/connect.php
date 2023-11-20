@@ -1,5 +1,6 @@
 
 <?php
+$mysqli = new mysqli("localhost", "root", "", "db2dekansveilingen");
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 $servername = 'localhost';

@@ -1,6 +1,5 @@
 <?php 
 
-
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
 if ($user) {
@@ -58,7 +57,15 @@ if ($user) {
     </ul>
   </div>
   <div class="navbar-end">
+  <?php if($_SESSION["admin"] == true ){
+?>
+<a href="/src/toevoegenkaart.php">
+<button class="btn btn-ghost">kaart</button>
+  </a>
+<?php
+ }?>
   <?php echo isset($_SESSION['login'])
+
       ? '
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">

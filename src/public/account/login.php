@@ -1,30 +1,33 @@
 <?php
 
 
-
+require_once DATABASE . '/connect.php';
 include "./functions/Gebruikerfuncties.php";
 if (isset($_SESSION["login"])) {
     header("location: / ");
 }
 
 
+
 if (isset($_POST["submit"])) {
+    $loginfetch = fetch("SELECT * FROM tblgebruikers,tblgebruiker_profile");
  $email = $_POST["email"];
  $password = $_POST["password"];
- if(isEmailCorrect($mysqli,$email)){
-     if(isPasswordCorrect($mysqli,$password,$email)){  
-        $gebruikersid = getGebruikersid($mysqli,$email);
+ if(isEmailCorrect($loginfetch,$email)){
+     if(isPasswordCorrect($loginfetch,$password,$email)){  
+        $gebruikersid = getGebruikersid($loginfetch,$email);
              $_SESSION["login"]= $gebruikersid;
-             if(checkIfAdmin($mysqli,$email)){
-                $_SESSION["admin"] = "true";
+             if(checkIfAdmin($loginfetch,$email)){
+                $_SESSION["admin"] = 1;
              }
+
              header("Location: / ");
          } else {
 
         
          }
      }
-     header('location: login.php?error');
+     header('location: /account/login?error');
 }
 
 
