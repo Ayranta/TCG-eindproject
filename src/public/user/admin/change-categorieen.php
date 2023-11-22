@@ -46,7 +46,7 @@ function updateCategory($categoryId, $formData) {
       $data['naam'] === $newname &&
       $data['kleur hex'] === $newcolor 
     ) {
-      header('Location: /account/settings/edit?error=noChanges');
+      header('Location: /dashboard/categorieen?error=noChanges');
       exit();
     }
     
