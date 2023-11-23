@@ -100,7 +100,7 @@ function updateCategory($categoryId, $formData) {
           <label class="label">
             <span class="label-text">kleur in hex</span>
           </label>
-          <input type="kleur" name="kleur" value = "<?php echo $data['kleur hex'] ?>" class="input input-bordered w-full" required />
+          <input type="color" name="kleur" value = "#<?php echo $data['kleur hex'] ?>" class="input input-bordered w-full" required />
         </div>
       </div>
 

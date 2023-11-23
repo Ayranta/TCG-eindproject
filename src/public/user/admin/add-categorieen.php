@@ -15,13 +15,13 @@ $userId = $_SESSION['login'];
 if(isset($_POST['update'])){
     if (isset($_SESSION['login'])) {
       
-        
         insertCategory($_POST);
         return;
     }
       
-     // header('Location: /');
-      exit();
+
+     header('Location: /');
+     exit();
        
 }
 
@@ -42,7 +42,7 @@ function insertCategory($formData) {
 
     $newcolor = ltrim($newcolor, '#');
 
-    $correcthex = preg_match('/^[a-fA-F0-9]{6}$/', $newcolor);
+    $correcthex = preg_match('/^[#a-fA-F0-9]{6}$/', $newcolor);
 
     if(!$correcthex){
        header('Location: /dashboard/categorieen/add?error=notACorrectHex');
@@ -72,7 +72,7 @@ function insertCategory($formData) {
 
 
 
-<div class="w-full flex flex-col justify-center items-center px-8 py-8">
+<div class="w-full flex flex-col justify-center items-center  py-8 ">
   <div class="w-full flex justify-center text-sm breadcrumbs mb-2 md:hidden">
     <ul>
       <li><a href="/">Home</a></li>
@@ -81,7 +81,7 @@ function insertCategory($formData) {
     </ul>
   </div>
 
-  <h1 class="md:text-center text-4xl font-bold mb-8">Add</h1>
+  <h1 class="md:text-center text-4xl font-bold mb-8">Add Categorieen</h1>
 
   <form action="/dashboard/categorieen/add" method="post" class="flex flex-col gap-8 w-full md:max-w-2xl">
     <div class="flex flex-col gap-4">
@@ -100,7 +100,7 @@ function insertCategory($formData) {
           <label class="label">
             <span class="label-text">kleur in hex</span>
           </label>
-          <input type="kleur" name="kleur" placeholder="ff0000(geen hashtag gebruiker)" class="input input-bordered w-full" required />
+          <input type="color" name="kleur" class="input input-bordered w-full" required />
         </div>
       </div>
 
