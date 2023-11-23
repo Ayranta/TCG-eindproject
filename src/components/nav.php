@@ -80,6 +80,7 @@ if ($user) {
           <ul class="mr-4 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
             <li><a href="">Remove cards</a></li>
             <li><a href="/dashboard/users">gebruikers</a></li>
+            <li><a href="/dashboard/categorieen">categorieen</a></li>
             
             
       </ul>
