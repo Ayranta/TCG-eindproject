@@ -61,4 +61,10 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/admin/user/toevoegenkaart' => [
+    'view' => '/user/admin/toevoegenkaart.php',
+    'title' => 'About',
+    'nav' => true,
+    'footer' => false,
+  ],
 ];

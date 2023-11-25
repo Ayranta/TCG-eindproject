@@ -57,15 +57,17 @@ if ($user) {
     </ul>
   </div>
   <div class="navbar-end">
-  <?php if($_SESSION["admin"] == true ){
+  <?php if(isset($_SESSION["admin"])){
+    if($_SESSION["admin"] === 1){
 ?>
-<a href="/src/toevoegenkaart.php">
+<a href="/admin/user/toevoegenkaart">
 <button class="btn btn-ghost">kaart</button>
   </a>
 <?php
- }?>
+    }
+  }?>
   <?php echo isset($_SESSION['login'])
-
+  
       ? '
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">

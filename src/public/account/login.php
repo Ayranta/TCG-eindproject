@@ -1,31 +1,25 @@
 <?php
 
 
-require_once DATABASE . '/connect.php';
+
 include "./functions/Gebruikerfuncties.php";
 if (isset($_SESSION["login"])) {
     header("location: / ");
 }
 
 
-
 if (isset($_POST["submit"])) {
-    $loginfetch = fetch("SELECT * FROM tblgebruikers,tblgebruiker_profile");
  $email = $_POST["email"];
  $password = $_POST["password"];
- if(isEmailCorrect($loginfetch,$email)){
-     if(isPasswordCorrect($loginfetch,$password,$email)){  
-        $gebruikersid = getGebruikersid($loginfetch,$email);
+ if(isEmailCorrect($mysqli,$email)){
+     if(isPasswordCorrect($mysqli,$password,$email)){  
+        $gebruikersid = getGebruikersid($mysqli,$email);
              $_SESSION["login"]= $gebruikersid;
-             if(checkIfAdmin($loginfetch,$email)){
+             if(checkIfAdmin($mysqli,$email)){
                 $_SESSION["admin"] = 1;
              }
-
              header("Location: / ");
-         } else {
-
-        
-         }
+         } 
      }
      header('location: /account/login?error');
 }
@@ -37,7 +31,6 @@ if (isset($_POST["submit"])) {
 //require 'src\lang.php';
 ?>
 <div class="flex justify-start items-start">
-        <a href="index.php" class="btn btn-ghost normal-case text-xl text-black">TCG-Game</a>
         <div class="card w-full max-w-lg h-screen shadow-2xl bg-white ml-auto">
         <form class="card-body" method="post" action="/account/login">
         <?php
