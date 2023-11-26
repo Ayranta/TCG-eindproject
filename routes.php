@@ -49,6 +49,18 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/user/friends' => [
+    'view' => '/user/user/vrienden.php',
+    'title' => 'edit account',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/user/friendrequest' => [
+    'view' => '/user/user/send_Friendrequest.php',
+    'title' => 'edit account',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/dashboard/users' => [
     'view' => '/user/admin/gebruikers.php',
     'title' => 'see users',
