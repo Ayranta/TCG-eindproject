@@ -10,9 +10,29 @@ if ($user) {
     'type' => 'i',
     'value' => $userid,
   ]);
-
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
   $_SESSION['profielfoto'] = $change_theme['profielfoto'];
+
+  $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
+    'type' => 'i',
+    'value' => $userid,
+  ]);
+  $yourfriendrequest = false;
+
+  foreach($friendrequestData as $data2){
+    if($data2['receiverid']===$userid){
+      $yourfriendrequest = true;
+      $friendrequestSender=$data['senderid'];
+      break;
+    }
+  }
+  
+}
+if (isset($friendrequestSender)){
+$namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
+  'type' => 'i',
+  'value' => $friendrequestSender,
+]);
 }
 
 ?>
@@ -56,7 +76,10 @@ if ($user) {
       
     </ul>
   </div>
+ 
+ 
   <div class="navbar-end">
+    
   <?php if(isset($_SESSION["admin"])){
     if($_SESSION["admin"] === 1){
 ?>
@@ -66,9 +89,25 @@ if ($user) {
 <?php
     }
   }?>
+    <?php if ($yourfriendrequest){ ?>
+  <div class="alert shadow-lg flex mx-8" >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <div class ="flex[1.2]">
+        <h3 class="font-bold">Friend request</h3>
+        <div class="text-xs">from <?php echo $namesender['gebruikernaam'] ?></div>
+      </div>
+      <div class="flex[0.8]">
+      <a href="/src/lib/user/member/acceptFriendrequest.php"><button class="btn btn-ghost">Accept</button></a>
+      <a href ="/src/lib/user/member/denyFriendrequest.php"><button class="btn btn-ghost">Deny</button></a>
+      </div>
+    </div>
+    
+        <?php } ?>
+
   <?php echo isset($_SESSION['login'])
   
       ? '
+      
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">
       <summary class="m-1 btn btn-ghost btn-circle avatar">
@@ -80,7 +119,7 @@ if ($user) {
         <li><a class="justify-between">Profile</a></li>
         <li><a href = "/account/logout">logout</a></li>
         <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
-        <li><a href="/dashboard/products/review?seller=' . $data['gebruikernaam'] . '">Reviews</a></li>
+        <li><a href="/user/friends">friends</a></li>
         <li><a href="/account/favorites">Favorites</a></li>      
         <li><a href="/account/settings/edit">Settings</a></li>
         <li>
