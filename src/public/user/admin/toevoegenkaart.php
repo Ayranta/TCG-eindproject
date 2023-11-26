@@ -23,19 +23,6 @@
     $aanval2 = $_POST['aanval2'];
     $damage2 = $_POST['damage2'];
     $categorie = $_POST['categorie'];
-   /* $categorie = $_POST['categorie'];
-    var_dump($categorie);
-    $IDcategorie = fetch("SELECT * FROM kaart_categorieen WHERE naam = ?",['type' => 's', 'value' => $categorieID]);
-    var_dump($IDcategorie);
-    
-    foreach (getAllCategories($mysqli) as $row) {
-        $categorieID = $row['naam'];
-      }
-      var_dump($categorieID);
-
-    /*if($IDcategorie === $categorie){
-        $categorieID = $IDcategorie;
-            }*/
 
     $upload_dir = $_SERVER['DOCUMENT_ROOT'] . "/TCG-eindproject/public/img/";
     $file = $_FILES['file'];
@@ -53,12 +40,13 @@
 
     if (in_array($fileActualExt, $allowed)){
         if($file_error === 0){
-            if($file_size < 10000/* aantal kilobytes een foto mag zijn '10mb' */){
+            if($file_size < 1000000/* aantal kilobytes een foto mag zijn '1000mb' */){
                 $file_name_new = uniqid('', true).".".$fileActualExt;
                 $fileDestination = 'public/img/'.$file_name_new;
                 move_uploaded_file($file_tmp, $fileDestination);
             }else{
-                echo'your file is to big';
+                echo'error';
+                exit;
             }
         }else{
             echo 'Error uploading';
@@ -66,7 +54,7 @@
     }else{
         echo 'Wrong type';
     }
-    if (addProduct($mysqli, $naam, $categorie, $levens, $aanval1, $damage1, $aanval2, $damage2, $file_name)) {
+    if (addProduct($mysqli, $naam, $categorie, $levens, $aanval1, $damage1, $aanval2, $damage2, $file_name_new)) {
       header('location: /');
     }
   }

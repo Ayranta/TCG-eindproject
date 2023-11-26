@@ -1,5 +1,9 @@
 <?php
 //nederlands
-$taal = [];
+$taal = [
+
+    'Card' => 'kart',
+
+];
 
 ?>

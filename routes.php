@@ -99,8 +99,20 @@ $routes = [
   ],
   '/admin/user/toevoegenkaart' => [
     'view' => '/user/admin/toevoegenkaart.php',
-    'title' => 'About',
+    'title' => 'toevoegen_kaart',
     'nav' => true,
     'footer' => false,
   ],
+  '/admin/user/kaart' => [
+    'view' => '/user/admin/kaart.php',
+    'title' => 'kaarten',
+    'nav' => true,
+    'footer' => false,
+  ],
+  'talen/public/lang' => [
+    'view' => '/public/lang.php',
+    'title' => 'lang',
+    'nav' => false,
+    'footer' => false,
+  ]
 ];

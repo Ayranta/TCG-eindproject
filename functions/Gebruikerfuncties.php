@@ -15,13 +15,6 @@ function registerUser($connection, $fname, $lname, $email, $password, $profile_p
     }
     $password = convertPasswordToHash($password);
 }
-    function registreerkaart($connection, $naam, $categorie, $levens, $aanval1, $aanval2, $damage1, $damage2, $file_name) {
-        if(empty($profile_picture)) {
-            $profile_picture = "profile.png";
-        }
-    $resultaat = $connection->query("INSERT INTO tblkaart (naam, categorie, levens, aanval1,damage1, aanval2, damage2, foto) VALUES ('".$naam."','".$categorie."','".$levens."','".$aanval1."','".$damage1."','".$aanval2."','".$damage2."','".$file_name."')");
-    return $resultaat;
-}
 function convertPasswordToHash($password) {
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
     return $hashedpassword;
@@ -42,4 +35,5 @@ function getAllCategories($connection){
     $resultaat =$connection->query("SELECT * FROM kaart_categorieen");
     return ($resultaat->num_rows == 0)?false:$resultaat->fetch_all(MYSQLI_ASSOC);
 }
+
 ?>

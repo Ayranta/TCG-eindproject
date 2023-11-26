@@ -56,7 +56,14 @@ if (isset($_SESSION['login'])) {
           </label>
           <input type="password" name="passwordConfirm" placeholder="Confirm..." class="input input-bordered w-full" required />
         </div>
+        
       </div>
+      <div class="flex flex-row gap-2">
+            <div class="flex flex-col w-full"> 
+              <label class="label ">profielfoto</label>
+              <input type="file" name="file" class="file-input file-input-bordered" required />
+            </div>
+          </div>
     </div>
 
     <button name="register" class="btn btn-primary">Register</button>
