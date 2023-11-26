@@ -4,7 +4,9 @@ require_once DATABASE . '/connect.php';
 require_once LIB . '/util/util.php';
 require_once ROUTES;
 
-session_start();
+if(session_status() === PHP_SESSION_NONE){
+  session_start();
+}
 
 $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
 
@@ -39,7 +41,7 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
       <?php include PUBLIC_S . '/' . $route['view']; ?>
     </div>
 
-    <?php $route['footer'] ? include COMPONENTS . '/footer.php' : null; ?>
+    <?php //$route['footer'] ? include COMPONENTS . '/footer.php' : null; ?>
   </div>
 </body>
 </html>

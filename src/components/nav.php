@@ -1,7 +1,7 @@
 <?php 
 
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
-
+$yourfriendrequest = false;
 if ($user) {
   $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
@@ -17,16 +17,17 @@ if ($user) {
     'type' => 'i',
     'value' => $userid,
   ]);
-  $yourfriendrequest = false;
+  
 
   foreach($friendrequestData as $data2){
-    if($data2['receiverid']===$userid){
+    print $userid;
+    if($data2['receiverid']==$userid){
       $yourfriendrequest = true;
-      $friendrequestSender=$data['senderid'];
+      $friendrequestSender=$data2['senderid'];
       break;
     }
   }
-  
+
 }
 if (isset($friendrequestSender)){
 $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
@@ -64,10 +65,11 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
       <li><a href="/about">About</a></li>
       <li tabindex="0">
         <details>
-          <summary>Parent</summary>
+          <summary>talen</summary>
           <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
+            <li><a href="index.php?lang=en">English</a></li>
+            <li><a href="index.php?lang=nl">Nederlands</a></li>
+            <li><a href="index.php?lang=fr">Français</a></li>
           </ul>
         </details>
       </li>
@@ -81,7 +83,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
           <summary>Kaart</summary>
           <ul class="p-2">
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
-            <li><a>bekijk kaarten</a></li>
+            <li><a href="/admin/user/kaart">bekijk kaarten</a></li>
           </ul>
         </details>  
     </li>
@@ -117,7 +119,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
       <details class="dropdown dropdown-end">
       <summary class="m-1 btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-          <img src="'.$change_theme['profielfoto'].'" />
+        <img src="'.$change_theme['profielfoto'].'" />
         </div>
       </summary>
       <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
