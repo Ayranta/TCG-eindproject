@@ -9,7 +9,7 @@
         $_SESSION['taal'] = $_GET['taal'] ?? $_SESSION['taal'];
     }
 
-    function Vtaal($str){
+    function Vertalen($str){
 
         global $taal;
         if(!empty($taal[$str]))

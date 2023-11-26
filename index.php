@@ -10,8 +10,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
 
 $route = array_key_exists($uri, $routes) ? $routes[$uri] : $routes['/404'];
 
-$_SESSION['login']=12;
-$_SESSION['admin']=1;
+/*$_SESSION['login']=13;
+$_SESSION['admin']=1;*/
 
 $userid = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 

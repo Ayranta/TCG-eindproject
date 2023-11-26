@@ -11,11 +11,15 @@ function isPasswordCorrect($connection,$password,$email){
 function registerUser($connection, $fname, $lname, $email, $password, $profile_picture, $desc) {
     if(empty($profile_picture)) {
         $profile_picture = "profile.png";
+        
     }
-
     $password = convertPasswordToHash($password);
-
-    $resultaat = $connection->query("INSERT INTO tblgebruikers (email, voornaam, naam, wachtwoord, profielfoto, beschrijving) VALUES ('".$email."','".$fname."','".$lname."','".$password."','".$profile_picture."','".$desc."')");
+}
+    function registreerkaart($connection, $naam, $categorie, $levens, $aanval1, $aanval2, $damage1, $damage2, $file_name) {
+        if(empty($profile_picture)) {
+            $profile_picture = "profile.png";
+        }
+    $resultaat = $connection->query("INSERT INTO tblkaart (naam, categorie, levens, aanval1,damage1, aanval2, damage2, foto) VALUES ('".$naam."','".$categorie."','".$levens."','".$aanval1."','".$damage1."','".$aanval2."','".$damage2."','".$file_name."')");
     return $resultaat;
 }
 function convertPasswordToHash($password) {
@@ -27,11 +31,15 @@ function getGebruikersid($connection,$email){
     return ($resultaat->num_rows == 0)?false:$resultaat->fetch_assoc()['gebruikerid'];
 }
 function checkIfAdmin($connection,$email){
-    $resultaat = $connection->query("SELECT * FROM tblgebruikers where email = '".$email."' and admin=1");
+    $resultaat = $connection->query("SELECT * FROM tblgebruikers,tblgebruiker_profile where email = '".$email."' and admin=1");
     return ($resultaat->num_rows == 0)?false:$resultaat->fetch_all(MYSQLI_ASSOC);
 }
-function getProductUser($connection,$productid){
-    return ($connection->query("SELECT * FROM tblproducten where productid = '".$productid."'"));
-}
+/*function cache_createKey($connection, $keyName, $keyValue) {
+    return ($connection->query("INSERT INTO tblcache(cachenaam, cachewaarde) VALUES('".$keyName."', '".password_hash($keyValue, PASSWORD_DEFAULT)."')"));
+}*/
 
+function getAllCategories($connection){
+    $resultaat =$connection->query("SELECT * FROM kaart_categorieen");
+    return ($resultaat->num_rows == 0)?false:$resultaat->fetch_all(MYSQLI_ASSOC);
+}
 ?>

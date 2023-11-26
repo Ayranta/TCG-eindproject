@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 22, 2023 at 09:46 AM
--- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
--- PHP Version: 8.1.2-1ubuntu2.14
+-- Host: 127.0.0.1
+-- Gegenereerd op: 26 nov 2023 om 14:24
+-- Serverversie: 10.4.28-MariaDB
+-- PHP-versie: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,29 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kaart_categorieen`
+-- Tabelstructuur voor tabel `kaart_categorieen`
 --
 
 CREATE TABLE `kaart_categorieen` (
   `id` int(11) NOT NULL,
   `naam` text NOT NULL,
   `kleur hex` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `kaart_categorieen`
+-- Gegevens worden geëxporteerd voor tabel `kaart_categorieen`
 --
 
 INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
-(2, 'ice', 'ADD8E6'),
-(3, 'water', '0039FF'),
-(16, 'grass', '7CFC00'),
-(18, 'fire', 'FF0707');
+(1, 'Rood', '850000'),
+(2, 'Blauw', '00e1ff');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblgebruikers`
+-- Tabelstructuur voor tabel `tblgebruikers`
 --
 
 CREATE TABLE `tblgebruikers` (
@@ -57,18 +55,18 @@ CREATE TABLE `tblgebruikers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tblgebruikers`
+-- Gegevens worden geëxporteerd voor tabel `tblgebruikers`
 --
 
 INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`) VALUES
-(12, 'xnauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman'),
+(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman'),
 (13, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$SHdmWWNzTnF4MDJzbVM3UA$5rjdR6zjIplOrjLY0eDIVeSrbq3ofkTn2dG0iluSWR0', 'xander'),
-(14, 'aaa@hotmail', '$argon2id$v=19$m=65536,t=4,p=1$ckliWjcvLzhXVEtzZmRzUA$CX5nuYBc4iXJul5V3otLOH7H3BtfntYQ7Q7ZqpsEjDU', 'test2');
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblgebruiker_profile`
+-- Tabelstructuur voor tabel `tblgebruiker_profile`
 --
 
 CREATE TABLE `tblgebruiker_profile` (
@@ -80,57 +78,94 @@ CREATE TABLE `tblgebruiker_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblgebruiker_profile`
+-- Gegevens worden geëxporteerd voor tabel `tblgebruiker_profile`
 --
 
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`) VALUES
-(9, 12, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
+(9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
 (10, 13, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(11, 14, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0);
+(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1);
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Tabelstructuur voor tabel `tblkaart`
+--
+
+CREATE TABLE `tblkaart` (
+  `kaartID` int(11) NOT NULL,
+  `naam` text NOT NULL,
+  `categorie` text NOT NULL,
+  `levens` int(11) NOT NULL,
+  `aanval1` text NOT NULL,
+  `damage1` int(11) NOT NULL,
+  `aanval2` text NOT NULL,
+  `damage2` int(11) NOT NULL,
+  `foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `tblkaart`
+--
+
+INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `damage1`, `aanval2`, `damage2`, `foto`) VALUES
+(12, '1A', 'Blauw', 2346, 'a', 1, 'b', 2, 'download.png');
+
+--
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `kaart_categorieen`
+-- Indexen voor tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblgebruikers`
+-- Indexen voor tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
   ADD PRIMARY KEY (`gebruikerid`);
 
 --
--- Indexes for table `tblgebruiker_profile`
+-- Indexen voor tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexen voor tabel `tblkaart`
+--
+ALTER TABLE `tblkaart`
+  ADD PRIMARY KEY (`kaartID`);
+
+--
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `kaart_categorieen`
+-- AUTO_INCREMENT voor een tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tblgebruikers`
+-- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
   MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `tblgebruiker_profile`
+-- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT voor een tabel `tblkaart`
+--
+ALTER TABLE `tblkaart`
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
