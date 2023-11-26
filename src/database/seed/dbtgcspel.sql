@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 nov 2023 om 14:35
+-- Gegenereerd op: 26 nov 2023 om 21:47
 -- Serverversie: 10.4.28-MariaDB
 -- PHP-versie: 8.2.4
 
@@ -73,7 +73,9 @@ CREATE TABLE `tblgebruikers` (
 INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`) VALUES
 (12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman'),
 (13, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$SHdmWWNzTnF4MDJzbVM3UA$5rjdR6zjIplOrjLY0eDIVeSrbq3ofkTn2dG0iluSWR0', 'xander'),
-(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper');
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper'),
+(15, 'casper.nauwelaerts@b.com', '$argon2id$v=19$m=65536,t=4,p=1$aS9ZUkVWTll0dDVCRFVZYw$gs4D93qCwBkmWI4tUaRku1JtFyENQdezTs3k9yn09eM', 'b'),
+(16, 'casper.nauwelaerts@v.com', '$argon2id$v=19$m=65536,t=4,p=1$Slk5cjV4a2lRTXUuNTBscg$xyNiTUveOj++B/K61lPHZJ5iqwjuWhLKBYM3ybOQj3E', 'casper.nauwelaerts');
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,10 @@ CREATE TABLE `tblkaart` (
 --
 
 INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `damage1`, `aanval2`, `damage2`, `foto`) VALUES
-(12, '1A', 'Blauw', 2346, 'a', 1, 'b', 2, 'download.png');
+(13, '1B', 'Rood', 200, 'a', 10, 'a', 20, '6563766e154a53.81904227.png'),
+(16, 'Bert', 'Blauw', 30, 'Dive', 4, 'WaterBurst', 12, '656392dc399087.35426615.jpg'),
+(17, 'aa', 'Blauw', 12, 'a', 1, 'a', 1, '656393038e04f5.29686428.png'),
+(19, 'a', 'Rood', 1, 'a', 1, 'a', 1, '6563a4a5b1c069.89643839.png');
 
 -- --------------------------------------------------------
 
@@ -131,9 +136,17 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 
 CREATE TABLE `tblvrienden` (
   `id` int(11) NOT NULL,
-  `gebruikerid` int(11) NOT NULL,
-  `vriendenmetid` int(11) NOT NULL
+  `gebruikerId` int(11) NOT NULL,
+  `vriendenmetId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `tblvrienden`
+--
+
+INSERT INTO `tblvrienden` (`id`, `gebruikerId`, `vriendenmetId`) VALUES
+(1, 13, 14),
+(2, 12, 14);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -189,13 +202,13 @@ ALTER TABLE `kaart_categorieen`
 -- AUTO_INCREMENT voor een tabel `tblfriend_request`
 --
 ALTER TABLE `tblfriend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
@@ -207,13 +220,13 @@ ALTER TABLE `tblgebruiker_profile`
 -- AUTO_INCREMENT voor een tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
-  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
