@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 nov 2023 om 14:24
+-- Gegenereerd op: 26 nov 2023 om 14:35
 -- Serverversie: 10.4.28-MariaDB
 -- PHP-versie: 8.2.4
 
@@ -40,6 +40,18 @@ CREATE TABLE `kaart_categorieen` (
 INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (1, 'Rood', '850000'),
 (2, 'Blauw', '00e1ff');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `tblfriend_request`
+--
+
+CREATE TABLE `tblfriend_request` (
+  `id` int(11) NOT NULL,
+  `senderid` int(11) NOT NULL,
+  `receiverid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -111,6 +123,18 @@ CREATE TABLE `tblkaart` (
 INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `damage1`, `aanval2`, `damage2`, `foto`) VALUES
 (12, '1A', 'Blauw', 2346, 'a', 1, 'b', 2, 'download.png');
 
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `tblvrienden`
+--
+
+CREATE TABLE `tblvrienden` (
+  `id` int(11) NOT NULL,
+  `gebruikerid` int(11) NOT NULL,
+  `vriendenmetid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
 --
 -- Indexen voor geëxporteerde tabellen
 --
@@ -119,6 +143,12 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 -- Indexen voor tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `tblfriend_request`
+--
+ALTER TABLE `tblfriend_request`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -140,6 +170,12 @@ ALTER TABLE `tblkaart`
   ADD PRIMARY KEY (`kaartID`);
 
 --
+-- Indexen voor tabel `tblvrienden`
+--
+ALTER TABLE `tblvrienden`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
@@ -148,6 +184,12 @@ ALTER TABLE `tblkaart`
 --
 ALTER TABLE `kaart_categorieen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT voor een tabel `tblfriend_request`
+--
+ALTER TABLE `tblfriend_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
@@ -166,6 +208,12 @@ ALTER TABLE `tblgebruiker_profile`
 --
 ALTER TABLE `tblkaart`
   MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT voor een tabel `tblvrienden`
+--
+ALTER TABLE `tblvrienden`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
