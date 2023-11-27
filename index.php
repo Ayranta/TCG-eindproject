@@ -37,6 +37,7 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
   <div class="h-screen">
     <?php $route['nav'] ? include COMPONENTS . '/nav.php' : null; ?>
 
+
     <div class="container mx-auto">
       <?php include PUBLIC_S . '/' . $route['view']; ?>
     </div>

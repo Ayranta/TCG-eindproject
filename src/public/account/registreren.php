@@ -3,20 +3,22 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once LIB . '/util/util.php';
 if (isset($_POST['register'])) {
-  register($_POST);
+  register($_POST,$_FILES);
+  var_dump($_POST);
   exit();
 }
 
 
-function register($formData) {
+function register($formData,$files) {
   
-  $file = $_FILES['file'];
+  $file = $files['file'];
   
-  $file_name = $_FILES['file']['name'];
-  $file_tmp = $_FILES['file']['tmp_name'];
-  $file_size = $_FILES['file']['size'];
-  $file_error = $_FILES['file']['error'];
-  $file_type = $_FILES['file']['type'];
+
+  $file_name = $files['file']['name'];
+  $file_tmp = $files['file']['tmp_name'];
+  $file_size = $files['file']['size'];
+  $file_error = $files['file']['error'];
+  $file_type = $files['file']['type'];
 
   $fileExt = explode('.', $file_name);
   $fileActualExt = strtolower(end($fileExt));
@@ -91,13 +93,13 @@ function insertUser($username, $password, $email) {
   );
 
   $userId = mysqli_insert_id($connection);
-  $profiel = fetch("SELECT * FROM tblgebruiker_prtofile ");
+  $profiel = fetch("SELECT * FROM tblgebruiker_profile ");
   $userProfileData = insert(
     'INSERT INTO tblgebruiker_profile (userid,profielfoto,theme,admin) VALUES (?, ?, ?,?)',
     ['type' => 'i', 'value' => $userId],
     [
       'type' => 's',
-      'value' => 'https://avatars.githubusercontent.com/u/64209400?v=4',
+      'value' => $file_name_new,
     ],
     ['type' => 's', 'value' => 'light'],
     ['type' => 'i', 'value' => '0'],
