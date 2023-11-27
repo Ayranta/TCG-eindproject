@@ -20,12 +20,14 @@ if ($user) {
   
 
   foreach($friendrequestData as $data2){
-    print $userid;
+
     if($data2['receiverid']==$userid){
       $yourfriendrequest = true;
       $friendrequestSender=$data2['senderid'];
       break;
+
     }
+    
   }
 
 }
