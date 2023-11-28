@@ -55,6 +55,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/user/friends/delete' => [
+    'view' => '/user/user/delete-friend.php',
+    'title' => 'edit account',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/user/friendrequest' => [
     'view' => '/user/user/send_Friendrequest.php',
     'title' => 'edit account',

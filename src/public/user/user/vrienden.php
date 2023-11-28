@@ -60,7 +60,7 @@ $vrienden=fetchSingle('SELECT * From tblvrienden Where gebruikerId = ? OR vriend
       <p>last online : A week ago</p>
         <div class="flex flex-row gap-2">
           <a href="" class="btn btn-primary">trade</a>
-          <a href="\src\public\user\admin\delete_user.php?gebruikerid='.$user['gebruikerid'].'"><button class="btn btn-circle btn-outline">
+          <a href="/user/friends/delete?gebruikerid=<?php echo $vriend['id'] ?>"><button class="btn btn-circle btn-outline">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
          </button></a>
         </div>
