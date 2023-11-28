@@ -5,13 +5,19 @@ $categorieen = fetchSingle('SELECT * FROM `kaart_categorieen`');
 
 
 ?>
-<a href="/dashboard/categorieen/add"><button class="btn btn-active">voeg nieuwe categorieen toe</button></a>
+
 <?php
 
 
 ?>
-<div class="flex">
-    <div class="overflow-x-auto flex[1.8]">
+<div class=" item-center mx-80 shadow-xl rounded-2xl">
+    <div class ="mx-4 ">
+        <a href="/dashboard/categorieen/add"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        </a>
+    </div>
+    <div class="overflow-x-auto ">
     <table class="table table-lg">
         <!-- head -->
         <thead>
@@ -38,5 +44,4 @@ $categorieen = fetchSingle('SELECT * FROM `kaart_categorieen`');
         <?php } ?>
     </table>
     </div>
-    <div class="flex[0.3]"></div>
 </div>
