@@ -48,8 +48,8 @@ foreach ($users as $user) {
         $admin = 'false';
     }
   echo '
-  <div class="card card-side bg-base-100 shadow mx-2   ">
-    <figure class="rounded-full w-28 h-28 my-auto">
+  <div class="card card-side bg-base-100 shadow mx-80   ">
+    <figure class="rounded-full mx-4 w-28 h-28 my-auto">
       <img src="'.$user['profielfoto'].'" alt="Movie"/>
     </figure>
     <div class="card-body">

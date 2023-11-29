@@ -11,35 +11,34 @@ if (isset($_POST['register'])) {
 
 function register($formData,$files) {
   
-  $file = $files['file'];
+//   $file = $_FILES['file'];
   
+//   $file_name = $_FILES['file']['name'];
+//   $file_tmp = $_FILES['file']['tmp_name'];
+//   $file_size = $_FILES['file']['size'];
+//   $file_error = $_FILES['file']['error'];
+//   $file_type = $_FILES['file']['type'];
 
-  $file_name = $files['file']['name'];
-  $file_tmp = $files['file']['tmp_name'];
-  $file_size = $files['file']['size'];
-  $file_error = $files['file']['error'];
-  $file_type = $files['file']['type'];
+//   $fileExt = explode('.', $file_name);
+//   $fileActualExt = strtolower(end($fileExt));
 
-  $fileExt = explode('.', $file_name);
-  $fileActualExt = strtolower(end($fileExt));
+//   $allowed = array('jpg', 'jpeg', 'png');
 
-  $allowed = array('jpg', 'jpeg', 'png');
-
-if (in_array($fileActualExt, $allowed)){
-  if($file_error === 0){
-      if($file_size < 1000000/* aantal kilobytes een foto mag zijn '1000mb' */){
-          $file_name_new = uniqid('', true).".".$fileActualExt;
-          $fileDestination = 'public/img/profiel/'.$file_name_new;
-          move_uploaded_file($file_tmp, $fileDestination);
-      }else{
-          echo'error';
-      }
-  }else{
-      echo 'Error uploading';
-  }
-}else{
-  echo 'Wrong type';
-}
+// if (in_array($fileActualExt, $allowed)){
+//   if($file_error === 0){
+//       if($file_size < 1000000/* aantal kilobytes een foto mag zijn '1000mb' */){
+//           $file_name_new = uniqid('', true).".".$fileActualExt;
+//           $fileDestination = 'public/img/profiel/'.$file_name_new;
+//           move_uploaded_file($file_tmp, $fileDestination);
+//       }else{
+//           echo'error';
+//       }
+//   }else{
+//       echo 'Error uploading';
+//   }
+// }else{
+//   echo 'Wrong type';
+// }
 
   $email = $formData['email'];
   $username = $formData['username'];
@@ -94,6 +93,7 @@ function insertUser($username, $password, $email) {
 
   $userId = mysqli_insert_id($connection);
   $profiel = fetch("SELECT * FROM tblgebruiker_profile ");
+
   $userProfileData = insert(
     'INSERT INTO tblgebruiker_profile (userid,profielfoto,theme,admin) VALUES (?, ?, ?,?)',
     ['type' => 'i', 'value' => $userId],
