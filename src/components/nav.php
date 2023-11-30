@@ -130,7 +130,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
       <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
         <li><a href = "/account/logout">logout</a></li>
         <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
-        <li>    <a href="/user/friends" class="mr-2"> settings </a> </li>
+        <li>    <a href="/account/settings/edit" class="mr-2"> settings </a> </li>
         <li>
         <details class="dropdown dropdown-left">
           <summary class="m-1">Admin Dashboard</summary>

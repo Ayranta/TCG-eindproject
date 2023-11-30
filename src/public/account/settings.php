@@ -16,7 +16,6 @@ $data = fetch($query, ['type' => 'i', 'value' => $userId]);
 if(isset($_POST['update'])){
     if (isset($_SESSION['login'])) {
       
-        var_dump($_POST);
         updateProfile($_SESSION['login'], $_POST);
         return;
     }
@@ -27,17 +26,6 @@ if(isset($_POST['update'])){
 }
 
 function updateProfile($userId, $formData) {
-
-      
-    $query = 'SELECT * FROM tblgebruikers WHERE gebruikernaam = ?';
-    $data = fetch($query, ['type' => 's', 'value' => $formData['username']]);
-    var_dump($data);
-  
-    if ($data && $data['gebruikerid'] !== $userId) {
-      header('Location: /account/settings/edit?error=usernameTaken');
-      exit();
-    }
-  
     $newUsername = $formData['username'];
     $newEmail = $formData['email'];
 
@@ -49,6 +37,15 @@ function updateProfile($userId, $formData) {
       $data['email'] === $newEmail 
     ) {
       header('Location: /account/settings/edit?error=noChanges');
+      exit();
+    }
+
+      
+    $query = 'SELECT * FROM tblgebruikers WHERE gebruikernaam = ?';
+    $data = fetch($query, ['type' => 's', 'value' => $formData['username']]);
+  
+    if ($data && $data['gebruikerid'] !== $userId) {
+      header('Location: /account/settings/edit?error=usernameTaken');
       exit();
     }
     
