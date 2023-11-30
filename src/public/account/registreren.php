@@ -99,7 +99,7 @@ function insertUser($username, $password, $email) {
     ['type' => 'i', 'value' => $userId],
     [
       'type' => 's',
-      'value' => $file_name_new,
+      'value' => 'https://avatars.githubusercontent.com/u/64209400?v=4',
     ],
     ['type' => 's', 'value' => 'light'],
     ['type' => 'i', 'value' => '0'],
@@ -107,3 +107,75 @@ function insertUser($username, $password, $email) {
 
   return $userData && $userProfileData;
 }
+
+?>
+<?php
+if (isset($_SESSION['login'])) {
+  header('Location: /');
+  exit();
+} ?>
+
+<div class="min-h-[80svh] w-full flex flex-col justify-center items-center px-8 py-8">
+  <div class="w-full flex justify-center text-sm breadcrumbs mb-2">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>Account</li>
+      <li><a href="/account/registreren">Register</a></li>
+    </ul>
+  </div>
+
+  <h1 class="md:text-center text-4xl font-bold mb-8">Create a new account</h1>
+
+  <form action="/account/registreren" method="post" class="flex flex-col gap-8 w-full md:max-w-2xl">
+    <div class="flex flex-col gap-4">
+      
+      
+      <div class="flex flex-col gap-4 md:flex-row">
+        <div class="form-control md:flex-1">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" name="email" placeholder="john.doe@gmail.com" class="input input-bordered w-full" required />
+        </div>
+        
+        <div class="form-control md:flex-1">
+          <label class="label">
+            <span class="label-text">Username</span>
+          </label>
+          <input type="text" name="username" placeholder="john.doe" class="input input-bordered w-full" required />
+        </div>
+      </div>
+      
+      <div class="flex flex-col gap-4 md:flex-row">
+        <div class="form-control md:flex-1">
+          <label class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input type="password" name="password" placeholder="Make it a good one!" class="input input-bordered w-full" required />
+        </div>
+        
+        <div class="form-control md:flex-1">
+          <label class="label">
+            <span class="label-text">Confirm password</span>
+          </label>
+          <input type="password" name="passwordConfirm" placeholder="Confirm..." class="input input-bordered w-full" required />
+        </div>
+        
+      </div>
+      <div class="flex flex-row gap-2">
+            <div class="flex flex-col w-full"> 
+              <label class="label ">profielfoto</label>
+              <input type="file" name="file" class="file-input file-input-bordered" />
+            </div>
+          </div>
+    </div>
+
+    <button name="register" class="btn btn-primary">Register</button>
+  </form>
+
+  <div class="w-full text-center mt-8">
+    <a class="link" href="/account/login">I already have an account</a>
+  </div>
+</div>
+
+

@@ -54,7 +54,7 @@ if (isset($_POST["submit"])) {
             <input type="submit" name="submit" value=login class="btn text-black bg-white mt-3 w-full border-white hover:text-white hover:bg-black"/>
         </form>
         <div class="flex justify-center mt-2">
-            <a href="/account/register" class="link text-black">I don't have an account</a>
+            <a href="/account/registreren" class="link text-black">I don't have an account</a>
         </div>
     </div>
 </div>
