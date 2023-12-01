@@ -27,7 +27,7 @@
                 <td><?php echo  $data["aanval2"] ?> --</td>
                 <td><?php echo'damage: ' . $data["damage2"] ?></td>
              </tr></p>
-             <button class="btn bg-gray">Wijzigen</button><button class="btn bg-gray">Verwijderen</button>
+             <!-- <button class="btn bg-gray">Wijzigen</button><button class="btn bg-gray">Verwijderen</button> -->
              </div>
              </div>
 
