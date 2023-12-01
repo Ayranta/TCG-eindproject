@@ -1,4 +1,6 @@
+
 <?php 
+require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
@@ -59,7 +61,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
         
       </ul>
     </div>
-    <a href="/" class="btn btn-ghost normal-case text-xl">Trading Card Game</a>
+    <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -68,9 +70,10 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
         <details>
           <summary>talen</summary>
           <ul class="p-2">
-            <li><a href="index.php?lang=en">English</a></li>
-            <li><a href="index.php?lang=nl">Nederlands</a></li>
-            <li><a href="index.php?lang=fr">Français</a></li>
+            <li><a href="/?lang=en">English</a></li>
+            <li><a href="/?lang=nl">Nederlands</a></li>
+            <li><a href="/?lang=fr">Français</a></li>
+            <li><a href="/?lang=zh">中文</a></li>
           </ul>
         </details>
       </li>
@@ -79,7 +82,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
       ?>
       <li tabindex="0">
       <details>
-          <summary>Kaart</summary>
+          <summary><?=Vertalen('Card')?></summary>
           <ul class="p-2">
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
             <li><a href="/admin/user/kaart">bekijk kaarten</a></li>

@@ -1,5 +1,6 @@
 <?php
 // engels standaard
-$taal = [];
+$lang = [
+];
 
 ?>

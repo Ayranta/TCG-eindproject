@@ -11,7 +11,7 @@ $vrienden=fetchSingle('SELECT * From tblvrienden Where gebruikerId = ? OR vriend
 ?>
 
 
-<h1 class="md:text-center text-4xl font-bold mb-8">Your Friends</h1>
+<h1 class="md:text-center text-4xl font-bold mb-8"><?= Vertalen('Your Friends')?></h1>
 
 
 <div class="card card-side bg-base-100 shadow-xl justify-centre mx-96  ">
