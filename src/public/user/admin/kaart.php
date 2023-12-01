@@ -15,7 +15,7 @@
 
 
              <div class="card card-bordered border-gray-600 w-72 bg-[#<?php echo $categorie['kleur hex'] ?>] shadow-xl">
-  <figure ><img src="\public\img\<?php echo $data['foto'] ?>" alt="Shoes" class="w-full h-44"/></figure>
+  <figure ><img src="\public\img\<?php echo $data['foto'] ?>" alt="Shoes" class="w-full h-60"/></figure>
   <p class="text-left p-2 text-black "><?php echo 'hp: ' . $data["levens"] ?></p>
   <div class="card-body text-black text-center ">
     <h2 class="font-bold"><?php echo $data["naam"] ?></h2>
