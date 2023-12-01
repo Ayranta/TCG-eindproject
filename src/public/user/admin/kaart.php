@@ -14,7 +14,7 @@
              foreach($categorieen as $categorie){?>
 
 
-             <div class="card card-bordered border-gray-600 w-60 bg-[#<?php echo $categorie['kleur hex'] ?>] shadow-xl">
+             <div class="card card-bordered border-gray-600 w-72 bg-[#<?php echo $categorie['kleur hex'] ?>] shadow-xl">
   <figure ><img src="\public\img\<?php echo $data['foto'] ?>" alt="Shoes" class="w-full "/></figure>
   <p class="text-left p-2 text-black "><?php echo 'hp: ' . $data["levens"] ?></p>
   <div class="card-body text-black text-center md:flex-1 transition relative">
@@ -31,7 +31,7 @@
              </div>
              </div>
 
-<?php//einde kaart?>
+
                 
           <?php
             }
