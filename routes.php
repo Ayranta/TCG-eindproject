@@ -115,10 +115,35 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
-  'talen/public/lang' => [
-    'view' => '/public/lang.php',
+  'lang' => [
+    'view' => 'src\public\lang.php',
     'title' => 'lang',
     'nav' => false,
     'footer' => false,
-  ]
+  ],
+  '/talen/en' => [
+    'view' => 'talen\en.php',
+    'title' => 'lang',
+    'nav' => false,
+    'footer' => false,
+  ],
+  '/talen/fr' => [
+    'view' => 'talen\fr.php',
+    'title' => 'lang',
+    'nav' => false,
+    'footer' => false,
+  ],
+  '/talen/nl' => [
+    'view' => 'talen\nl.php',
+    'title' => 'lang',
+    'nav' => false,
+    'footer' => false,
+  ],
+  '/talen/zh' => [
+    'view' => 'talen\zh.php',
+    'title' => 'lang',
+    'nav' => false,
+    'footer' => false,
+  ],
+
 ];

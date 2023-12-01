@@ -1,8 +1,10 @@
 <?php
 //frans
-$taal = [
+$lang = [
 
-    'Card' => 'kart',
+    'Trading Card Game' => 'Jeu de cartes à collectionner',
+    'Card' => 'Carte',
+    'Your Friends' => 'Votre ami',
 
 ];
 

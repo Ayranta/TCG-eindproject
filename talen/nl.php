@@ -1,9 +1,10 @@
 <?php
 //nederlands
-$taal = [
+$lang = [
 
-    'Card' => 'kart',
-
+    'Trading Card Game' => 'Ruilkaartenspel ',
+    'Card' => 'Kaart',
+    'Your Friends' => 'Jouw vrienden',
 ];
 
 ?>
