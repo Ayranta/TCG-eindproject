@@ -3,7 +3,6 @@ session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once LIB . '/catalog/users.php';
 
-echo "<h1>Record verwijderen</h1>";
 
 if(isset($_GET['gebruikerid'])){
 $gebruikerid = $_GET['gebruikerid'];
@@ -18,6 +17,10 @@ $delete_user2=insert('DELETE FROM tblgebruiker_profile WHERE `userid`= ?',['type
     }else{
         header('Location: /dashboard/users?error=deleteProduct');
     }
+
+
+}else{
+   
+    header('Location: /dashboard/users');
 }
-header('Location: /dashboard/users');
 ?>

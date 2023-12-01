@@ -9,36 +9,8 @@ if (isset($_POST['register'])) {
 }
 
 
-function register($formData,$files) {
-  
-//   $file = $_FILES['file'];
-  
-//   $file_name = $_FILES['file']['name'];
-//   $file_tmp = $_FILES['file']['tmp_name'];
-//   $file_size = $_FILES['file']['size'];
-//   $file_error = $_FILES['file']['error'];
-//   $file_type = $_FILES['file']['type'];
+function register($formData) {
 
-//   $fileExt = explode('.', $file_name);
-//   $fileActualExt = strtolower(end($fileExt));
-
-//   $allowed = array('jpg', 'jpeg', 'png');
-
-// if (in_array($fileActualExt, $allowed)){
-//   if($file_error === 0){
-//       if($file_size < 1000000/* aantal kilobytes een foto mag zijn '1000mb' */){
-//           $file_name_new = uniqid('', true).".".$fileActualExt;
-//           $fileDestination = 'public/img/profiel/'.$file_name_new;
-//           move_uploaded_file($file_tmp, $fileDestination);
-//       }else{
-//           echo'error';
-//       }
-//   }else{
-//       echo 'Error uploading';
-//   }
-// }else{
-//   echo 'Wrong type';
-// }
 
   $email = $formData['email'];
   $username = $formData['username'];
@@ -162,12 +134,7 @@ if (isset($_SESSION['login'])) {
         </div>
         
       </div>
-      <div class="flex flex-row gap-2">
-            <div class="flex flex-col w-full"> 
-              <label class="label ">profielfoto</label>
-              <input type="file" name="file" class="file-input file-input-bordered" />
-            </div>
-          </div>
+     
     </div>
 
     <button name="register" class="btn btn-primary">Register</button>

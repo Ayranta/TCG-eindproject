@@ -37,7 +37,6 @@ function updateProfile($userId, $formData) {
       
     $query = 'SELECT * FROM tblgebruikers WHERE gebruikernaam = ?';
     $data = fetch($query, ['type' => 's', 'value' => $formData['username']]);
-    var_dump($data);
   
     if ($data && $data['gebruikerid'] !== $userId) {
       header('Location: /dashboard/users?error=usernameTaken');
@@ -66,7 +65,6 @@ function updateProfile($userId, $formData) {
       ['type' => 's', 'value' => $newEmail],
       ['type' => 's', 'value' => $userId],
     );
-    var_dump($update);
     if ($update) {
       
         header('Location: /dashboard/users');
