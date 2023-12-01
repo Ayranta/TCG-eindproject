@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 nov 2023 om 21:47
+-- Gegenereerd op: 01 dec 2023 om 11:02
 -- Serverversie: 10.4.28-MariaDB
 -- PHP-versie: 8.2.4
 
@@ -39,7 +39,12 @@ CREATE TABLE `kaart_categorieen` (
 
 INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (1, 'Rood', '850000'),
-(2, 'Blauw', '00e1ff');
+(2, 'Blauw', '00e1ff'),
+(4, 'ice', '3dc5ff'),
+(5, 'grass', '549d0b'),
+(6, 'fire', 'e64c0a'),
+(7, 'water', '0846d9'),
+(8, 'dragon', '9736c4');
 
 -- --------------------------------------------------------
 
@@ -52,6 +57,13 @@ CREATE TABLE `tblfriend_request` (
   `senderid` int(11) NOT NULL,
   `receiverid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `tblfriend_request`
+--
+
+INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
+(19, 12, 20);
 
 -- --------------------------------------------------------
 
@@ -72,10 +84,9 @@ CREATE TABLE `tblgebruikers` (
 
 INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`) VALUES
 (12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman'),
-(13, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$SHdmWWNzTnF4MDJzbVM3UA$5rjdR6zjIplOrjLY0eDIVeSrbq3ofkTn2dG0iluSWR0', 'xander'),
 (14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper'),
-(15, 'casper.nauwelaerts@b.com', '$argon2id$v=19$m=65536,t=4,p=1$aS9ZUkVWTll0dDVCRFVZYw$gs4D93qCwBkmWI4tUaRku1JtFyENQdezTs3k9yn09eM', 'b'),
-(16, 'casper.nauwelaerts@v.com', '$argon2id$v=19$m=65536,t=4,p=1$Slk5cjV4a2lRTXUuNTBscg$xyNiTUveOj++B/K61lPHZJ5iqwjuWhLKBYM3ybOQj3E', 'casper.nauwelaerts');
+(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password'),
+(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander');
 
 -- --------------------------------------------------------
 
@@ -97,8 +108,9 @@ CREATE TABLE `tblgebruiker_profile` (
 
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`) VALUES
 (9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(10, 13, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1);
+(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1),
+(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
+(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0);
 
 -- --------------------------------------------------------
 
@@ -126,7 +138,9 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 (13, '1B', 'Rood', 200, 'a', 10, 'a', 20, '6563766e154a53.81904227.png'),
 (16, 'Bert', 'Blauw', 30, 'Dive', 4, 'WaterBurst', 12, '656392dc399087.35426615.jpg'),
 (17, 'aa', 'Blauw', 12, 'a', 1, 'a', 1, '656393038e04f5.29686428.png'),
-(19, 'a', 'Rood', 1, 'a', 1, 'a', 1, '6563a4a5b1c069.89643839.png');
+(19, 'a', 'Rood', 1, 'a', 1, 'a', 1, '6563a4a5b1c069.89643839.png'),
+(22, 'bumba', 'Rood', 500, 'body slam', 222, 'slap', 35, '65699a168f99a3.19701218.png'),
+(26, 'dragon', 'dragon', 8000, 'breath', 3000, 'fire ball', 5000, '65699c636b1e52.59233588.jpg');
 
 -- --------------------------------------------------------
 
@@ -196,37 +210,37 @@ ALTER TABLE `tblvrienden`
 -- AUTO_INCREMENT voor een tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblfriend_request`
 --
 ALTER TABLE `tblfriend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
-  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

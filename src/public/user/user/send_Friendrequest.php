@@ -26,7 +26,7 @@ function insertFriendrequest($userid,$formdata){
 
     foreach($data as $Data){
     
-      if($Data['receiverid']===$newid){
+      if($Data['senderid']===$newid&&$Data['receiverid']===$userid||$Data['receiverid']===$newid&&$Data['senderid']===$userid){
         header('Location: /user/friends?friendrequestAlreadyExists'); 
         exit;
       }
@@ -58,7 +58,7 @@ function insertFriendrequest($userid,$formdata){
       exit();
     }
 
-    header('Location: /user/friends?error=notAddedCategory');
+    header('Location: /user/friends?error=nofriend');
     exit();
 }
 
