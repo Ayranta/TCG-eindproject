@@ -5,6 +5,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
+
+  // check for theme
   $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
 
@@ -15,6 +17,7 @@ if ($user) {
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
   $_SESSION['profielfoto'] = $change_theme['profielfoto'];
 
+  //look for a friendrequest
   $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
     'type' => 'i',
     'value' => $userid,
@@ -39,6 +42,25 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   'value' => $friendrequestSender,
 ]);
 }
+// ! look for friend request
+
+//check the levels of the player
+
+
+  $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
+    'type' => 'i',
+    'value' => $change_theme['Level'],
+  ]);
+
+
+  $GroupLevelofPlayer=fetch('SELECT * From LevelGroup Where GroupID = ?',[
+    'type' => 'i',
+    'value' => $levelofPlayer['GroupID'],
+  ]);
+
+
+//var_dump($levelofPlayer);
+//var_dump($GroupLevelofPlayer);
 
 ?>
 
@@ -94,10 +116,16 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   }?>
     </ul>
   </div>
- 
- 
+  
   <div class="navbar-end">
-
+<?php if ($user) {?>
+  <div class="flex items-center space-x-2 mr-8">
+      <span class="">Level:</span>
+      <div class="bg-[#CD7F32] rounded-full h-8 w-8 flex items-center justify-center">
+          <span class=" text-sm font-semibold"><?php echo $change_theme['Level'] ?></span>
+      </div>
+  </div>
+<?php }?>
     <?php if ($yourfriendrequest){ ?>
   <div class="alert shadow-lg flex mx-8" >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -112,6 +140,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
     </div>
     
         <?php } ?>
+        
 
   <?php echo isset($_SESSION['login'])
   
