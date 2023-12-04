@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2023 at 04:05 PM
+-- Generation Time: Dec 04, 2023 at 08:40 AM
 -- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.14
 
@@ -49,6 +49,45 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `LevelGroups`
+--
+
+CREATE TABLE `LevelGroups` (
+  `GroupID` int(11) NOT NULL,
+  `GroupName` varchar(50) NOT NULL,
+  `color` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `LevelGroups`
+--
+
+INSERT INTO `LevelGroups` (`GroupID`, `GroupName`, `color`) VALUES
+(1, 'beginner', '#CD7F32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `PlayerLevels`
+--
+
+CREATE TABLE `PlayerLevels` (
+  `LevelID` int(11) NOT NULL,
+  `LevelName` varchar(50) NOT NULL,
+  `GroupID` int(11) NOT NULL,
+  `ExpirienceRequired` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `PlayerLevels`
+--
+
+INSERT INTO `PlayerLevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
+(1, ' level 1', 1, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblfriend_request`
 --
 
@@ -57,6 +96,13 @@ CREATE TABLE `tblfriend_request` (
   `senderid` int(11) NOT NULL,
   `receiverid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tblfriend_request`
+--
+
+INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
+(30, 12, 14);
 
 -- --------------------------------------------------------
 
@@ -93,19 +139,21 @@ CREATE TABLE `tblgebruiker_profile` (
   `userid` int(20) NOT NULL,
   `theme` text NOT NULL,
   `profielfoto` text NOT NULL,
-  `admin` int(20) NOT NULL
+  `admin` int(20) NOT NULL,
+  `Level` int(11) NOT NULL DEFAULT 1,
+  `Expirience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblgebruiker_profile`
 --
 
-INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`) VALUES
-(9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1),
-(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0);
+INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`) VALUES
+(9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0),
+(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -158,8 +206,7 @@ CREATE TABLE `tblvrienden` (
 INSERT INTO `tblvrienden` (`id`, `gebruikerId`, `vriendenmetId`) VALUES
 (2, 12, 14),
 (5, 12, 12),
-(6, 21, 14),
-(7, 22, 12);
+(6, 21, 14);
 
 --
 -- Indexes for dumped tables
@@ -170,6 +217,18 @@ INSERT INTO `tblvrienden` (`id`, `gebruikerId`, `vriendenmetId`) VALUES
 --
 ALTER TABLE `kaart_categorieen`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `LevelGroups`
+--
+ALTER TABLE `LevelGroups`
+  ADD PRIMARY KEY (`GroupID`);
+
+--
+-- Indexes for table `PlayerLevels`
+--
+ALTER TABLE `PlayerLevels`
+  ADD PRIMARY KEY (`LevelID`);
 
 --
 -- Indexes for table `tblfriend_request`
@@ -212,10 +271,22 @@ ALTER TABLE `kaart_categorieen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `LevelGroups`
+--
+ALTER TABLE `LevelGroups`
+  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `PlayerLevels`
+--
+ALTER TABLE `PlayerLevels`
+  MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tblfriend_request`
 --
 ALTER TABLE `tblfriend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tblgebruikers`
@@ -239,7 +310,7 @@ ALTER TABLE `tblkaart`
 -- AUTO_INCREMENT for table `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
