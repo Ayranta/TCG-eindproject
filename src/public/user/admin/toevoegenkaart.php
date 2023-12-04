@@ -48,14 +48,14 @@
         echo 'Wrong type';
     }
     if (addProduct($mysqli, $naam, $categorie, $levens, $aanval1, $damage1, $aanval2, $damage2, $file_name_new)) {
-      header('location: /');
+      header('location: ');
       exit;
     }
   }
   ?>
   <div>
     <form class="form-control h-full flex items-center justify-center" action="/admin/user/toevoegenkaart" method="post" enctype="multipart/form-data">
-      <div class="card w-full max-w-lg shadow-2xl p-8 mx-auto justify-center items-center">
+      <div class="card w-full max-w-lg shadow-2xl p-8 mx-auto justify-center items-center card-bordered border-gray-600">
         <h2 class="text-2xl mb-4">Add Card</h2>
         <div class="flex flex-col gap-2"> 
         <div class="flex flex-col w-full"> 
@@ -89,7 +89,7 @@
             </div>
           <div class="flex flex-row gap-2">
             <div class="flex flex-col w-full"> 
-              <label class="label ">kaart Picture</label>
+              <label class="label ">kaart Picture: jpg, jpeg, png</label>
               <input type="file" name="file" class="file-input file-input-bordered" required />
             </div>
           </div>

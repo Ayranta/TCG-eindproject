@@ -43,7 +43,6 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
 ]);
 }
 
-
 ?>
 
 <div class="navbar bg-base-100">
@@ -73,7 +72,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
       <li tabindex="0">
         <details>
           <summary>talen</summary>
-          <ul class="p-2">
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
             <li><a href="/?lang=en">English</a></li>
             <li><a href="/?lang=nl">Nederlands</a></li>
             <li><a href="/?lang=fr">Français</a></li>
@@ -81,13 +80,14 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
           </ul>
         </details>
       </li>
+      
       <?php if(isset($_SESSION["admin"])){
-    if($_SESSION["admin"] === 1){
+    if($_SESSION["admin"] == 1){
       ?>
       <li tabindex="0">
       <details>
           <summary><?=Vertalen('Card')?></summary>
-          <ul class="p-2">
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
             <li><a href="/admin/user/kaart">bekijk kaarten</a></li>
           </ul>
@@ -100,7 +100,6 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   </div>
   
   <div class="navbar-end">
-
     <?php if ($yourfriendrequest){ ?>
   <div class="alert shadow-lg flex mx-8" >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
