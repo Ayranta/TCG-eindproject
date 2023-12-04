@@ -5,6 +5,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
+  // check for theme
   $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
 
@@ -14,6 +15,9 @@ if ($user) {
   ]);
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
   $_SESSION['profielfoto'] = $change_theme['profielfoto'];
+
+
+  // look for friend request
 
   $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
     'type' => 'i',
@@ -39,6 +43,8 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   'value' => $friendrequestSender,
 ]);
 }
+// ! look for friend request
+
 //check the levels of the player
 
 
