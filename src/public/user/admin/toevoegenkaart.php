@@ -48,7 +48,7 @@
         echo 'Wrong type';
     }
     if (addProduct($mysqli, $naam, $categorie, $levens, $aanval1, $damage1, $aanval2, $damage2, $file_name_new)) {
-      header('location: ');
+      header('location: /');
       exit;
     }
   }

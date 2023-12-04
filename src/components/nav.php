@@ -80,7 +80,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
           </ul>
         </details>
       </li>
-      
+      <?php print 'admin =' . $_SESSION["admin"]; ?>
       <?php if(isset($_SESSION["admin"])){
     if($_SESSION["admin"] == 1){
       ?>

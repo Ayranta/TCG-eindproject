@@ -1,6 +1,9 @@
 <?php
 
 include "./functions/Gebruikerfuncties.php";
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 if (isset($_SESSION["login"])) {
     header("location: / ");
 }
@@ -13,7 +16,7 @@ if (isset($_POST["submit"])) {
      if(isPasswordCorrect($mysqli,$password,$email)){  
         $gebruikersid = getGebruikersid($mysqli,$email);
              $_SESSION["login"]= $gebruikersid;
-             if(checkIfAdmin($mysqli,$email)){
+             if(checkIfAdmin($mysqli,$userid)){
                 $_SESSION["admin"] = 1;
              }
             header("Location: / ");
