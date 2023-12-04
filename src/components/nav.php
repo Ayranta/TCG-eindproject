@@ -45,7 +45,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
 // ! look for friend request
 
 //check the levels of the player
-
+if(isset($user)){
 
   $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
     'type' => 'i',
@@ -57,7 +57,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
     'type' => 'i',
     'value' => $levelofPlayer['GroupID'],
   ]);
-
+}
 
 
 
@@ -134,9 +134,9 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
      } ?>
   <?php if ($user) { 
     echo'
-  <div class="flex items-center justify-center">
+  <div class="flex items-center justify-center mr-2">
     <div class="relative">
-        <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-20 h-20">
+        <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
         <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
             <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
         </div>
