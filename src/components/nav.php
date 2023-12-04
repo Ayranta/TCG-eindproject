@@ -39,7 +39,23 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   'value' => $friendrequestSender,
 ]);
 }
+//check the levels of the player
 
+
+$levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
+  'type' => 'i',
+  'value' => $change_theme['Level'],
+]);
+
+
+$GroupLevelofPlayer=fetch('SELECT * From LevelGroup Where GroupID = ?',[
+  'type' => 'i',
+  'value' => $levelofPlayer['GroupID'],
+]);
+
+
+//var_dump($levelofPlayer);
+//var_dump($GroupLevelofPlayer);
 ?>
 
 <div class="navbar bg-base-100">
