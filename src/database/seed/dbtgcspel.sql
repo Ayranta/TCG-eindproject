@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2023 at 08:40 AM
+-- Generation Time: Dec 04, 2023 at 02:53 PM
 -- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.14
 
@@ -55,15 +55,15 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 CREATE TABLE `LevelGroups` (
   `GroupID` int(11) NOT NULL,
   `GroupName` varchar(50) NOT NULL,
-  `color` text NOT NULL
+  `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `LevelGroups`
 --
 
-INSERT INTO `LevelGroups` (`GroupID`, `GroupName`, `color`) VALUES
-(1, 'beginner', '#CD7F32');
+INSERT INTO `LevelGroups` (`GroupID`, `GroupName`, `foto`) VALUES
+(1, 'beginner', 'silver-badge.png');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `tblfriend_request` (
 --
 
 INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
-(30, 12, 14);
+(33, 12, 14);
 
 -- --------------------------------------------------------
 
@@ -286,7 +286,7 @@ ALTER TABLE `PlayerLevels`
 -- AUTO_INCREMENT for table `tblfriend_request`
 --
 ALTER TABLE `tblfriend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tblgebruikers`

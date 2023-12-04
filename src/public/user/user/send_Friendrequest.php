@@ -37,7 +37,7 @@ function insertFriendrequest($userid,$formdata){
 
     foreach($data as $Data){
     
-      if($Data['vriendenmetId']===$newid&&$Data['gebruikerId']===$userid||$Data['gebruikerId']===$newid&&$Data['vriendenmetId']===$userid){
+      if($Data['vriendenmetId']==$newid&&$Data['gebruikerId']==$userid||$Data['gebruikerId']==$newid&&$Data['vriendenmetId']==$userid){
         header('Location: /user/friends?friendAlreadyExists'); 
         exit;
       }

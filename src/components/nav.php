@@ -53,14 +53,13 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   ]);
 
 
-  $GroupLevelofPlayer=fetch('SELECT * From LevelGroup Where GroupID = ?',[
+  $GroupLevelofPlayer=fetch('SELECT * From LevelGroups Where GroupID = ?',[
     'type' => 'i',
     'value' => $levelofPlayer['GroupID'],
   ]);
 
 
-//var_dump($levelofPlayer);
-//var_dump($GroupLevelofPlayer);
+
 
 ?>
 
@@ -118,37 +117,40 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
   </div>
   
   <div class="navbar-end">
-<?php if ($user) {?>
-  <div class="flex items-center space-x-2 mr-8">
-      <span class="">Level:</span>
-      <div class="bg-[#CD7F32] rounded-full h-8 w-8 flex items-center justify-center">
-          <span class=" text-sm font-semibold"><?php echo $change_theme['Level'] ?></span>
-      </div>
-  </div>
-<?php }?>
-    <?php if ($yourfriendrequest){ ?>
+
+  <?php if ($yourfriendrequest){ 
+    echo'
   <div class="alert shadow-lg flex mx-8" >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
       <div class ="flex[1.2]">
         <h3 class="font-bold">Friend request</h3>
-        <div class="text-xs">from <?php echo $namesender['gebruikernaam'] ?></div>
+        <div class="text-xs">from '.$namesender['gebruikernaam'] .'</div>
       </div>
       <div class="flex[0.8]">
       <a href="/src/lib/user/member/acceptFriendrequest.php"><button class="btn btn-ghost">Accept</button></a>
       <a href ="/src/lib/user/member/denyFriendrequest.php"><button class="btn btn-ghost">Deny</button></a>
       </div>
+    </div>';
+     } ?>
+  <?php if ($user) { 
+    echo'
+  <div class="flex items-center justify-center">
+    <div class="relative">
+        <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-20 h-20">
+        <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
+            <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
+        </div>
     </div>
-    
-        <?php } ?>
+</div>
+
+';
+ }?>
+   
         
 
   <?php echo isset($_SESSION['login'])
   
       ? '
-      <a href="/user/friends" class="mr-2">  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-      </svg></a> 
-  
 
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">
@@ -161,6 +163,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
         <li><a href = "/account/logout">logout</a></li>
         <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
         <li>    <a href="/account/settings/edit" class="mr-2"> settings </a> </li>
+        <li> <a href="/user/friends" class="mr-2">friends</a> </li>
         <li>
         <details class="dropdown dropdown-left">
           <summary class="m-1">Admin Dashboard</summary>
