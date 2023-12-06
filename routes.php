@@ -109,6 +109,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/admin/level' => [
+    'view' => '/user/admin/level.php',
+    'title' => 'toevoegen_kaart',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/admin/user/kaart' => [
     'view' => '/user/admin/kaart.php',
     'title' => 'kaarten',
