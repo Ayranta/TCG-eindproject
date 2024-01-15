@@ -110,7 +110,7 @@ $routes = [
     'footer' => false,
   ],
   '/admin/level' => [
-    'view' => '/user/admin/level.php',
+    'view' => '/user/admin/levels/level.php',
     'title' => 'toevoegen_kaart',
     'nav' => true,
     'footer' => false,
