@@ -1,7 +1,13 @@
 
 <?php 
 require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
-
+?>
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+<?php
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
@@ -67,6 +73,13 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
   </div>
+  <?php
+/*start muziek
+
+werkt niet op het moment
+  
+stop muziek*/
+?>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       
