@@ -23,7 +23,7 @@ $groupData = fetchSingle('SELECT * FROM LevelGroups');
       <div class="card-actions justify-between items-center">
         <p>Group  <?php echo $groupdata['GroupID'] ?></p>
         <div class="flex flex-row gap-2">
-          <a href="" class="btn btn-primary">change</a>
+          <a href="/admin/level/change" class="btn btn-primary">change</a>
          
         </div>
       </div>

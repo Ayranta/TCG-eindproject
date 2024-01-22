@@ -115,6 +115,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/admin/level/change' => [
+    'view' => '/user/admin/levels/change-level.php',
+    'title' => 'toevoegen_kaart',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/admin/user/kaart' => [
     'view' => '/user/admin/kaart.php',
     'title' => 'kaarten',
