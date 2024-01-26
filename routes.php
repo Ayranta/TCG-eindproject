@@ -51,19 +51,19 @@ $routes = [
   ],
   '/user/friends' => [
     'view' => '/user/user/vrienden.php',
-    'title' => 'edit account',
+    'title' => 'vrienden',
     'nav' => true,
     'footer' => false,
   ],
   '/user/friends/delete' => [
     'view' => '/user/user/delete-friend.php',
-    'title' => 'edit account',
+    'title' => 'delete friend',
     'nav' => true,
     'footer' => false,
   ],
   '/user/friendrequest' => [
     'view' => '/user/user/send_Friendrequest.php',
-    'title' => 'edit account',
+    'title' => 'send friend request',
     'nav' => true,
     'footer' => false,
   ],
@@ -117,6 +117,12 @@ $routes = [
   ],
   '/admin/level/change' => [
     'view' => '/user/admin/levels/change-level.php',
+    'title' => 'toevoegen_kaart',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/admin/group/change' => [
+    'view' => 'user\admin\levels\change-group.php',
     'title' => 'toevoegen_kaart',
     'nav' => true,
     'footer' => false,

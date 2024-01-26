@@ -21,10 +21,10 @@ $groupData = fetchSingle('SELECT * FROM LevelGroups');
       <h2 class="card-title"> <?php echo $level['LevelName'] ?> -- <?php echo $groupdata['GroupName'] ?></h2>
       <p class="card-title" ></p>
       <div class="card-actions justify-between items-center">
-        <p>Group  <?php echo $groupdata['GroupID'] ?></p>
+      <p><?php echo $level['ExpirienceRequired'] ?> exp</p>
+        <p>Group  <?php echo $level['GroupID'] ?></p>
         <div class="flex flex-row gap-2">
           <a href="/admin/level/change?levelId=<?php echo $level['LevelID'] ?>" class="btn btn-primary">change</a>
-         
         </div>
       </div>
       <?php } ?>
@@ -38,12 +38,15 @@ $groupData = fetchSingle('SELECT * FROM LevelGroups');
       <?php
        foreach ($groupData as $group){    ?>
       <div>
-        <h2 class="card-title"> <?php echo $group['GroupName'] ?> </h2>
+      <h2 class="card-title"> <?php echo $group['GroupName'] ?> </h2>
         <div class="card-actions justify-between items-center">
-        <img src="/public/img/<?php echo $group['foto'] ?>" alt="Badge" class="w-12 h-12 mr-12">
-          <p>Group  <?php echo $group['GroupID'] ?></p>
+        <div class="flex">
+          <img src="/public/img/<?php echo $group['foto'] ?>" alt="Badge" class="w-12 h-12 mr-12">
+            <p>Group  <?php echo $group['GroupID'] ?></p>
+          
+        </div>
           <div class="flex flex-row gap-2">
-            <a href="" class="btn btn-primary">change</a>
+          <a href="/admin/group/change?groupId=<?php echo $group['GroupID'] ?>" class="btn btn-primary">change</a>
           </div>
         </div>
       </div>

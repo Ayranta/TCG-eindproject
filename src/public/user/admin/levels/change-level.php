@@ -39,11 +39,10 @@ function updateLevel($levelId, $formData) {
 
     $query = 'SELECT * FROM PlayerLevels WHERE LevelID = ?';
     $data = fetch($query, ['type' => 'i', 'value' => $levelId]);
-    var_dump($data);
     
     if (
-      $data['GroupId'] === $newGroupID &&
-      $data['ExpirienceRequired'] === $newExpirience
+      $data['GroupID'] == $newGroupID &&
+      $data['ExpirienceRequired'] == $newExpirience
     ) {
       header('Location: /admin/level?error=noChanges');
       exit();
@@ -60,11 +59,11 @@ function updateLevel($levelId, $formData) {
     var_dump($update);
     if ($update) {
       
-       // header('Location: /admin/level?succes');
+      header('Location: /admin/level?succes');
       exit();
     }
     
-   // header('Location: /admin/level?error=accountUpdate');
+   header('Location: /admin/level?error');
     exit();
   }
 ?>
