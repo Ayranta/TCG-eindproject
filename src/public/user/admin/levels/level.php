@@ -18,12 +18,12 @@ $groupData = fetchSingle('SELECT * FROM LevelGroups');
             'value' => $level['GroupID'],
           ]);
       ?>
-      <h2 class="card-title"> <?php echo $level['LevelName'] ?> </h2>
-      <p class="card-title" ><?php echo $groupdata['GroupName'] ?></p>
+      <h2 class="card-title"> <?php echo $level['LevelName'] ?> -- <?php echo $groupdata['GroupName'] ?></h2>
+      <p class="card-title" ></p>
       <div class="card-actions justify-between items-center">
         <p>Group  <?php echo $groupdata['GroupID'] ?></p>
         <div class="flex flex-row gap-2">
-          <a href="/admin/level/change" class="btn btn-primary">change</a>
+          <a href="/admin/level/change?levelId=<?php echo $level['LevelID'] ?>" class="btn btn-primary">change</a>
          
         </div>
       </div>
