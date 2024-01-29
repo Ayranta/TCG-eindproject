@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2023 at 04:05 PM
--- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
--- PHP Version: 8.1.2-1ubuntu2.14
+-- Gegenereerd op: 26 jan 2024 om 12:07
+-- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP-versie: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kaart_categorieen`
+-- Tabelstructuur voor tabel `kaart_categorieen`
 --
 
 CREATE TABLE `kaart_categorieen` (
@@ -34,7 +34,7 @@ CREATE TABLE `kaart_categorieen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `kaart_categorieen`
+-- Gegevens worden geëxporteerd voor tabel `kaart_categorieen`
 --
 
 INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
@@ -43,13 +43,57 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (4, 'ice', '3dc5ff'),
 (5, 'grass', '549d0b'),
 (6, 'fire', 'e64c0a'),
-(7, 'water', '0846d9'),
-(8, 'dragon', '141b85');
+(7, 'water', 'c2c3c7'),
+(8, 'dragon', '7b80cc');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblfriend_request`
+-- Tabelstructuur voor tabel `LevelGroups`
+--
+
+CREATE TABLE `LevelGroups` (
+  `GroupID` int(11) NOT NULL,
+  `GroupName` varchar(50) NOT NULL,
+  `foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `LevelGroups`
+--
+
+INSERT INTO `LevelGroups` (`GroupID`, `GroupName`, `foto`) VALUES
+(1, 'Beginner', 'bronze-badge.png'),
+(2, 'Intermediate', 'silver-badge.png'),
+(3, 'Advanced', 'gold-badge.png'),
+(4, 'Master', 'platinum-badge.png'),
+(5, 'Grandmaster', 'diamond-badge.png');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `PlayerLevels`
+--
+
+CREATE TABLE `PlayerLevels` (
+  `LevelID` int(11) NOT NULL,
+  `LevelName` varchar(50) NOT NULL,
+  `GroupID` int(11) NOT NULL,
+  `ExpirienceRequired` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `PlayerLevels`
+--
+
+INSERT INTO `PlayerLevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
+(1, 'level 1', 1, 100),
+(2, 'level 2', 1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `tblfriend_request`
 --
 
 CREATE TABLE `tblfriend_request` (
@@ -58,10 +102,17 @@ CREATE TABLE `tblfriend_request` (
   `receiverid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `tblfriend_request`
+--
+
+INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
+(33, 12, 14);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblgebruikers`
+-- Tabelstructuur voor tabel `tblgebruikers`
 --
 
 CREATE TABLE `tblgebruikers` (
@@ -72,7 +123,7 @@ CREATE TABLE `tblgebruikers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tblgebruikers`
+-- Gegevens worden geëxporteerd voor tabel `tblgebruikers`
 --
 
 INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`) VALUES
@@ -85,7 +136,7 @@ INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblgebruiker_profile`
+-- Tabelstructuur voor tabel `tblgebruiker_profile`
 --
 
 CREATE TABLE `tblgebruiker_profile` (
@@ -93,24 +144,26 @@ CREATE TABLE `tblgebruiker_profile` (
   `userid` int(20) NOT NULL,
   `theme` text NOT NULL,
   `profielfoto` text NOT NULL,
-  `admin` int(20) NOT NULL
+  `admin` int(20) NOT NULL,
+  `Level` int(11) NOT NULL DEFAULT 1,
+  `Expirience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblgebruiker_profile`
+-- Gegevens worden geëxporteerd voor tabel `tblgebruiker_profile`
 --
 
-INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`) VALUES
-(9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1),
-(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0);
+INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`) VALUES
+(9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0),
+(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblkaart`
+-- Tabelstructuur voor tabel `tblkaart`
 --
 
 CREATE TABLE `tblkaart` (
@@ -126,7 +179,7 @@ CREATE TABLE `tblkaart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblkaart`
+-- Gegevens worden geëxporteerd voor tabel `tblkaart`
 --
 
 INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `damage1`, `aanval2`, `damage2`, `foto`) VALUES
@@ -142,7 +195,7 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblvrienden`
+-- Tabelstructuur voor tabel `tblvrienden`
 --
 
 CREATE TABLE `tblvrienden` (
@@ -152,94 +205,116 @@ CREATE TABLE `tblvrienden` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblvrienden`
+-- Gegevens worden geëxporteerd voor tabel `tblvrienden`
 --
 
 INSERT INTO `tblvrienden` (`id`, `gebruikerId`, `vriendenmetId`) VALUES
-(2, 12, 14),
-(5, 12, 12),
 (6, 21, 14),
-(7, 22, 12);
+(10, 21, 12);
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `kaart_categorieen`
+-- Indexen voor tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblfriend_request`
+-- Indexen voor tabel `LevelGroups`
+--
+ALTER TABLE `LevelGroups`
+  ADD PRIMARY KEY (`GroupID`);
+
+--
+-- Indexen voor tabel `PlayerLevels`
+--
+ALTER TABLE `PlayerLevels`
+  ADD PRIMARY KEY (`LevelID`);
+
+--
+-- Indexen voor tabel `tblfriend_request`
 --
 ALTER TABLE `tblfriend_request`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblgebruikers`
+-- Indexen voor tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
   ADD PRIMARY KEY (`gebruikerid`);
 
 --
--- Indexes for table `tblgebruiker_profile`
+-- Indexen voor tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblkaart`
+-- Indexen voor tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
   ADD PRIMARY KEY (`kaartID`);
 
 --
--- Indexes for table `tblvrienden`
+-- Indexen voor tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `kaart_categorieen`
+-- AUTO_INCREMENT voor een tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `tblfriend_request`
+-- AUTO_INCREMENT voor een tabel `LevelGroups`
 --
-ALTER TABLE `tblfriend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+ALTER TABLE `LevelGroups`
+  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tblgebruikers`
+-- AUTO_INCREMENT voor een tabel `PlayerLevels`
+--
+ALTER TABLE `PlayerLevels`
+  MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT voor een tabel `tblfriend_request`
+--
+ALTER TABLE `tblfriend_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
   MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `tblgebruiker_profile`
+-- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tblkaart`
+-- AUTO_INCREMENT voor een tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
-  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `tblvrienden`
+-- AUTO_INCREMENT voor een tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
