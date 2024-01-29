@@ -73,13 +73,11 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
   </div>
-  <?php
-/*start muziek
 
-werkt niet op het moment
   
-stop muziek*/
-?>
+
+
+
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       

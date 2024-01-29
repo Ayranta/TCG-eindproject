@@ -29,7 +29,10 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./tailwind.config.js"></script>
+  <script src="/public/Scripts/scriptMusic.js"></script>
   <link rel="stylesheet" href="/public/css/theme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/public/css/styleMusic.css" />
   <title><?php echo $route['title']; ?></title>
 </head>
 
