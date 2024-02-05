@@ -22,8 +22,6 @@ if ($user) {
     'type' => 'i',
     'value' => $userid,
   ]);
-  
-
   foreach($friendrequestData as $data2){
 
     if($data2['receiverid']==$userid){

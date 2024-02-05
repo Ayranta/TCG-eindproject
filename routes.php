@@ -25,9 +25,15 @@ $routes = [
     'nav' => true,
     'footer' =>false,
   ],
+  '/account/wachtwoordVergeten' => [
+    'view' => '/account/wachtwoordVergeten.php',
+    'title' => 'login',
+    'nav' => true,
+    'footer' =>false,
+  ],
   '/account/register' => [
     'view' => '/account/register.php',
-    'title' => 'register',
+    'title' => 'Get password',
     'nav' => true,
     'footer' => false,
   ],

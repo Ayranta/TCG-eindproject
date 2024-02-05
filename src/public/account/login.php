@@ -56,5 +56,9 @@ if (isset($_POST["submit"])) {
         <div class="flex justify-center mt-2">
             <a href="/account/registreren" class="link text-black">I don't have an account</a>
         </div>
+        <div class="flex justify-center mt-2">
+        <a href="/account/wachtwoordVergeten" class="link text-black">Forgot your password</a>
+        </div>
+
     </div>
 </div>

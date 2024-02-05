@@ -24,7 +24,7 @@ function getGebruikersid($connection,$email){
     return ($resultaat->num_rows == 0)?false:$resultaat->fetch_assoc()['gebruikerid'];
 }
 function checkIfAdmin($connection,$email){
-    $resultaat = $connection->query("SELECT * FROM tblgebruikers,tblgebruiker_profile where email = '".$email."' and admin=1");
+    $resultaat = $connection->query("SELECT * FROM tblgebruikers,tblgebruiker_profile where tblgebruikers.gebruikerid = tblgebruiker_profile.userid AND tblgebruikers.email = '".$email."' and tblgebruiker_profile.admin=1");
     return ($resultaat->num_rows == 0)?false:$resultaat->fetch_all(MYSQLI_ASSOC);
 }
 /*function cache_createKey($connection, $keyName, $keyValue) {
