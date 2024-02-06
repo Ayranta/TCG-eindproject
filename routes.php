@@ -133,6 +133,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/admin/user/packs' => [
+    'view' => '/user/admin/packs/packs.php',
+    'title' => 'packs',
+    'nav' => true,
+    'footer' => false,
+  ],
   'lang' => [
     'view' => 'src\public\lang.php',
     'title' => 'lang',

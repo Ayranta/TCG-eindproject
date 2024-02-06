@@ -170,6 +170,7 @@ if(isset($user)){
             <li><a href="/dashboard/users">gebruikers</a></li>
             <li><a href="/dashboard/categorieen">categorieen</a></li>
             <li><a href="/admin/level">levels</a></li>
+            <li><a href="/admin/user/packs">packs</a></li>
             
             
       </ul>

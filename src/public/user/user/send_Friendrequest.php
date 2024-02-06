@@ -21,7 +21,11 @@ function insertFriendrequest($userid,$formdata){
 
     $data = fetchSingle('SELECT * FROM tblfriend_request');
     
-   
+   if($receiverdata['gebruikerid']==NULL){
+    header('Location: /user/friends?userdoesntexist'); 
+    exit;
+   }
+
     $newid=$receiverdata['gebruikerid'];
 
     foreach($data as $Data){
