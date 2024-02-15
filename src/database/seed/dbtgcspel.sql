@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 06 feb 2024 om 12:22
--- Serverversie: 10.4.28-MariaDB
--- PHP-versie: 8.2.4
+-- Host: localhost
+-- Gegenereerd op: 15 feb 2024 om 16:25
+-- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP-versie: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,20 +49,20 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `levelgroups`
+-- Tabelstructuur voor tabel `LevelGroups`
 --
 
-CREATE TABLE `levelgroups` (
+CREATE TABLE `LevelGroups` (
   `GroupID` int(11) NOT NULL,
   `GroupName` varchar(50) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `levelgroups`
+-- Gegevens worden geëxporteerd voor tabel `LevelGroups`
 --
 
-INSERT INTO `levelgroups` (`GroupID`, `GroupName`, `foto`) VALUES
+INSERT INTO `LevelGroups` (`GroupID`, `GroupName`, `foto`) VALUES
 (1, 'Beginner', 'bronze-badge.png'),
 (2, 'Intermediate', 'silver-badge.png'),
 (3, 'Advanced', 'gold-badge.png'),
@@ -72,10 +72,10 @@ INSERT INTO `levelgroups` (`GroupID`, `GroupName`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `playerlevels`
+-- Tabelstructuur voor tabel `PlayerLevels`
 --
 
-CREATE TABLE `playerlevels` (
+CREATE TABLE `PlayerLevels` (
   `LevelID` int(11) NOT NULL,
   `LevelName` varchar(50) NOT NULL,
   `GroupID` int(11) NOT NULL,
@@ -83,10 +83,10 @@ CREATE TABLE `playerlevels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `playerlevels`
+-- Gegevens worden geëxporteerd voor tabel `PlayerLevels`
 --
 
-INSERT INTO `playerlevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
+INSERT INTO `PlayerLevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
 (1, 'level 1', 1, 10),
 (2, 'level 2', 1, 12);
 
@@ -222,15 +222,22 @@ CREATE TABLE `tblpacks` (
   `packId` int(11) NOT NULL,
   `packNaam` text NOT NULL,
   `packImg` text NOT NULL,
-  `releaseDate` datetime NOT NULL
+  `releaseDate` datetime NOT NULL,
+  `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `tblpacks`
 --
 
-INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`) VALUES
-(2, 'Scarlet & Violet', 'pokemon packs.png', '2024-02-05 16:05:44');
+INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`, `price`) VALUES
+(2, 'Scarlet & Violet', 'pokemon packs.png', '2024-02-05 16:05:44', 0.00),
+(3, 'test', 'pokemon packs.png', '2024-02-08 11:00:48', 0.00),
+(4, 'test', 'pokemon packs.png', '2024-02-08 11:02:50', 0.00),
+(5, 'test4', 'pokemon packs.png', '2024-02-08 11:02:58', 0.00),
+(6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', 0.00),
+(7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0.00),
+(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0.00);
 
 -- --------------------------------------------------------
 
@@ -263,15 +270,15 @@ ALTER TABLE `kaart_categorieen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `levelgroups`
+-- Indexen voor tabel `LevelGroups`
 --
-ALTER TABLE `levelgroups`
+ALTER TABLE `LevelGroups`
   ADD PRIMARY KEY (`GroupID`);
 
 --
--- Indexen voor tabel `playerlevels`
+-- Indexen voor tabel `PlayerLevels`
 --
-ALTER TABLE `playerlevels`
+ALTER TABLE `PlayerLevels`
   ADD PRIMARY KEY (`LevelID`);
 
 --
@@ -327,22 +334,22 @@ ALTER TABLE `kaart_categorieen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT voor een tabel `levelgroups`
+-- AUTO_INCREMENT voor een tabel `LevelGroups`
 --
-ALTER TABLE `levelgroups`
+ALTER TABLE `LevelGroups`
   MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT voor een tabel `playerlevels`
+-- AUTO_INCREMENT voor een tabel `PlayerLevels`
 --
-ALTER TABLE `playerlevels`
+ALTER TABLE `PlayerLevels`
   MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblfriend_request`
 --
 ALTER TABLE `tblfriend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
@@ -360,7 +367,7 @@ ALTER TABLE `tblgebruiker_profile`
 -- AUTO_INCREMENT voor een tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
-  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpackcards`
@@ -372,13 +379,13 @@ ALTER TABLE `tblpackcards`
 -- AUTO_INCREMENT voor een tabel `tblpacks`
 --
 ALTER TABLE `tblpacks`
-  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
