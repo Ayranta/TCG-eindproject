@@ -139,6 +139,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/member/user/shop' => [
+    'view' => '/user/user/packs/shop.php',
+    'title' => 'shop',
+    'nav' => true,
+    'footer' => false,
+  ],
   'lang' => [
     'view' => 'src\public\lang.php',
     'title' => 'lang',

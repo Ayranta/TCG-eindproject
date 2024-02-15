@@ -48,6 +48,7 @@ if(isset($user)){
 
   $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
     'type' => 'i',
+   
     'value' => $change_theme['Level'],
   ]);
 
@@ -130,25 +131,23 @@ if(isset($user)){
       </div>
     </div>';
      } ?>
-  <?php if ($user) { 
-    echo'
-  <div class="flex items-center justify-center mr-2">
-    <div class="relative">
-        <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
-        <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
-            <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
-        </div>
-    </div>
-</div>
-
-';
- }?>
    
         
 
   <?php echo isset($_SESSION['login'])
   
       ? '
+      
+      <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
+
+      <div class="flex items-center justify-center mr-2">
+      <div class="relative">
+          <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
+          <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
+              <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
+          </div>
+      </div>
+  </div>
 
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">
