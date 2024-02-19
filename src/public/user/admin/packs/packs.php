@@ -2,15 +2,32 @@
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
+if (!isset($_SESSION['login'])) {
+  header('Location: /account/login');
+  exit();
+}
+if(!isset($_SESSION['admin'])){
+  header('Location: /');
+  exit();
+}
+if($_SESSION['admin']===0){
+  header('Location: /');
+  exit();
+}
 
-$packs = fetchSingle("SELECT * FROM `tblpacks`");
+$packs = fetchSingle("SELECT * FROM `tblpacks`");?>
 
-echo '<h1 class="md:text-center text-4xl font-bold mb-8">shop</h1>';
+<h1 class="md:text-center text-4xl font-bold mb-4 ">packs</h1>
 
-echo '<div class="flex gap-4 text-left" >'; ?>
+<a href = "/user/friendrequest"> <button class="ml-24 p-4  mx-auto shadow-xl rounded-xl">  <i class="fa-solid fa-plus"></i></button></a>
 
 
-<div class="shadow-md py-16 w-full mx-16 rounded-xl  ">
+<div class="flex gap-4 text-left" >
+
+<div class="shadow-2xl py-16 w-full mx-16 rounded-3xl  ">
+
+
+
   <div class="ml-2 flex gap-4 flex-wrap justify-between">
     <?php
     foreach ($packs as $data) {

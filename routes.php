@@ -61,12 +61,13 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
-  '/user/friendrequest' => [
-    'view' => '/user/user/send_Friendrequest.php',
+  '/member/user/shop' => [
+    'view' => '/user/user/packs/shop.php',
     'title' => 'send friend request',
     'nav' => true,
     'footer' => false,
   ],
+
   '/dashboard/users' => [
     'view' => '/user/admin/gebruikers.php',
     'title' => 'see users',
@@ -87,19 +88,19 @@ $routes = [
   ],
   '/dashboard/categorieen/add' => [
     'view' => '/user/admin/add-categorieen.php',
-    'title' => 'categorieen',
+    'title' => 'add categorieen',
     'nav' => true,
     'footer' => false,
   ],
   '/dashboard/categorieen/change' => [
     'view' => '/user/admin/change-categorieen.php',
-    'title' => 'categorieen',
+    'title' => 'change categorieen',
     'nav' => true,
     'footer' => false,
   ],
   '/dashboard/categorieen/delete' => [
     'view' => '/user/admin/delete-categorieen.php',
-    'title' => 'categorieen',
+    'title' => 'delete categorieen',
     'nav' => true,
     'footer' => false,
   ],
@@ -111,19 +112,19 @@ $routes = [
   ],
   '/admin/level' => [
     'view' => '/user/admin/levels/level.php',
-    'title' => 'toevoegen_kaart',
+    'title' => 'level',
     'nav' => true,
     'footer' => false,
   ],
   '/admin/level/change' => [
     'view' => '/user/admin/levels/change-level.php',
-    'title' => 'toevoegen_kaart',
+    'title' => 'change level',
     'nav' => true,
     'footer' => false,
   ],
   '/admin/group/change' => [
     'view' => 'user\admin\levels\change-group.php',
-    'title' => 'toevoegen_kaart',
+    'title' => 'change group',
     'nav' => true,
     'footer' => false,
   ],
@@ -136,12 +137,6 @@ $routes = [
   '/admin/user/packs' => [
     'view' => '/user/admin/packs/packs.php',
     'title' => 'packs',
-    'nav' => true,
-    'footer' => false,
-  ],
-  '/member/user/shop' => [
-    'view' => '/user/user/packs/shop.php',
-    'title' => 'shop',
     'nav' => true,
     'footer' => false,
   ],
