@@ -81,7 +81,11 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
       ?>
       <li tabindex="0">
       <details>
+<<<<<<< Updated upstream
           <summary>Kaart</summary>
+=======
+          <summary><?=Vertalen('Card Creator')?></summary>
+>>>>>>> Stashed changes
           <ul class="p-2">
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
             <li><a href="/admin/user/kaart">bekijk kaarten</a></li>
@@ -90,6 +94,17 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
     </li>
     <?php
     }
+    ?>
+    <li tabindex="0">
+    <details>
+        <summary><?=Vertalen('Cards')?></summary>
+        <ul class="p-2">
+          <li><a href="/admin/user/toevoegenkaart"> jouw kaarten</a></li>
+
+        </ul>
+      </details>  
+  </li>
+  <?php
   }?>
     </ul>
   </div>
