@@ -26,6 +26,7 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
 <html lang="en" data-theme="<?php echo $theme; ?>">
 
 <head>
+  
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./tailwind.config.js"></script>

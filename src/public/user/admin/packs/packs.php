@@ -19,7 +19,7 @@ $packs = fetchSingle("SELECT * FROM `tblpacks`");?>
 
 <h1 class="md:text-center text-4xl font-bold mb-4 ">packs</h1>
 
-<a href = "/user/friendrequest"> <button class="ml-24 p-4  mx-auto shadow-xl rounded-xl">  <i class="fa-solid fa-plus"></i></button></a>
+<a href = "/admin/user/packs/add"> <button class="ml-24 p-4  mx-auto shadow-xl rounded-xl">  <i class="fa-solid fa-plus"></i></button></a>
 
 
 <div class="flex gap-4 text-left" >
@@ -28,7 +28,7 @@ $packs = fetchSingle("SELECT * FROM `tblpacks`");?>
 
 
 
-  <div class="ml-2 flex gap-4 flex-wrap justify-between">
+  <div class="ml-2 flex gap-2 flex-wrap justify-between">
     <?php
     foreach ($packs as $data) {
     ?>
