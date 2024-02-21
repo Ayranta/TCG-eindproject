@@ -80,13 +80,18 @@ if(isset($user)){
       </ul>
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
-    <body>
-    <audio controls autoplay loop>
-    <source autoplay src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
-      <source autoplay src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
-      <p>your browser does not suport audio element</p>
-    </audio>
+    <!DOCTYPE html>
+<html>
+<body>
+
+<audio controls autoplay loop>
+  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
+  <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 </body>
+</html>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
