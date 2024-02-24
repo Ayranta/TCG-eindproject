@@ -14,9 +14,10 @@ $userId = $_SESSION['login'];
 
 if(isset($_POST['update'])){
     if (isset($_SESSION['login'])) {
-      
+        var_dump($_POST);
         insertPack($_POST);
         return;
+      
     }
       
 
@@ -35,7 +36,7 @@ function insertPack($formData) {
     
     foreach($data as $Data){
     
-      if($Data['naam']===$newname){
+      if($Data['packNaam']===$newname){
         header('Location: /admin/user/packs/add?error=nameAlreadyExists'); 
         exit;
       }
@@ -89,7 +90,7 @@ function insertPack($formData) {
     $newpackID = fetchSingle('SELECT packId FROM tblpacks WHERE packNaam = ?', ['type' => 's', 'value' => $newname]);
 
     $insert2 = insert(
-      'INSERT INTO tblpackkaart(packID, kaartID) VALUES (?,?)',
+      'INSERT INTO tblpackcards(packID, kaartID) VALUES (?,?)',
       ['type' => 'i', 'value' => $newpackID],
       ['type' => 'i', 'value' => $newcards],
     );
@@ -98,11 +99,11 @@ function insertPack($formData) {
     
     if ($insert1&&$insert2) {
       
-        header('Location: /dashboard/categorieen ');
+       // header('Location: /admin/user/packs ');
       exit();
     }
     
-    header('Location: /dashboard/categorieen/add?error=notAddedCategory');
+    //header('Location: /admin/user/packs/add?error=notAddedPack');
     exit();
   }
   
@@ -137,13 +138,13 @@ function insertPack($formData) {
 
         <!-- photo -->
         <div class="form-control md:flex-1 mx-auto">
-            <label class="label ">price</label>
+            <label class="label ">pack picture</label>
               <input type="file" name="file" class="file-input file-input-bordered" required />
         </div>
         
       </div>
       <div class="form-control md:flex-1">
-            <label class="label ">pack picture</label>
+            <label class="label ">price</label>
               <input type="number" name="price" class="file-input file-input-bordered" required />
         </div>
       
