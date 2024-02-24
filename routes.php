@@ -61,6 +61,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/user/friendrequest' => [
+    'view' => '/user/user/send_Friendrequest.php',
+    'title' => 'send friend request',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/member/user/shop' => [
     'view' => '/user/user/packs/shop.php',
     'title' => 'send friend request',

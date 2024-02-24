@@ -15,7 +15,7 @@ $userId = $_SESSION['login'];
 if(isset($_POST['update'])){
     if (isset($_SESSION['login'])) {
       
-        insertCategory($_POST);
+        insertPack($_POST);
         return;
     }
       
@@ -25,41 +25,78 @@ if(isset($_POST['update'])){
        
 }
 
-function insertCategory($formData) {
-    $data = fetchSingle('SELECT * FROM kaart_categorieen');
+function insertPack($formData) {
+    $data = fetchSingle('SELECT * FROM tblpacks');
     
    
-    $newcolor=$formData['kleur'];
     $newname=$formData['naam'];
-
+    $newprice=$formData['price'];
+    $newcards=$formData['cards'];
+    
     foreach($data as $Data){
     
       if($Data['naam']===$newname){
-        header('Location: /dashboard/categorieen/add?error=categoryAlreadyExists'); 
+        header('Location: /admin/user/packs/add?error=nameAlreadyExists'); 
         exit;
       }
     }
+    
+    
+    $upload_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/img/";
 
-    $newcolor = ltrim($newcolor, '#');
+    $file = $_FILES['file'];
 
-    $correcthex = preg_match('/^[#a-fA-F0-9]{6}$/', $newcolor);
+    $file_name = $_FILES['file']['name'];
+    $file_tmp = $_FILES['file']['tmp_name'];
+    $file_size = $_FILES['file']['size'];
+    $file_error = $_FILES['file']['error'];
+    $file_type = $_FILES['file']['type'];
 
-    if(!$correcthex){
-       header('Location: /dashboard/categorieen/add?error=notACorrectHex');
-       exit;
+    $fileExt = explode('.', $file_name);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if (in_array($fileActualExt, $allowed)){
+      if($file_error === 0){
+        if($file_size < 1000000/* aantal kilobytes een foto mag zijn '1000mb' */){
+          $file_name_new = uniqid('', true).".".$fileActualExt;
+          $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/public/pack-img/' . $file_name_new;
+          move_uploaded_file($file_tmp, $fileDestination);
+        }else{
+          echo 'Error: File size is too large.';
+          exit;
+        }
+      }else{
+        echo 'Error uploading file.';
+        exit;
+      }
+    }else{
+      echo 'Error: Invalid file type.';
+      exit;
     }
-  
-    $query ='INSERT INTO kaart_categorieen(naam,`kleur hex`) VALUES (?,?)';
+    
 
-   $insert = insert(
-      $query,
-      ['type' => 's', 'value' => $newname],
-      ['type' => 's', 'value' => $newcolor],
+    $query ='INSERT INTO tblpacks(packNaam, packImg, price) VALUES (?, ?, ?)';
+
+    $insert1 = insert(
+        $query,
+        ['type' => 's', 'value' => $newname],
+        ['type' => 's', 'value' => $file_name_new],
+        ['type' => 'i', 'value' => $newprice],
+    );
+
+    $newpackID = fetchSingle('SELECT packId FROM tblpacks WHERE packNaam = ?', ['type' => 's', 'value' => $newname]);
+
+    $insert2 = insert(
+      'INSERT INTO tblpackkaart(packID, kaartID) VALUES (?,?)',
+      ['type' => 'i', 'value' => $newpackID],
+      ['type' => 'i', 'value' => $newcards],
     );
     
     
     
-    if ($insert) {
+    if ($insert1&&$insert2) {
       
         header('Location: /dashboard/categorieen ');
       exit();
@@ -86,7 +123,7 @@ function insertCategory($formData) {
   
   
 
-  <form action="/dashboard/categorieen/add" method="post" class="flex flex-col gap-8 w-full md:max-w-2xl">
+  <form action="/admin/user/packs/add" method="post" class="flex flex-col gap-8 w-full md:max-w-3xl" enctype="multipart/form-data">
     <div class="flex flex-col gap-4">
       
       <div class="flex flex-col gap-4 md:flex-row">
@@ -95,28 +132,35 @@ function insertCategory($formData) {
           <label class="label">
             <span class="label-text">pack naam</span>
           </label>
-          <input type="text" name="naam" placeholder="********" class="input input-bordered w-full" required />
+          <input type="text" name="naam"  class="input input-bordered w-full" required />
         </div>
 
         <!-- photo -->
-        <div class="form-control md:flex-1">
-            <label class="label ">pack picture</label>
+        <div class="form-control md:flex-1 mx-auto">
+            <label class="label ">price</label>
               <input type="file" name="file" class="file-input file-input-bordered" required />
         </div>
+        
       </div>
+      <div class="form-control md:flex-1">
+            <label class="label ">pack picture</label>
+              <input type="number" name="price" class="file-input file-input-bordered" required />
+        </div>
+      
        <!-- photo -->
        <div class="form-control md:flex-1">
-       <label class="label ">kaarten in packs </label>
+       <label class="label ">kaarten in packs (use ctr to select more that one)</label>
               <?php
                 $kaarten = fetchSingle('SELECT * FROM tblkaart');
                     ?>
-                  <select class='select select-bordered' name='categorie[]' required multiple>
+                  <select class='select select-bordered' name='cards[]' required multiple>
                     <option disabled selected>Choose a category</option>
                     <?php  
                     foreach ($kaarten as $kaart) {
                       ?>
                       <option class="py-2" value="<?php echo $kaart["kaartID"]; ?>">
-                        <?php echo $kaart["naam"]; ?>
+                        id: <?php echo $kaart["kaartID"]; ?>
+                        / naam: <?php echo $kaart["naam"]; ?>
                       </option>
                       <?php
                     }
@@ -126,6 +170,6 @@ function insertCategory($formData) {
       </div>
 
 
-    <button name="update" class="btn btn-primary">Add</button>
+    <button name="update" class="btn btn-primary ">Add</button>
   </form>
 </div>
