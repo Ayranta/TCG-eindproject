@@ -6,8 +6,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
-
-  // check for theme
   $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
 
@@ -18,7 +16,6 @@ if ($user) {
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
   $_SESSION['profielfoto'] = $change_theme['profielfoto'];
 
-  //look for a friendrequest
   $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
     'type' => 'i',
     'value' => $userid,
@@ -49,11 +46,12 @@ if(isset($user)){
 
   $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
     'type' => 'i',
+   
     'value' => $change_theme['Level'],
   ]);
 
 
-  $GroupLevelofPlayer=fetch('SELECT * From LevelGroups Where GroupID = ?',[
+  $GroupLevelofPlayer=fetch('SELECT * From levelgroups Where GroupID = ?',[
     'type' => 'i',
     'value' => $levelofPlayer['GroupID'],
   ]);
@@ -81,13 +79,19 @@ if(isset($user)){
       </ul>
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
-    <body>
-    <audio autoplay loop>
-    <source autoplay src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
-      <source autoplay src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
-      <p>your browser does not suport audio element</p>
-    </audio>
+
+    <!DOCTYPE html>
+<html>
+<body>
+
+<audio controls autoplay loop>
+  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
+  <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 </body>
+</html>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -120,7 +124,8 @@ if(isset($user)){
   }?>
     </ul>
   </div>
-  
+ 
+ 
   <div class="navbar-end">
 
   <?php if ($yourfriendrequest){ 
@@ -136,27 +141,28 @@ if(isset($user)){
       <a href="/src/lib/user/member/acceptFriendrequest.php"><button class="btn btn-ghost">Accept</button></a>
       <a href ="/src/lib/user/member/denyFriendrequest.php"><button class="btn btn-ghost">Deny</button></a>
       </div>
+    </div>
+    
+        <?php } ?>
     </div>';
      } ?>
-  <?php if ($user) { 
-    echo'
-  <div class="flex items-center justify-center mr-2">
-    <div class="relative">
-        <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
-        <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
-            <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
-        </div>
-    </div>
-</div>
-
-';
- }?>
    
         
 
   <?php echo isset($_SESSION['login'])
   
       ? '
+      
+      <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
+
+      <div class="flex items-center justify-center mr-2">
+      <div class="relative">
+          <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
+          <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
+              <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
+          </div>
+      </div>
+  </div>
 
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">
@@ -178,6 +184,7 @@ if(isset($user)){
             <li><a href="/dashboard/users">gebruikers</a></li>
             <li><a href="/dashboard/categorieen">categorieen</a></li>
             <li><a href="/admin/level">levels</a></li>
+            <li><a href="/admin/user/packs">packs</a></li>
             
             
       </ul>
