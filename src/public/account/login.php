@@ -55,6 +55,10 @@ if (isset($_POST["submit"])) {
         </form>
         <div class="flex justify-center mt-2">
             <a href="/account/registreren" class="link text-black">I don't have an account</a>
+            
+        </div>
+        <div class="flex justify-center mt-2">
+        <a href="/account/password" class="link text-black">Forgot password</a>
         </div>
     </div>
 </div>

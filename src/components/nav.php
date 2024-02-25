@@ -2,6 +2,7 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 
+
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
@@ -78,6 +79,7 @@ if(isset($user)){
       </ul>
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
+
     <!DOCTYPE html>
 <html>
 <body>
