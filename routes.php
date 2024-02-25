@@ -129,7 +129,7 @@ $routes = [
     'footer' => false,
   ],
   '/admin/group/change' => [
-    'view' => 'user\admin\levels\change-group.php',
+    'view' => '/user/admin/levels/change-group.php',
     'title' => 'change group',
     'nav' => true,
     'footer' => false,
@@ -148,6 +148,18 @@ $routes = [
   ],
   '/admin/user/packs/add' => [
     'view' => '/user/admin/packs/add-packs.php',
+    'title' => 'packs',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/admin/user/packs/change' => [
+    'view' => '/user/admin/packs/change-packs.php',
+    'title' => 'packs',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/admin/user/packs/delete' => [
+    'view' => '/user/admin/packs/delete-packs.php',
     'title' => 'packs',
     'nav' => true,
     'footer' => false,

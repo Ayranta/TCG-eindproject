@@ -10,8 +10,6 @@ if($_SESSION['admin']===0){
     header('Location: /');
 }
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-require_once LIB . '/util/util.php';
 
 $groupId = $_GET['groupId'];
 $query = "SELECT * FROM levelgroups WHERE GroupID = ?";

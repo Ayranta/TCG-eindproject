@@ -1,7 +1,7 @@
 <?php 
 $levelData=fetchSingle('SELECT * From PlayerLevels');
 
-$groupData = fetchSingle('SELECT * FROM LevelGroups');
+$groupData = fetchSingle('SELECT * FROM levelgroups');
 
 
 ?>
@@ -13,7 +13,7 @@ $groupData = fetchSingle('SELECT * FROM LevelGroups');
       <h2 class="text-center text-2xl font-bold" >Levels</h2>
       <?php
        foreach ($levelData as $level){ 
-        $groupdata = fetch('SELECT * FROM LevelGroups WHERE GroupID=?', [
+        $groupdata = fetch('SELECT * FROM levelgroups WHERE GroupID=?', [
             'type' => 'i',
             'value' => $level['GroupID'],
           ]);

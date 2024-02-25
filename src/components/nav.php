@@ -53,7 +53,7 @@ if(isset($user)){
   ]);
 
 
-  $GroupLevelofPlayer=fetch('SELECT * From LevelGroups Where GroupID = ?',[
+  $GroupLevelofPlayer=fetch('SELECT * From levelgroups Where GroupID = ?',[
     'type' => 'i',
     'value' => $levelofPlayer['GroupID'],
   ]);

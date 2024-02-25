@@ -39,7 +39,10 @@ $packs = fetchSingle("SELECT * FROM `tblpacks`");?>
           <h2 class="card-title"><?php echo $data['packNaam'] ?></h2>
         </div>
         <div class="card-actions justify-center pb-2">
-          <button class="btn btn-primary">change</button>
+          <a href="/admin/user/packs/change?packID=<?php echo $data['packId'] ?>"><button class="btn btn-primary">change</button></a>
+        </div>
+        <div class="card-actions justify-center pb-2">
+          <a href="/admin/user/packs/delete?packid=<?php echo $data['packId'] ?>"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></a>
         </div>
       </div>
 

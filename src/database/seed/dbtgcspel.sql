@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Gegenereerd op: 15 feb 2024 om 16:25
+-- Gegenereerd op: 25 feb 2024 om 19:05
 -- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP-versie: 8.1.2-1ubuntu2.14
 
@@ -49,20 +49,20 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `LevelGroups`
+-- Tabelstructuur voor tabel `levelgroups`
 --
 
-CREATE TABLE `LevelGroups` (
+CREATE TABLE `levelgroups` (
   `GroupID` int(11) NOT NULL,
   `GroupName` varchar(50) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `LevelGroups`
+-- Gegevens worden geëxporteerd voor tabel `levelgroups`
 --
 
-INSERT INTO `LevelGroups` (`GroupID`, `GroupName`, `foto`) VALUES
+INSERT INTO `levelgroups` (`GroupID`, `GroupName`, `foto`) VALUES
 (1, 'Beginner', 'bronze-badge.png'),
 (2, 'Intermediate', 'silver-badge.png'),
 (3, 'Advanced', 'gold-badge.png'),
@@ -210,7 +210,10 @@ CREATE TABLE `tblpackcards` (
 --
 
 INSERT INTO `tblpackcards` (`packID`, `kaartID`, `id`) VALUES
-(1, 1, 1);
+(1, 13, 2),
+(1, 16, 3),
+(1, 17, 4),
+(1, 13, 5);
 
 -- --------------------------------------------------------
 
@@ -222,7 +225,7 @@ CREATE TABLE `tblpacks` (
   `packId` int(11) NOT NULL,
   `packNaam` text NOT NULL,
   `packImg` text NOT NULL,
-  `releaseDate` datetime NOT NULL,
+  `releaseDate` datetime NOT NULL DEFAULT current_timestamp(),
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -237,7 +240,8 @@ INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`, `price`)
 (5, 'test4', 'pokemon packs.png', '2024-02-08 11:02:58', 0.00),
 (6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', 0.00),
 (7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0.00),
-(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0.00);
+(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0.00),
+(10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', 2345.00);
 
 -- --------------------------------------------------------
 
@@ -270,9 +274,9 @@ ALTER TABLE `kaart_categorieen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `LevelGroups`
+-- Indexen voor tabel `levelgroups`
 --
-ALTER TABLE `LevelGroups`
+ALTER TABLE `levelgroups`
   ADD PRIMARY KEY (`GroupID`);
 
 --
@@ -334,9 +338,9 @@ ALTER TABLE `kaart_categorieen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT voor een tabel `LevelGroups`
+-- AUTO_INCREMENT voor een tabel `levelgroups`
 --
-ALTER TABLE `LevelGroups`
+ALTER TABLE `levelgroups`
   MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -373,13 +377,13 @@ ALTER TABLE `tblkaart`
 -- AUTO_INCREMENT voor een tabel `tblpackcards`
 --
 ALTER TABLE `tblpackcards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpacks`
 --
 ALTER TABLE `tblpacks`
-  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`

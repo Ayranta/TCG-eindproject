@@ -3,6 +3,12 @@ if (!isset($_SESSION['login'])) {
   header('Location: /');
   exit();
 }
+if(!isset($_SESSION['admin'])){
+  header('Location: /');
+}
+if($_SESSION['admin']===0){
+  header('Location: /');
+}
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once LIB . '/util/util.php';
@@ -14,7 +20,6 @@ $userId = $_SESSION['login'];
 
 if(isset($_POST['update'])){
     if (isset($_SESSION['login'])) {
-        var_dump($_POST);
         insertPack($_POST);
         return;
       
@@ -65,15 +70,15 @@ function insertPack($formData) {
           $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/public/pack-img/' . $file_name_new;
           move_uploaded_file($file_tmp, $fileDestination);
         }else{
-          echo 'Error: File size is too large.';
+          header('Location: /admin/user/packs/add?error=fileTooBig');
           exit;
         }
       }else{
-        echo 'Error uploading file.';
+        header('Location: /admin/user/packs/add?error=uploadError');
         exit;
       }
     }else{
-      echo 'Error: Invalid file type.';
+      header('Location: /admin/user/packs/add?error=wrongFileType');
       exit;
     }
     
@@ -87,23 +92,29 @@ function insertPack($formData) {
         ['type' => 'i', 'value' => $newprice],
     );
 
+
     $newpackID = fetchSingle('SELECT packId FROM tblpacks WHERE packNaam = ?', ['type' => 's', 'value' => $newname]);
 
-    $insert2 = insert(
-      'INSERT INTO tblpackcards(packID, kaartID) VALUES (?,?)',
-      ['type' => 'i', 'value' => $newpackID],
-      ['type' => 'i', 'value' => $newcards],
-    );
+    foreach($newcards as $newcard){
+  
+      $newcards = $newcard;
     
+      $insert2 = insert(
+        'INSERT INTO tblpackcards(packID, kaartID) VALUES (?,?)',
+        ['type' => 'i', 'value' => $newpackID[0]['packId']],
+        ['type' => 'i', 'value' => $newcard],
+      );
     
+  
+}
     
     if ($insert1&&$insert2) {
       
-       // header('Location: /admin/user/packs ');
+       header('Location: /admin/user/packs ');
       exit();
     }
     
-    //header('Location: /admin/user/packs/add?error=notAddedPack');
+    header('Location: /admin/user/packs/add?error=notAddedPack');
     exit();
   }
   
