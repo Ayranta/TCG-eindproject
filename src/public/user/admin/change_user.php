@@ -22,7 +22,6 @@ $data = fetch($query, ['type' => 'i', 'value' => $userId]);
 if(isset($_POST['update'])){
     if (isset($_SESSION['login'])) {
       
-        var_dump($_POST);
         updateProfile($userId, $_POST);
         return;
     }
