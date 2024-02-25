@@ -2,6 +2,7 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 
+
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
@@ -81,7 +82,7 @@ if(isset($user)){
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
     <body>
-    <audio controls autoplay loop>
+    <audio autoplay loop>
     <source autoplay src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
       <source autoplay src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
       <p>your browser does not suport audio element</p>
