@@ -83,8 +83,8 @@ if(isset($user)){
 <body>
 
 <audio controls autoplay loop>
-  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
   <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
+  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
   Your browser does not support the audio element.
 </audio>
 
@@ -151,6 +151,9 @@ if(isset($user)){
   
       ? '
       
+      
+
+
       <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
 
       <div class="flex items-center justify-center mr-2">

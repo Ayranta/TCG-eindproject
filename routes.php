@@ -38,10 +38,16 @@ $routes = [
     'footer' => false,
   ],
 
-  
   '/account/process-reset-password' => [
     'view' => '/account/process-reset-password.php',
     'title' => 'reset password',
+    'nav' => true,
+    'footer' => false,
+  ],
+
+  '/user/payment' => [
+    'view' => '/user/payment.php',
+    'title' => 'payment',
     'nav' => true,
     'footer' => false,
   ],
