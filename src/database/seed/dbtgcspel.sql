@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Gegenereerd op: 25 feb 2024 om 19:05
--- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
--- PHP-versie: 8.1.2-1ubuntu2.14
+-- Host: 127.0.0.1
+-- Gegenereerd op: 26 feb 2024 om 15:08
+-- Serverversie: 10.4.27-MariaDB
+-- PHP-versie: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,10 +72,10 @@ INSERT INTO `levelgroups` (`GroupID`, `GroupName`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `PlayerLevels`
+-- Tabelstructuur voor tabel `playerlevels`
 --
 
-CREATE TABLE `PlayerLevels` (
+CREATE TABLE `playerlevels` (
   `LevelID` int(11) NOT NULL,
   `LevelName` varchar(50) NOT NULL,
   `GroupID` int(11) NOT NULL,
@@ -83,10 +83,10 @@ CREATE TABLE `PlayerLevels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `PlayerLevels`
+-- Gegevens worden geëxporteerd voor tabel `playerlevels`
 --
 
-INSERT INTO `PlayerLevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
+INSERT INTO `playerlevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
 (1, 'level 1', 1, 10),
 (2, 'level 2', 1, 12);
 
@@ -120,19 +120,22 @@ CREATE TABLE `tblgebruikers` (
   `gebruikerid` int(11) NOT NULL,
   `email` text NOT NULL,
   `wachtwoord` text NOT NULL,
-  `gebruikernaam` text NOT NULL
+  `gebruikernaam` text NOT NULL,
+  `reset_token_hash` varchar(64) DEFAULT NULL,
+  `reset_token_expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `tblgebruikers`
 --
 
-INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`) VALUES
-(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman'),
-(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper'),
-(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password'),
-(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander'),
-(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric');
+INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`, `reset_token_hash`, `reset_token_expires_at`) VALUES
+(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL),
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', NULL, NULL),
+(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL),
+(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL),
+(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL),
+(23, 'casper.nauwelaerts@bazandpoort.be', '$2y$10$qgQK4B53HWxbeeDl/Ueek.hjnDqsRhMNFXij81.6O52n3ga6fW8hm', 'c', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -159,7 +162,8 @@ INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `adm
 (11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0),
 (14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
 (15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0);
+(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0),
+(18, 23, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -234,14 +238,14 @@ CREATE TABLE `tblpacks` (
 --
 
 INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`, `price`) VALUES
-(2, 'Scarlet & Violet', 'pokemon packs.png', '2024-02-05 16:05:44', 0.00),
-(3, 'test', 'pokemon packs.png', '2024-02-08 11:00:48', 0.00),
-(4, 'test', 'pokemon packs.png', '2024-02-08 11:02:50', 0.00),
-(5, 'test4', 'pokemon packs.png', '2024-02-08 11:02:58', 0.00),
-(6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', 0.00),
-(7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0.00),
-(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0.00),
-(10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', 2345.00);
+(2, 'Scarlet & Violet', 'pokemon packs.png', '2024-02-05 16:05:44', '0.00'),
+(3, 'test', 'pokemon packs.png', '2024-02-08 11:00:48', '0.00'),
+(4, 'test', 'pokemon packs.png', '2024-02-08 11:02:50', '0.00'),
+(5, 'test4', 'pokemon packs.png', '2024-02-08 11:02:58', '0.00'),
+(6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', '99999999.99'),
+(7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', '0.00'),
+(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', '0.00'),
+(10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', '2345.00');
 
 -- --------------------------------------------------------
 
@@ -280,9 +284,9 @@ ALTER TABLE `levelgroups`
   ADD PRIMARY KEY (`GroupID`);
 
 --
--- Indexen voor tabel `PlayerLevels`
+-- Indexen voor tabel `playerlevels`
 --
-ALTER TABLE `PlayerLevels`
+ALTER TABLE `playerlevels`
   ADD PRIMARY KEY (`LevelID`);
 
 --
@@ -295,7 +299,8 @@ ALTER TABLE `tblfriend_request`
 -- Indexen voor tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  ADD PRIMARY KEY (`gebruikerid`);
+  ADD PRIMARY KEY (`gebruikerid`),
+  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
 
 --
 -- Indexen voor tabel `tblgebruiker_profile`
@@ -344,9 +349,9 @@ ALTER TABLE `levelgroups`
   MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT voor een tabel `PlayerLevels`
+-- AUTO_INCREMENT voor een tabel `playerlevels`
 --
-ALTER TABLE `PlayerLevels`
+ALTER TABLE `playerlevels`
   MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -359,13 +364,13 @@ ALTER TABLE `tblfriend_request`
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblkaart`
