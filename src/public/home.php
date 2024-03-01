@@ -9,7 +9,7 @@
 
 
 
-if(isset($userid)){
+if(isset($_SESSION['login'])){
 
   $arena = fetch('SELECT * FROM tblgebruiker_profile WHERE userid = ?' ,[
     'type' => 'i',
@@ -22,17 +22,21 @@ if(isset($userid)){
     'value' => $arena['Level'],
   ]);
 
-}
-var_dump($levelofPlayer);
-if($arena['GroupID'] = 1){
-  /*?>
+
+
+if($levelofPlayer['GroupID'] == 1){
+
+    ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
+      <a href=/user/friends>
       <img src="public\img\arenaIMG\arena_barbarian.png" alt="Arena1" width="600" height="300" />
     </div>
 </section>
-<?php*/
-}elseif($arena['GroupID'] = 2){
+<?php
+
+
+}elseif($levelofPlayer['GroupID'] == 2){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
@@ -40,7 +44,8 @@ if($arena['GroupID'] = 1){
     </div>
 </section>
 <?php
-}elseif($arena['GroupID'] = 3){
+}elseif($levelofPlayer['GroupID'] == 3){
+ 
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
@@ -48,7 +53,7 @@ if($arena['GroupID'] = 1){
     </div>
 </section>
 <?php
-}elseif($arena['GroupID'] = 4){
+}elseif($levelofPlayer['GroupID'] == 4){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
@@ -56,7 +61,7 @@ if($arena['GroupID'] = 1){
     </div>
 </section>
 <?php
-}elseif($arena['GroupID'] = 5){
+}elseif($levelofPlayer['GroupID'] == 5){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
@@ -72,6 +77,7 @@ if($arena['GroupID'] = 1){
       </div>
   </section>
 <?php
+}
 }
 
 

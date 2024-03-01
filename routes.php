@@ -107,7 +107,7 @@ $routes = [
   ],
   '/member/user/shop' => [
     'view' => '/user/user/packs/shop.php',
-    'title' => 'send friend request',
+    'title' => 'Shop',
     'nav' => true,
     'footer' => false,
   ],
@@ -175,6 +175,12 @@ $routes = [
   '/admin/user/kaart' => [
     'view' => '/user/admin/kaart.php',
     'title' => 'kaarten',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/admin/user/kaartGebruiker' => [
+    'view' => 'user/admin/kaartGebruiker.php',
+    'title' => 'Cards',
     'nav' => true,
     'footer' => false,
   ],

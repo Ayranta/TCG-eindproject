@@ -105,21 +105,32 @@ if(isset($user)){
           </ul>
         </details>
       </li>
+<?php
+      $admin = fetch("SELECT admin FROM tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $user]);
+?>
       <?php if(isset($_SESSION["admin"])){
-    if($_SESSION["admin"] === 1){
+    
       ?>
       <li tabindex="0">
       <details>
           <summary><?=Vertalen('Card')?></summary>
           <ul class="p-2">
+            <?php
+          if($admin == 1){
+            ?>
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
-            <li><a href="/admin/user/kaart">bekijk kaarten</a></li>
+            <li><a href="/admin/user/kaart">bekijk kaarten admin</a></li>
+            <?php
+          }
+            ?>
+            <li><a href="/admin/user/kaartGebruiker">bekijk kaarten</a></li>
           </ul>
         </details>  
     </li>
     <?php
     }
-  }?>
+  ?>
     </ul>
   </div>
  
