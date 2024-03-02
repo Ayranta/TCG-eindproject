@@ -2,16 +2,16 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
       }
-      $gebruiker = fetch("SELECT * FROM tblgebruikers");
-      $kaart = fetch("SELECT kaartID FROM tblkaart");
-      $gebruikerkaart = fetch("SELECT * FROM tblgebruikerkaart");
-    
+      //$gebruikerkaart = fetchsingle("SELECT * FROM tblgebruikerkaart WHERE gebruikerID = " . $_SESSION['login']);
+      //var_dump($gebruikerkaart);
+      //var_dump($gebruikerkaart2);
       //var_dump($_SESSION["login"]);
       //var_dump($gebruikerkaart);
      /*echo '<pre>';
       var_dump($kaart);
       echo '</pre>';*/
-      fetchSingle("SELECT * FROM `tblkaart`, tblgebruikerkaart  WHERE kaartID = kaartid AND GebruikerID = " . $_SESSION['login']);
+      $kaarten = fetchSingle("SELECT * FROM tblgebruikerkaart INNER JOIN tblkaart ON tblgebruikerkaart.KaartID = tblkaart.kaartID WHERE gebruikerID =" .$_SESSION['login']);
+      //var_dump($kaarten);
       echo '<div class="flex gap-4 text-center" >';
       ?><div class="flex flex-wrap gap-3 p-20 place-content-center"> <?php
         foreach($kaarten as $data){

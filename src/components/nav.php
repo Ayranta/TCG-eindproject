@@ -110,14 +110,13 @@ if(isset($user)){
   ['type' => 'i', 'value' => $user]);
 ?>
       <?php if(isset($_SESSION["admin"])){
-    
       ?>
       <li tabindex="0">
       <details>
           <summary><?=Vertalen('Card')?></summary>
           <ul class="p-2">
             <?php
-          if($admin == 1){
+          if($admin['admin'] === 1){
             ?>
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
             <li><a href="/admin/user/kaart">bekijk kaarten admin</a></li>
