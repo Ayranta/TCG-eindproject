@@ -44,6 +44,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/account/uploadprofile' => [
+    'view' => '/account/uploadprofile.php',
+    'title' => 'change profile picture',
+    'nav' => true,
+    'footer' => false,
+  ],
 
   '/user/payment' => [
     'view' => '/user/payment.php',
