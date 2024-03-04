@@ -71,7 +71,7 @@ function insertUser($username, $password, $email) {
     ['type' => 'i', 'value' => $userId],
     [
       'type' => 's',
-      'value' => 'https://avatars.githubusercontent.com/u/64209400?v=4',
+      'value' => 'default.png',
     ],
     ['type' => 's', 'value' => 'light'],
     ['type' => 'i', 'value' => '0'],

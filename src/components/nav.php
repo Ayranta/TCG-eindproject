@@ -82,9 +82,9 @@ if(isset($user)){
 <html>
 <body>
 
-<audio controls autoplay loop>
-  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
+<audio autoplay loop>
   <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
+  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
   Your browser does not support the audio element.
 </audio>
 
@@ -105,21 +105,31 @@ if(isset($user)){
           </ul>
         </details>
       </li>
+<?php
+      $admin = fetch("SELECT admin FROM tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $user]);
+?>
       <?php if(isset($_SESSION["admin"])){
-    if($_SESSION["admin"] === 1){
       ?>
       <li tabindex="0">
       <details>
           <summary><?=Vertalen('Card')?></summary>
           <ul class="p-2">
+            <?php
+          if($admin['admin'] === 1){
+            ?>
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
-            <li><a href="/admin/user/kaart">bekijk kaarten</a></li>
+            <li><a href="/admin/user/kaart">bekijk kaarten admin</a></li>
+            <?php
+          }
+            ?>
+            <li><a href="/admin/user/kaartGebruiker">bekijk kaarten</a></li>
           </ul>
         </details>  
     </li>
     <?php
     }
-  }?>
+  ?>
     </ul>
   </div>
  
@@ -151,6 +161,9 @@ if(isset($user)){
   
       ? '
       
+      
+
+
       <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
 
       <div class="flex items-center justify-center mr-2">
@@ -166,7 +179,7 @@ if(isset($user)){
       <details class="dropdown dropdown-end">
       <summary class="m-1 btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-        <img src="'.$change_theme['profielfoto'].'" />
+        <img src="/public/img/profilePic/'.$change_theme['profielfoto'].'" alt="foto";" " class="w-12 h-12">
         </div>
       </summary>
       <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
@@ -174,6 +187,8 @@ if(isset($user)){
         <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
         <li>    <a href="/account/settings/edit" class="mr-2"> settings </a> </li>
         <li> <a href="/user/friends" class="mr-2">friends</a> </li>
+        <li>
+        <li> <a href="/account/uploadprofile" class="mr-2">profile picture</a> </li>
         <li>
         <details class="dropdown dropdown-left">
           <summary class="m-1">Admin Dashboard</summary>

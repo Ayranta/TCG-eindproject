@@ -6,7 +6,12 @@ if(!isset($_SESSION['login'])){
 $userid=$_SESSION['login'];
 
 $vrienden=fetchSingle('SELECT * From tblvrienden Where gebruikerId = ? OR vriendenmetId = ?',['type'=>'i', 'value'=>$userid],['type'=>'i', 'value'=>$userid]);
-
+$GroupLevelofPlayer=fetch('SELECT * From levelgroups Where GroupID = ?',[
+  'type' => 'i',
+  'value' => $levelofPlayer['GroupID'],
+]);
+$change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $user]);
 
 ?>
 
@@ -60,9 +65,20 @@ $vrienden=fetchSingle('SELECT * From tblvrienden Where gebruikerId = ? OR vriend
         }
       
         $gebruiker = fetch('SELECT * From tblgebruikers Where gebruikerId = ?',['type'=>'i', 'value'=>$myfriend]);
-      
+        $gebruikerProfile = fetch('SELECT * FROM tblgebruiker_profile WHERE userid =?',['type'=>'i', 'value'=>$myfriend]);
+        //var_dump($gebruikerProfile);
         ?>
       <h2 class="card-title"> <?php echo $gebruiker['gebruikernaam'] ?> </h2>
+
+      <?php /*<div class="flex items-center justify-center mr-2">
+      <div class="relative">
+          <img src="/public/img/'.<? $GroupLevelofPlayer['foto'] ?>.'" alt="Badge" class="w-12 h-12">
+          <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
+              <span class="text-white text-lg ">'.<?= $change_theme['Level']?>.'</span>
+          </div>
+      </div>
+  </div>*/?>
+
       <div class="card-actions justify-between items-center">
       <p>last online : A week ago</p>
         <div class="flex flex-row gap-2">

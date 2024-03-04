@@ -38,10 +38,22 @@ $routes = [
     'footer' => false,
   ],
 
-  
   '/account/process-reset-password' => [
     'view' => '/account/process-reset-password.php',
     'title' => 'reset password',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/account/uploadprofile' => [
+    'view' => '/account/uploadprofile.php',
+    'title' => 'change profile picture',
+    'nav' => true,
+    'footer' => false,
+  ],
+
+  '/user/payment' => [
+    'view' => '/user/payment.php',
+    'title' => 'payment',
     'nav' => true,
     'footer' => false,
   ],
@@ -117,7 +129,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
-
+  '/levels/level-blueprint' => [
+    'view' => '/levels/level-blueprint.php',
+    'title' => 'battle',
+    'nav' => false,
+    'footer' => false,
+  ],
   '/dashboard/users' => [
     'view' => '/user/admin/gebruikers.php',
     'title' => 'see users',
@@ -181,6 +198,12 @@ $routes = [
   '/admin/user/kaart' => [
     'view' => '/user/admin/kaart.php',
     'title' => 'kaarten',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/admin/user/kaartGebruiker' => [
+    'view' => 'user/admin/kaartGebruiker.php',
+    'title' => 'Cards',
     'nav' => true,
     'footer' => false,
   ],
