@@ -153,6 +153,12 @@ $routes = [
     'nav' => true,
     'footer' => true,
   ],
+  '/dashboard/title/add' => [
+    'view' => '/user/admin/title/add-title.php',
+    'title' => 'add categorieen',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/dashboard/categorieen' => [
     'view' => '/user/admin/categorieen.php',
     'title' => 'categorieen',
