@@ -42,7 +42,7 @@ if (isset($_POST['update'])) {
     </div>
 <?php
 
-    insertcards($packcards , $userid);
+    insertcards($packcards , $userid , $pack);
     
     return;
   }
@@ -53,7 +53,7 @@ if (isset($_POST['update'])) {
 }
 
 
-function insertcards($formData ,$userid)
+function insertcards($formData ,$userid , $pack)
 {
   $data = fetchSingle('SELECT * FROM tblgebruikerkaart where gebruikerID = ?' , ['type' => 'i', 'value' => $userid]);
 
@@ -63,18 +63,30 @@ $newcards = array_unique($newcards);
 
 
   
-
+$amount = 0;
   foreach ($data as $Data) {
     foreach ($newcards as $key => $newcard) {
 
       if ($Data['KaartID'] === $newcard) {
         unset($newcards[$key]); // remove the existing kaartID from newcards
+        $repayment=$pack[0]['price'] / 3;
+        $insertcoins = insert('UPDATE tblgebruiker_profile SET coins = coins + ? WHERE userid = ?',
+        ['type' => 'i', 'value' => $repayment], ['type' => 'i', 'value' => $userid]);
+        $amount++;
         break;
       }
     }
   }
-
-
+  if ($amount >0){
+    $moneyback= $amount * ($pack[0]['price'] / 3);
+echo '
+<div class="mx-80">
+  <div role="alert" class="alert alert-info  ">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <span> duplicate(s). you get : '.$moneyback .' coins back</span>
+  </div>
+</div>';
+  }
 
   foreach ($newcards as $newcard) {
     $query = 'INSERT INTO tblgebruikerkaart(gebruikerID, kaartID) VALUES (?, ?)';
@@ -91,7 +103,6 @@ $newcards = array_unique($newcards);
         <a href="/member/user/shop">go back to the shop</a>
       </div>
       <?php
-      //  header('Location: /dashboard/cards');
       exit();
     }else{
       ?>
