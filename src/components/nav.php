@@ -103,7 +103,7 @@ if(isset($user)){
         </details>
       </li>
 <?php
-      $admin = fetch("SELECT admin FROM tblgebruiker_profile Where userid = ?",
+      $admin = fetchsingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
 ?>
       <?php if(isset($_SESSION["admin"])){
@@ -113,7 +113,7 @@ if(isset($user)){
           <summary><?=Vertalen('Card')?></summary>
           <ul class="p-2">
             <?php
-          if($admin['admin'] === 1){
+          if($admin[0]['admin'] === 1){
             ?>
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
             <li><a href="/admin/user/kaart">bekijk kaarten admin</a></li>
@@ -148,7 +148,8 @@ if(isset($user)){
     </div>
     
         <?php } ?>
-    </div>';
+    </div>
+    ';
      } ?>
    
         
@@ -158,7 +159,7 @@ if(isset($user)){
       ? '
       
 
-   
+      <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
 
       <div class="flex items-center justify-center mr-2">
       <div class="relative">
