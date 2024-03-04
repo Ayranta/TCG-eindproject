@@ -29,8 +29,7 @@ function updateProfile($userId, $formData) {
 
   $query = 'SELECT * FROM tblgebruikers WHERE gebruikernaam = ?';
   $data = fetch($query, ['type' => 's', 'value' => $formData['username']]);
-  var_dump($data['gebruikerid']);
-  var_dump($userId);
+
 
   if ($data && $data['gebruikerid'] != $userId) {
    header('Location: /account/settings/edit?error=usernameTaken');

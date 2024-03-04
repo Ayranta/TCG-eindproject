@@ -26,8 +26,28 @@ $routes = [
     'footer' =>false,
   ],
   '/account/register' => [
-    'view' => '/account/register.php',
+    'view' => '/account/registreren.php',
     'title' => 'register',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/account/reset-password' => [
+    'view' => '/account/reset-password.php',
+    'title' => 'reset password',
+    'nav' => true,
+    'footer' => false,
+  ],
+
+  
+  '/account/process-reset-password' => [
+    'view' => '/account/process-reset-password.php',
+    'title' => 'reset password',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/account/send-password-reset' => [
+    'view' => '/account/send-password-reset.php',
+    'title' => 'reset password',
     'nav' => true,
     'footer' => false,
   ],
@@ -37,9 +57,21 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/account/password' => [
+    'view' => '/account/password.php',
+    'title' => 'password regen',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/account/logout' => [
     'view' => '/account/logout.php',
     'title' => 'logout',
+    'nav' => false,
+    'footer' => false,
+  ],
+  '/account/mailer' => [
+    'view' => '/account/mailer.php',
+    'title' => 'mail',
     'nav' => false,
     'footer' => false,
   ],
@@ -202,6 +234,12 @@ $routes = [
   ],
   '/talen/zh' => [
     'view' => 'talen\zh.php',
+    'title' => 'lang',
+    'nav' => false,
+    'footer' => false,
+  ],
+  '/vendor/autoload' => [
+    'view' => 'vendor\autoload.php',
     'title' => 'lang',
     'nav' => false,
     'footer' => false,

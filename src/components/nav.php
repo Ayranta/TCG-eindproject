@@ -2,11 +2,10 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 
+
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
-
-  // check for theme
   $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
 
@@ -17,7 +16,6 @@ if ($user) {
   $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
   $_SESSION['profielfoto'] = $change_theme['profielfoto'];
 
-  //look for a friendrequest
   $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
     'type' => 'i',
     'value' => $userid,
@@ -64,9 +62,7 @@ if(isset($user)){
 <div class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
+      <label tabindex="0" class="btn btn-ghost lg:hidden">      </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li>
           <a>Parent</a>
@@ -81,6 +77,19 @@ if(isset($user)){
       </ul>
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
+
+    <!DOCTYPE html>
+<html>
+<body>
+
+<audio controls autoplay loop>
+  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
+  <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+</body>
+</html>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -113,7 +122,8 @@ if(isset($user)){
   }?>
     </ul>
   </div>
-  
+ 
+ 
   <div class="navbar-end">
 
   <?php if ($yourfriendrequest){ 
@@ -129,6 +139,9 @@ if(isset($user)){
       <a href="/src/lib/user/member/acceptFriendrequest.php"><button class="btn btn-ghost">Accept</button></a>
       <a href ="/src/lib/user/member/denyFriendrequest.php"><button class="btn btn-ghost">Deny</button></a>
       </div>
+    </div>
+    
+        <?php } ?>
     </div>';
      } ?>
    
@@ -178,3 +191,4 @@ if(isset($user)){
       '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
 </div>
+
