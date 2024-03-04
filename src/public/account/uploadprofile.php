@@ -48,7 +48,7 @@ $stmt->bind_param("s", $file_name_new);
 
 $stmt->execute();
 
-//header('location: http://localhost:8080/');
+header('location: /');
 exit;
 
 }

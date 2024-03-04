@@ -132,7 +132,7 @@ $routes = [
   '/levels/level-blueprint' => [
     'view' => '/levels/level-blueprint.php',
     'title' => 'battle',
-    'nav' => false,
+    'nav' => true,
     'footer' => false,
   ],
   '/dashboard/users' => [

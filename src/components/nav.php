@@ -78,9 +78,7 @@ if(isset($user)){
     </div>
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
 
-    <!DOCTYPE html>
-<html>
-<body>
+  
 
 <audio autoplay loop>
   <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
@@ -88,8 +86,7 @@ if(isset($user)){
   Your browser does not support the audio element.
 </audio>
 
-</body>
-</html>
+
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -138,7 +135,6 @@ if(isset($user)){
 
   <?php if ($yourfriendrequest){ 
     echo'
-    <?php if ($yourfriendrequest){ ?>
   <div class="alert shadow-lg flex mx-8" >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
       <div class ="flex[1.2]">
@@ -161,10 +157,8 @@ if(isset($user)){
   
       ? '
       
-      
 
-
-      <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
+   
 
       <div class="flex items-center justify-center mr-2">
       <div class="relative">
@@ -206,4 +200,5 @@ if(isset($user)){
       '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
 </div>
+
 
