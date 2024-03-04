@@ -47,6 +47,11 @@ function updateLevel($levelId, $formData) {
       header('Location: /admin/level?error=noChanges');
       exit();
     }
+
+    if($newGroupID > 5){
+        header('Location: /admin/level?error=groupToHigh');
+        exit();
+    }
     
     $query =
       'UPDATE PlayerLevels SET GroupID = ?, ExpirienceRequired = ? WHERE LevelID = ?';

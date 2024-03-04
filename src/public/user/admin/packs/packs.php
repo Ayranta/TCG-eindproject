@@ -17,7 +17,7 @@ if($_SESSION['admin']===0){
 
 $packs = fetchSingle("SELECT * FROM `tblpacks`");?>
 
-<h1 class="md:text-center text-4xl font-bold mb-4 ">packs</h1>
+<h1 class="md:text-center text-4xl font-bold mb-4 ">Packs</h1>
 
 <a href = "/admin/user/packs/add"> <button class="ml-24 p-4  mx-auto shadow-xl rounded-xl">  <i class="fa-solid fa-plus"></i></button></a>
 
