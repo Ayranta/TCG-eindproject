@@ -2,10 +2,12 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 04 mrt 2024 om 20:33
--- Serverversie: 10.4.28-MariaDB
--- PHP-versie: 8.2.4
+
+-- Host: localhost
+-- Gegenereerd op: 04 mrt 2024 om 16:17
+-- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP-versie: 8.1.2-1ubuntu2.14
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +45,7 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (4, 'ice', '3dc5ff'),
 (5, 'grass', '549d0b'),
 (6, 'fire', 'e64c0a'),
-(7, 'water', 'c2c3c7'),
+(7, 'water', '1caaf0'),
 (8, 'dragon', '7b80cc');
 
 -- --------------------------------------------------------
@@ -173,10 +175,15 @@ CREATE TABLE `tblgebruikerkaart` (
 -- Gegevens worden geëxporteerd voor tabel `tblgebruikerkaart`
 --
 
-INSERT INTO `tblgebruikerkaart` (`GebKaartid`, `KaartID`, `GebruikerID`) VALUES
-(1, 13, 23),
-(2, 19, 23),
-(3, 26, 14);
+INSERT INTO `tblgebruikerkaart` (`Gebkaartid`, `KaartID`, `GebruikerID`) VALUES
+(23, 13, 12),
+(24, 17, 12),
+(25, 16, 12),
+(26, 27, 12),
+(27, 26, 12),
+(28, 28, 12),
+(29, 22, 12),
+(30, 31, 12);
 
 -- --------------------------------------------------------
 
@@ -207,6 +214,74 @@ INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaa
 (24, 'test@test.gert', '$argon2id$v=19$m=65536,t=4,p=1$N1V4YzZTSW5vMGpjc2IzMQ$M5wYmzpASe/5R+Ms/k0Te+4iIaXXQB6+2IC03F03A+Q', 'gert', NULL, NULL),
 (25, 'test@test.test.test', '$argon2id$v=19$m=65536,t=4,p=1$ZWV3LzJSaFpjei94Y0hsaw$EA4MDlc3qCU1EgQU/187HX1Gmb5t/1ppSss5wRwOL7w', 'testeroni', NULL, NULL),
 (26, 't.t@t.t.t', '$argon2id$v=19$m=65536,t=4,p=1$TDFGdTgyVHppWGc5QlhJTQ$1yHgw7lvmRlj4U1rIUf4BOh6WpBhnLsjuNYEaKaiSyw', 't', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `tblgebruiker_packsbought`
+--
+
+CREATE TABLE `tblgebruiker_packsbought` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `packid` int(11) NOT NULL,
+  `purchasedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `price` double NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `tblgebruiker_packsbought`
+--
+
+INSERT INTO `tblgebruiker_packsbought` (`id`, `userid`, `packid`, `purchasedate`, `price`) VALUES
+(11, 12, 10, '2024-02-27 18:12:08', 0),
+(12, 12, 10, '2024-02-27 18:25:16', 2345),
+(13, 12, 5, '2024-02-27 18:25:31', 0),
+(14, 12, 3, '2024-02-28 08:38:08', 0),
+(15, 12, 2, '2024-02-28 08:39:13', 0),
+(16, 12, 7, '2024-02-29 11:41:33', 0),
+(17, 12, 2, '2024-02-29 11:42:07', 0),
+(18, 12, 2, '2024-02-29 11:48:58', 0),
+(19, 12, 2, '2024-02-29 11:55:04', 0),
+(20, 12, 2, '2024-02-29 14:03:38', 0),
+(21, 12, 2, '2024-03-01 14:07:52', 0),
+(22, 12, 2, '2024-03-01 14:29:19', 0),
+(23, 12, 2, '2024-03-01 14:29:49', 0),
+(24, 12, 3, '2024-03-01 14:42:48', 0),
+(25, 12, 2, '2024-03-01 14:42:51', 0),
+(26, 12, 2, '2024-03-01 14:44:09', 0),
+(27, 12, 2, '2024-03-01 15:57:22', 0),
+(28, 12, 2, '2024-03-01 15:57:57', 0),
+(29, 12, 2, '2024-03-01 15:59:40', 0),
+(30, 12, 2, '2024-03-02 13:27:45', 0),
+(31, 12, 2, '2024-03-02 14:33:37', 0),
+(32, 12, 2, '2024-03-02 14:42:27', 0),
+(33, 12, 2, '2024-03-02 15:07:49', 0),
+(34, 12, 2, '2024-03-03 14:05:07', 0),
+(35, 12, 10, '2024-03-03 14:08:36', 2345),
+(36, 12, 2, '2024-03-03 14:12:41', 0),
+(37, 12, 2, '2024-03-04 09:47:57', 0),
+(38, 12, 3, '2024-03-04 09:48:05', 0),
+(39, 12, 10, '2024-03-04 09:48:11', 2345),
+(40, 12, 2, '2024-03-04 10:01:44', 0),
+(41, 12, 2, '2024-03-04 14:57:59', 300),
+(42, 12, 2, '2024-03-04 14:58:40', 300),
+(43, 12, 2, '2024-03-04 14:59:22', 300),
+(44, 12, 2, '2024-03-04 14:59:28', 300),
+(45, 12, 2, '2024-03-04 15:00:19', 300),
+(46, 12, 2, '2024-03-04 15:00:24', 300),
+(47, 12, 2, '2024-03-04 15:00:37', 300),
+(48, 12, 10, '2024-03-04 15:03:43', 2345),
+(49, 12, 2, '2024-03-04 15:03:57', 300),
+(50, 12, 13, '2024-03-04 15:10:54', 200),
+(51, 12, 13, '2024-03-04 15:11:08', 200),
+(52, 12, 13, '2024-03-04 15:17:14', 200),
+(53, 12, 2, '2024-03-04 15:29:17', 300),
+(54, 12, 2, '2024-03-04 15:29:56', 300),
+(55, 12, 13, '2024-03-04 15:36:59', 200),
+(56, 12, 13, '2024-03-04 15:52:53', 200),
+(57, 12, 3, '2024-03-04 15:57:57', 0),
+(58, 12, 13, '2024-03-04 16:13:52', 200);
 
 -- --------------------------------------------------------
 
@@ -273,6 +348,7 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 (28, 'yamaha r7', 'ice', 266, 'he', 123, 'vuut', 222, '6569d9321c9699.56519162.jpeg'),
 (31, 'da', 'fire', 230, 'da', 23, 'ad', 32, '65e3baf49d17d7.36503980.png'),
 (32, 'da', 'fire', 230, 'da', 23, 'ad', 32, '65e3bb4321ce63.72014773.png');
+(31, 'Bobber', 'water', 800, 'cuteness overload', 200, 'ta mère', 68, '65e5d5a2327a54.37009224.png');
 
 -- --------------------------------------------------------
 
@@ -291,10 +367,14 @@ CREATE TABLE `tblpackcards` (
 --
 
 INSERT INTO `tblpackcards` (`packID`, `kaartID`, `id`) VALUES
-(1, 13, 2),
-(1, 16, 3),
-(1, 17, 4),
-(1, 13, 5);
+(2, 26, 2),
+(2, 28, 3),
+(2, 27, 4),
+(13, 22, 14),
+(13, 26, 15),
+(13, 27, 16),
+(13, 28, 17),
+(13, 31, 18);
 
 -- --------------------------------------------------------
 
@@ -307,7 +387,7 @@ CREATE TABLE `tblpacks` (
   `packNaam` text NOT NULL,
   `packImg` text NOT NULL,
   `releaseDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `price` decimal(10,2) NOT NULL
+  `price` double NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -315,14 +395,15 @@ CREATE TABLE `tblpacks` (
 --
 
 INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`, `price`) VALUES
-(2, 'Scarlet & Violet', 'pokemon packs.png', '2024-02-05 16:05:44', 0.00),
-(3, 'test', 'pokemon packs.png', '2024-02-08 11:00:48', 0.00),
-(4, 'test', 'pokemon packs.png', '2024-02-08 11:02:50', 0.00),
-(5, 'test4', 'pokemon packs.png', '2024-02-08 11:02:58', 0.00),
-(6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', 9.00),
-(7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0.00),
-(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0.00),
-(10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', 2345.00);
+(2, 'Scarlet & Violet', 'pokemon packs.png', '2024-02-05 16:05:44', 300),
+(3, 'test', 'pokemon packs.png', '2024-02-08 11:00:48', 0),
+(4, 'test', 'pokemon packs.png', '2024-02-08 11:02:50', 0),
+(5, 'test4', 'pokemon packs.png', '2024-02-08 11:02:58', 0),
+(6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', 0),
+(7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0),
+(8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0),
+(10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', 2345),
+(13, 'Bobber Kurwa', '65e5d6601dbea6.09178215.jpg', '2024-03-04 15:10:40', 200);
 
 -- --------------------------------------------------------
 
@@ -385,6 +466,12 @@ ALTER TABLE `tblgebruikerkaart`
 ALTER TABLE `tblgebruikers`
   ADD PRIMARY KEY (`gebruikerid`),
   ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
+
+--
+-- Indexen voor tabel `tblgebruiker_packsbought`
+--
+ALTER TABLE `tblgebruiker_packsbought`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `tblgebruiker_profile`
@@ -457,6 +544,12 @@ ALTER TABLE `tblgebruikers`
   MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- AUTO_INCREMENT voor een tabel `tblgebruiker_packsbought`
+--
+ALTER TABLE `tblgebruiker_packsbought`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
@@ -472,13 +565,13 @@ ALTER TABLE `tblkaart`
 -- AUTO_INCREMENT voor een tabel `tblpackcards`
 --
 ALTER TABLE `tblpackcards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpacks`
 --
 ALTER TABLE `tblpacks`
-  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`

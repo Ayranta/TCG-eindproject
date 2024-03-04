@@ -26,7 +26,7 @@ $routes = [
     'footer' =>false,
   ],
   '/account/register' => [
-    'view' => '/account/register.php',
+    'view' => '/account/registreren.php',
     'title' => 'register',
     'nav' => true,
     'footer' => false,
@@ -113,7 +113,19 @@ $routes = [
   ],
   '/member/user/shop' => [
     'view' => '/user/user/packs/shop.php',
-    'title' => 'Shop',
+    'title' => 'shop',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/member/user/shop/buy' => [
+    'view' => '/user/user/packs/buy-packs.php',
+    'title' => 'buy packs',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/member/user/shop/open' => [
+    'view' => '/user/user/packs/open-pack.php',
+    'title' => 'open pack',
     'nav' => true,
     'footer' => false,
   ],
