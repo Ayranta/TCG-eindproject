@@ -26,7 +26,7 @@ $routes = [
     'footer' =>false,
   ],
   '/account/register' => [
-    'view' => '/account/register.php',
+    'view' => '/account/registreren.php',
     'title' => 'register',
     'nav' => true,
     'footer' => false,
