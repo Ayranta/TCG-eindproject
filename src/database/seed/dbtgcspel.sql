@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 
@@ -90,7 +90,55 @@ CREATE TABLE `playerlevels` (
 
 INSERT INTO `playerlevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
 (1, 'level 1', 1, 10),
-(2, 'level 2', 1, 12);
+(2, 'level 2', 1, 12),
+(3, 'level 3', 1, 18),
+(4, 'level 4', 1, 27),
+(5, 'level 5', 1, 41),
+(6, 'level 6', 1, 61),
+(7, 'level 7', 1, 91),
+(8, 'level 8', 1, 137),
+(9, 'level 9', 1, 205),
+(10, 'level 10', 1, 308),
+(11, 'level 11', 2, 461),
+(12, 'level 12', 2, 691),
+(13, 'level 13', 2, 1037),
+(14, 'level 14', 2, 1245),
+(15, 'level 15', 2, 1854),
+(16, 'level 16', 2, 2802),
+(17, 'level 17', 2, 4203),
+(18, 'level 18', 2, 5033),
+(19, 'level 19', 2, 7566),
+(20, 'level 20', 2, 11350),
+(21, 'level 21', 3, 13620),
+(22, 'level 22', 3, 16520),
+(23, 'level 23', 3, 19619),
+(24, 'level 24', 3, 25535),
+(25, 'level 25', 3, 28242),
+(26, 'level 26', 3, 33891),
+(27, 'level 27', 3, 40669),
+(28, 'level 28', 3, 48803),
+(29, 'level 29', 3, 58564),
+(30, 'level 30', 3, 70277),
+(31, 'level 31', 4, 84333),
+(32, 'level 32', 4, 92766),
+(33, 'level 33', 4, 102042),
+(34, 'level 34', 4, 112247),
+(35, 'level 35', 4, 123743),
+(36, 'level 36', 4, 135981),
+(37, 'level 37', 4, 149401),
+(38, 'level 38', 4, 164341),
+(39, 'level 39', 4, 180775),
+(40, 'level 40', 4, 198852),
+(41, 'level 41', 5, 218738),
+(42, 'level 42', 5, 240611),
+(43, 'level 43', 5, 264350),
+(44, 'level 44', 5, 291456),
+(45, 'level 45', 5, 320542),
+(46, 'level 46', 5, 352297),
+(47, 'level 47', 5, 387507),
+(48, 'level 48', 5, 450000),
+(49, 'level 49', 5, 500000),
+(50, 'level 50', 5, 1000000);
 
 -- --------------------------------------------------------
 
@@ -109,7 +157,6 @@ CREATE TABLE `tblfriend_request` (
 --
 
 INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
-(33, 12, 14),
 (37, 12, 20);
 
 -- --------------------------------------------------------
@@ -119,7 +166,7 @@ INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
 --
 
 CREATE TABLE `tblgebruikerkaart` (
-  `Gebkaartid` int(11) NOT NULL,
+  `GebKaartid` int(11) NOT NULL,
   `KaartID` int(11) NOT NULL,
   `GebruikerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -163,7 +210,10 @@ INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaa
 (19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL),
 (20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL),
 (21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL),
-(23, 'casper.nauwelaerts@bazandpoort.be', '$2y$10$qgQK4B53HWxbeeDl/Ueek.hjnDqsRhMNFXij81.6O52n3ga6fW8hm', 'c', NULL, NULL);
+(23, 'casper.nauwelaerts@bazandpoort.be', '$2y$10$qgQK4B53HWxbeeDl/Ueek.hjnDqsRhMNFXij81.6O52n3ga6fW8hm', 'c', '0678b376ca739274a0d32fcbc683dc09a3c9c9f9ff45bc28f9dfda6bc7c5ee6b', '2024-02-26 15:43:01'),
+(24, 'test@test.gert', '$argon2id$v=19$m=65536,t=4,p=1$N1V4YzZTSW5vMGpjc2IzMQ$M5wYmzpASe/5R+Ms/k0Te+4iIaXXQB6+2IC03F03A+Q', 'gert', NULL, NULL),
+(25, 'test@test.test.test', '$argon2id$v=19$m=65536,t=4,p=1$ZWV3LzJSaFpjei94Y0hsaw$EA4MDlc3qCU1EgQU/187HX1Gmb5t/1ppSss5wRwOL7w', 'testeroni', NULL, NULL),
+(26, 't.t@t.t.t', '$argon2id$v=19$m=65536,t=4,p=1$TDFGdTgyVHppWGc5QlhJTQ$1yHgw7lvmRlj4U1rIUf4BOh6WpBhnLsjuNYEaKaiSyw', 't', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -254,14 +304,16 @@ CREATE TABLE `tblgebruiker_profile` (
 -- Gegevens worden geëxporteerd voor tabel `tblgebruiker_profile`
 --
 
-
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`, `coins`) VALUES
-(9, 12, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 5108),
-(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 0),
-(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
-(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0);
-
+(9, 12, 'light', 'default.php', 1, 23, 0, 0),
+(11, 14, 'dark', '65e3b6aba05cd4.44741118.png', 1, 2, 0, 0),
+(14, 19, 'light', 'default.php', 0, 1, 0, 0),
+(15, 20, 'light', 'default.php', 0, 1, 0, 0),
+(16, 21, 'light', 'default.php', 0, 13, 0, 0),
+(18, 23, 'dark', 'default.php', 1, 1, 0, 0),
+(19, 24, 'light', 'default.php', 0, 1, 0, 0),
+(20, 25, 'light', 'default.php', 0, 1, 0, 0),
+(21, 26, 'light', 'default.png', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -294,6 +346,8 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 (26, 'dragon', 'dragon', 8000, 'breath', 3000, 'fire ball', 5000, '65699c636b1e52.59233588.jpg'),
 (27, 'ass', 'grass', 1, '1', 2, '3', 4, '6569d4c4c39616.11415296.jpeg'),
 (28, 'yamaha r7', 'ice', 266, 'he', 123, 'vuut', 222, '6569d9321c9699.56519162.jpeg'),
+(31, 'da', 'fire', 230, 'da', 23, 'ad', 32, '65e3baf49d17d7.36503980.png'),
+(32, 'da', 'fire', 230, 'da', 23, 'ad', 32, '65e3bb4321ce63.72014773.png');
 (31, 'Bobber', 'water', 800, 'cuteness overload', 200, 'ta mère', 68, '65e5d5a2327a54.37009224.png');
 
 -- --------------------------------------------------------
@@ -369,7 +423,8 @@ CREATE TABLE `tblvrienden` (
 
 INSERT INTO `tblvrienden` (`id`, `gebruikerId`, `vriendenmetId`) VALUES
 (6, 21, 14),
-(10, 21, 12);
+(10, 21, 12),
+(12, 12, 14);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -403,7 +458,7 @@ ALTER TABLE `tblfriend_request`
 -- Indexen voor tabel `tblgebruikerkaart`
 --
 ALTER TABLE `tblgebruikerkaart`
-  ADD PRIMARY KEY (`Gebkaartid`);
+  ADD PRIMARY KEY (`GebKaartid`);
 
 --
 -- Indexen voor tabel `tblgebruikers`
@@ -468,7 +523,7 @@ ALTER TABLE `levelgroups`
 -- AUTO_INCREMENT voor een tabel `playerlevels`
 --
 ALTER TABLE `playerlevels`
-  MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblfriend_request`
@@ -480,13 +535,13 @@ ALTER TABLE `tblfriend_request`
 -- AUTO_INCREMENT voor een tabel `tblgebruikerkaart`
 --
 ALTER TABLE `tblgebruikerkaart`
-  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `GebKaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_packsbought`
@@ -498,13 +553,13 @@ ALTER TABLE `tblgebruiker_packsbought`
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
-  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpackcards`
@@ -522,7 +577,7 @@ ALTER TABLE `tblpacks`
 -- AUTO_INCREMENT voor een tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
