@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Gegenereerd op: 05 mrt 2024 om 12:06
--- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
--- PHP-versie: 8.1.2-1ubuntu2.14
+-- Host: 127.0.0.1
+-- Gegenereerd op: 05 mrt 2024 om 18:38
+-- Serverversie: 10.4.28-MariaDB
+-- PHP-versie: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,10 +72,10 @@ INSERT INTO `levelgroups` (`GroupID`, `GroupName`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `PlayerLevels`
+-- Tabelstructuur voor tabel `playerlevels`
 --
 
-CREATE TABLE `PlayerLevels` (
+CREATE TABLE `playerlevels` (
   `LevelID` int(11) NOT NULL,
   `LevelName` varchar(50) NOT NULL,
   `GroupID` int(11) NOT NULL,
@@ -83,12 +83,60 @@ CREATE TABLE `PlayerLevels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `PlayerLevels`
+-- Gegevens worden geëxporteerd voor tabel `playerlevels`
 --
 
-INSERT INTO `PlayerLevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
+INSERT INTO `playerlevels` (`LevelID`, `LevelName`, `GroupID`, `ExpirienceRequired`) VALUES
 (1, 'level 1', 1, 10),
-(2, 'level 2', 1, 12);
+(2, 'level 2', 1, 12),
+(3, 'level 3', 1, 18),
+(4, 'level 4', 1, 27),
+(5, 'level 5', 1, 41),
+(6, 'level 6', 1, 61),
+(7, 'level 7', 1, 91),
+(8, 'level 8', 1, 137),
+(9, 'level 9', 1, 205),
+(10, 'level 10', 1, 308),
+(11, 'level 11', 2, 461),
+(12, 'level 12', 2, 691),
+(13, 'level 13', 2, 1037),
+(14, 'level 14', 2, 1245),
+(15, 'level 15', 2, 1854),
+(16, 'level 16', 2, 2802),
+(17, 'level 17', 2, 4203),
+(18, 'level 18', 2, 5033),
+(19, 'level 19', 2, 7566),
+(20, 'level 20', 2, 11350),
+(21, 'level 21', 3, 13620),
+(22, 'level 22', 3, 16520),
+(23, 'level 23', 3, 19619),
+(24, 'level 24', 3, 25535),
+(25, 'level 25', 3, 28242),
+(26, 'level 26', 3, 33891),
+(27, 'level 27', 3, 40669),
+(28, 'level 28', 3, 48803),
+(29, 'level 29', 3, 58564),
+(30, 'level 30', 3, 70277),
+(31, 'level 31', 4, 84333),
+(32, 'level 32', 4, 92766),
+(33, 'level 33', 4, 102042),
+(34, 'level 34', 4, 112247),
+(35, 'level 35', 4, 123743),
+(36, 'level 36', 4, 135981),
+(37, 'level 37', 4, 149401),
+(38, 'level 38', 4, 164341),
+(39, 'level 39', 4, 180775),
+(40, 'level 40', 4, 198852),
+(41, 'level 41', 5, 218738),
+(42, 'level 42', 5, 240611),
+(43, 'level 43', 5, 264350),
+(44, 'level 44', 5, 291456),
+(45, 'level 45', 5, 320542),
+(46, 'level 46', 5, 352297),
+(47, 'level 47', 5, 387507),
+(48, 'level 48', 5, 450000),
+(49, 'level 49', 5, 500000),
+(50, 'level 50', 5, 1000000);
 
 -- --------------------------------------------------------
 
@@ -146,19 +194,21 @@ CREATE TABLE `tblgebruikers` (
   `gebruikerid` int(11) NOT NULL,
   `email` text NOT NULL,
   `wachtwoord` text NOT NULL,
-  `gebruikernaam` text NOT NULL
+  `gebruikernaam` text NOT NULL,
+  `reset_token_hash` varchar(64) DEFAULT NULL,
+  `reset_token_expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `tblgebruikers`
 --
 
-INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`) VALUES
-(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman'),
-(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper'),
-(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password'),
-(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander'),
-(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric');
+INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`, `reset_token_hash`, `reset_token_expires_at`) VALUES
+(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL),
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', NULL, NULL),
+(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL),
+(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL),
+(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -405,9 +455,9 @@ ALTER TABLE `levelgroups`
   ADD PRIMARY KEY (`GroupID`);
 
 --
--- Indexen voor tabel `PlayerLevels`
+-- Indexen voor tabel `playerlevels`
 --
-ALTER TABLE `PlayerLevels`
+ALTER TABLE `playerlevels`
   ADD PRIMARY KEY (`LevelID`);
 
 --
@@ -426,7 +476,8 @@ ALTER TABLE `tblgebruikerkaart`
 -- Indexen voor tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  ADD PRIMARY KEY (`gebruikerid`);
+  ADD PRIMARY KEY (`gebruikerid`),
+  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
 
 --
 -- Indexen voor tabel `tblgebruiker_packsbought`
@@ -487,10 +538,10 @@ ALTER TABLE `levelgroups`
   MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT voor een tabel `PlayerLevels`
+-- AUTO_INCREMENT voor een tabel `playerlevels`
 --
-ALTER TABLE `PlayerLevels`
-  MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `playerlevels`
+  MODIFY `LevelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblfriend_request`
