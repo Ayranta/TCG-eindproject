@@ -159,6 +159,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/dashboard/title/change' => [
+    'view' => '/user/admin/title/change-title.php',
+    'title' => 'add categorieen',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/dashboard/categorieen' => [
     'view' => '/user/admin/categorieen.php',
     'title' => 'categorieen',

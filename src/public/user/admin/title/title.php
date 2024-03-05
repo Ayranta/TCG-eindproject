@@ -36,7 +36,7 @@ $titels = fetchSingle('SELECT * FROM `tbltitels`');
             <th><?php echo $titel['id'] ?></th>
             <td><?php echo $titel['name'] ?></td>
             <td><?php echo $titel['description'] ?></td>
-            <td ><a href="/dashboard/categorieen/change?categoryid=<?php echo $titel['id']?>"><button class="btn btn-primary">change</button></a></td>
+            <td ><a href="/dashboard/title/change?titleid=<?php echo $titel['id']?>"><button class="btn btn-primary">change</button></a></td>
         </tr>
         </tbody>
         <?php } ?>

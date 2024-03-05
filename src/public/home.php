@@ -27,7 +27,7 @@ if(isset($_SESSION['login'])){
 if($levelofPlayer['GroupID'] == 1){
 
     ?>
-  <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
+  <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-20">
     <div class="">
       <a href=/levels/level-blueprint>
       <img src="public\img\arenaIMG\arena_barbarian.png" alt="Arena1" width="600" height="300" />
