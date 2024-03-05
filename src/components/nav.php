@@ -21,6 +21,8 @@ if ($user) {
     'value' => $userid,
   ]);
   
+  $admin = fetchsingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $user]);
 
   foreach($friendrequestData as $data2){
 
@@ -61,21 +63,7 @@ if(isset($user)){
 
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost lg:hidden">      </label>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a>Parent</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-            
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
-        
-      </ul>
-    </div>
+
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
 
   
@@ -102,18 +90,15 @@ if(isset($user)){
           </ul>
         </details>
       </li>
-<?php
-      $admin = fetchsingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
-  ['type' => 'i', 'value' => $user]);
-?>
-      <?php if(isset($_SESSION["admin"])){
+
+      <?php if(isset($_SESSION["login"])){
       ?>
       <li tabindex="0">
       <details>
           <summary><?=Vertalen('Card')?></summary>
           <ul class="p-2">
             <?php
-          if($admin[0]['admin'] === 1){
+            if($admin[0]['admin'] === 1){
             ?>
             <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
             <li><a href="/admin/user/kaart">bekijk kaarten admin</a></li>
