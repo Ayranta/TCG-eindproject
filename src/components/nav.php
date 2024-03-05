@@ -70,7 +70,6 @@ if(isset($user)){
 
 <audio autoplay loop>
   <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
-  <source src="public\music\funny-kids_59sec-190857.ogg" type="audio/ogg">
   Your browser does not support the audio element.
 </audio>
 

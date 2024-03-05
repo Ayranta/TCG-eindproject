@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 05 mrt 2024 om 18:38
+-- Gegenereerd op: 05 mrt 2024 om 19:02
 -- Serverversie: 10.4.28-MariaDB
 -- PHP-versie: 8.2.4
 
@@ -182,7 +182,9 @@ INSERT INTO `tblgebruikerkaart` (`Gebkaartid`, `KaartID`, `GebruikerID`) VALUES
 (27, 26, 12),
 (28, 28, 12),
 (29, 22, 12),
-(30, 31, 12);
+(30, 31, 12),
+(31, 31, 23),
+(32, 28, 23);
 
 -- --------------------------------------------------------
 
@@ -208,7 +210,8 @@ INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaa
 (14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', NULL, NULL),
 (19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL),
 (20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL),
-(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL);
+(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL),
+(23, 'casper.nauwelaerts@bazandpoort.be', '$2y$10$Q0T7Cz1VhvGwzSy4nNtIy.IkWGnqnXnXImmQNOqX9/DLPk/l7.rHO', 'casperr', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -307,7 +310,8 @@ INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `adm
 (11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 0),
 (14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
 (15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0);
+(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
+(18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -340,7 +344,7 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 (26, 'dragon', 'dragon', 8000, 'breath', 3000, 'fire ball', 5000, '65699c636b1e52.59233588.jpg'),
 (27, 'ass', 'grass', 1, '1', 2, '3', 4, '6569d4c4c39616.11415296.jpeg'),
 (28, 'yamaha r7', 'ice', 266, 'he', 123, 'vuut', 222, '6569d9321c9699.56519162.jpeg'),
-(31, 'Bobber', 'water', 800, 'cuteness overload', 200, 'ta mère', 68, '65e5d5a2327a54.37009224.png');
+(31, 'Bobber', 'water', 800, 'cuteness overload', 200, 'ta mere', 68, '65e5d5a2327a54.37009224.png');
 
 -- --------------------------------------------------------
 
@@ -477,7 +481,8 @@ ALTER TABLE `tblgebruikerkaart`
 --
 ALTER TABLE `tblgebruikers`
   ADD PRIMARY KEY (`gebruikerid`),
-  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
+  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`),
+  ADD UNIQUE KEY `reset_token_hash_2` (`reset_token_hash`);
 
 --
 -- Indexen voor tabel `tblgebruiker_packsbought`
@@ -553,13 +558,13 @@ ALTER TABLE `tblfriend_request`
 -- AUTO_INCREMENT voor een tabel `tblgebruikerkaart`
 --
 ALTER TABLE `tblgebruikerkaart`
-  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_packsbought`
@@ -571,7 +576,7 @@ ALTER TABLE `tblgebruiker_packsbought`
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblkaart`
