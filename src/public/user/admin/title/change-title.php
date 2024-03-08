@@ -41,7 +41,7 @@ function updateTitle($titleId, $formData) {
 
 
     if ($data['name'] === $newname && $data['description'] === $newdescription) {
-      header('Location: /dashboard/titels?error=noChanges');
+      header('Location: /dashboard/title?error=noChanges');
       exit();
     }
     
@@ -54,11 +54,11 @@ function updateTitle($titleId, $formData) {
     );
     
     if ($update) {
-            header('Location: /dashboard/titels');
+            header('Location: /dashboard/title?success=updatedTitle');
         exit();
     }
     
-        header('Location: /dashboard/titels ?error=notUpdatedTitle');
+        header('Location: /dashboard/title?error=notUpdatedTitle');
     exit();
 }
 ?>

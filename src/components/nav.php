@@ -4,6 +4,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 
 
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+
+
 $yourfriendrequest = false;
 if ($user) {
   $profiledata = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
@@ -26,8 +28,9 @@ if ($user) {
     'value' => $profiledata['titleid'],
   ]);
   
-  $admin = fetchsingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
-  ['type' => 'i', 'value' => $user]);
+  $admin = fetchSingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $userid]);
+
 
   foreach($friendrequestData as $data2){
 
@@ -177,7 +180,7 @@ if(isset($user)){
         <li>
         <li> <a href="/account/uploadprofile" class="mr-2">profile picture</a> </li>
         <li><a href="/dashboard/title/user">your titles</a></li>
-        <li>
+        '.( $admin[0]['admin'] ? ' <li>
         <details class="dropdown dropdown-left">
           <summary class="m-1">Admin Dashboard</summary>
           <ul class="mr-4 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
@@ -186,12 +189,13 @@ if(isset($user)){
             <li><a href="/dashboard/categorieen">categorieen</a></li>
             <li><a href="/admin/level">levels</a></li>
             <li><a href="/admin/user/packs">packs</a></li>
-            <li><a href="/dashboard/titels">titles</a></li>
+            <li><a href="/dashboard/title">titles</a></li>
            
             
             
       </ul>
-    </details>
+    </details>' : '').'
+       
         ':
       '<a href="/account/login" class="btn">Login</a>'; ?>
   </div>
