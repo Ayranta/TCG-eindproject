@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Gegenereerd op: 08 mrt 2024 om 09:24
--- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
--- PHP-versie: 8.1.2-1ubuntu2.14
+-- Host: 127.0.0.1
+-- Gegenereerd op: 08 mrt 2024 om 14:37
+-- Serverversie: 10.4.28-MariaDB
+-- PHP-versie: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,8 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (5, 'grass', '549d0b'),
 (6, 'fire', 'e64c0a'),
 (7, 'water', '1caaf0'),
-(8, 'dragon', '7b80cc');
+(8, 'dragon', '7b80cc'),
+(10, 'Default', 'ffffff');
 
 -- --------------------------------------------------------
 
@@ -282,7 +283,8 @@ INSERT INTO `tblgebruiker_packsbought` (`id`, `userid`, `packid`, `purchasedate`
 (58, 12, 13, '2024-03-04 16:13:52', 200),
 (59, 12, 2, '2024-03-04 16:22:17', 300),
 (60, 12, 13, '2024-03-04 17:42:34', 200),
-(61, 12, 2, '2024-03-04 18:12:28', 300);
+(61, 12, 2, '2024-03-04 18:12:28', 300),
+(62, 12, 14, '2024-03-08 14:31:38', 455);
 
 -- --------------------------------------------------------
 
@@ -307,7 +309,7 @@ CREATE TABLE `tblgebruiker_profile` (
 --
 
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`, `coins`, `titleid`) VALUES
-(9, 12, 'light', '65e651e4ce0f05.58493749.jpg', 1, 1, 0, 5106, 0),
+(9, 12, 'light', '65e651e4ce0f05.58493749.jpg', 1, 1, 0, 5557, 0),
 (11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 0, 0),
 (14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
 (15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
@@ -371,7 +373,12 @@ INSERT INTO `tblpackcards` (`packID`, `kaartID`, `id`) VALUES
 (13, 26, 15),
 (13, 27, 16),
 (13, 28, 17),
-(13, 31, 18);
+(13, 31, 18),
+(14, 22, 19),
+(14, 26, 20),
+(14, 27, 21),
+(14, 28, 22),
+(14, 31, 23);
 
 -- --------------------------------------------------------
 
@@ -400,7 +407,8 @@ INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`, `price`)
 (7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0),
 (8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0),
 (10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', 2345),
-(13, 'Bobber Kurwa', '65e5d6601dbea6.09178215.jpg', '2024-03-04 15:10:40', 200);
+(13, 'Bobber Kurwa', '65e5d6601dbea6.09178215.jpg', '2024-03-04 15:10:40', 200),
+(14, 'pica', '65eb131f8169f0.39212432.png', '2024-03-08 14:31:11', 455);
 
 -- --------------------------------------------------------
 
@@ -440,7 +448,8 @@ CREATE TABLE `tbltitlegebruiker` (
 --
 
 INSERT INTO `tbltitlegebruiker` (`id`, `userid`, `titleid`) VALUES
-(1, 12, 1);
+(1, 12, 1),
+(2, 12, 3);
 
 -- --------------------------------------------------------
 
@@ -560,7 +569,7 @@ ALTER TABLE `tblvrienden`
 -- AUTO_INCREMENT voor een tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT voor een tabel `levelgroups`
@@ -596,7 +605,7 @@ ALTER TABLE `tblgebruikers`
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_packsbought`
 --
 ALTER TABLE `tblgebruiker_packsbought`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
@@ -614,25 +623,25 @@ ALTER TABLE `tblkaart`
 -- AUTO_INCREMENT voor een tabel `tblpackcards`
 --
 ALTER TABLE `tblpackcards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpacks`
 --
 ALTER TABLE `tblpacks`
-  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `packId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT voor een tabel `tbltitels`
 --
 ALTER TABLE `tbltitels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT voor een tabel `tbltitlegebruiker`
 --
 ALTER TABLE `tbltitlegebruiker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`

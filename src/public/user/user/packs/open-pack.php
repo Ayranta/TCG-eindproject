@@ -97,26 +97,17 @@ echo '
       ['type' => 'i', 'value' => $newcard],
     );
   }
-    if ($insert) {
-      ?>
-      <div class="flex flex-wrap gap-3 p-20 place-content-center">
-        <a href="/member/user/shop">go back to the shop</a>
-      </div>
-      <?php
-      exit();
-    }else{
-      ?>
+   ?>
       <div class="flex flex-wrap gap-3 mt-2 place-content-center ">
         <a class="underline" href="/member/user/shop">go back to the shop</a>
       </div>
-      <?php
-    }
+    <?php
 
     // header('Location: /dashboard/cards/add?error=notAddedCard');
   exit();
   
 
-}
+
 
 
 ?>
