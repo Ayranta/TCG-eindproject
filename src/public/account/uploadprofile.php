@@ -22,7 +22,7 @@ $allowed = array('jpg', 'jpeg', 'png', 'jfif');
 
 if (in_array($fileActualExt, $allowed)){
     if($file_error === 0){
-        if($file_size < 1000/* aantal kilobytes een foto mag zijn '1mb' */){
+        if($file_size < 1000000/* aantal kilobytes een foto mag zijn '1mb' */){
             $file_name_new = uniqid('', true).".".$fileActualExt;
             $fileDestination = 'public/img/profilePic/'.$file_name_new;
             move_uploaded_file($file_tmp, $fileDestination);
