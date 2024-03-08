@@ -37,8 +37,10 @@ $categorieen = fetchSingle('SELECT * FROM `kaart_categorieen`');
             <th><?php echo $categorie['id'] ?></th>
             <td><?php echo $categorie['naam'] ?></td>
             <td class=""><span class="shadow rounded-full text-black p-2 bg-[#<?php echo $categorie['kleur hex'] ?>]"><?php echo $categorie['kleur hex'] ?></span></td>
+        <?php if($categorie['id'] !== 10){ ?>
             <td ><a href="/dashboard/categorieen/change?categoryid=<?php echo $categorie['id']?>"><button class="btn btn-primary">change</button></a></td>
             <td ><a href="/dashboard/categorieen/delete?categoryid=<?php echo $categorie['id'] ?>"><button class="btn btnc-red">delete</button></a></td>
+        <?php } ?>
         </tr>
         </tbody>
         <?php } ?>

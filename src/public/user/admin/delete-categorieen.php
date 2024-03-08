@@ -9,9 +9,12 @@ if(isset($_GET['categoryid'])){
     if (isset($_POST['button'])) {
       if($_POST['button']==='yes'){
         
+        $select_category = fetch('SELECT * FROM kaart_categorieen WHERE `id` = ? ',['type' => 'i', 'value' => $categoryid]);
         $delete_category=insert('DELETE FROM kaart_categorieen WHERE `id` = ? ',['type' => 'i', 'value' => $categoryid]);
-
-        if($delete_category){
+        $update_category = insert('UPDATE tblkaart SET categorie = ? WHERE categorie = ? ',['type' => 's', 'value' => 'Default'],['type' => 's', 'value' => $select_category['naam']]);
+        
+        
+        if($delete_category&&$update_category){
             header('Location: /dashboard/categorieen?success=deleteProduct');
         }else{
             header('Location: /dashboard/categorieen?error=deleteProduct');

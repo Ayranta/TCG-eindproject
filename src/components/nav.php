@@ -6,19 +6,24 @@ require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $yourfriendrequest = false;
 if ($user) {
-  $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
+  $profiledata = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
   ['type' => 'i', 'value' => $user]);
 
   $data = fetch('SELECT * FROM tblgebruikers WHERE gebruikerid = ?', [
     'type' => 'i',
     'value' => $userid,
   ]);
-  $theme = ($change_theme["theme"] === 'dark') ? 'light' : 'dark';
-  $_SESSION['profielfoto'] = $change_theme['profielfoto'];
+  $theme = ($profiledata["theme"] === 'dark') ? 'light' : 'dark';
+  $_SESSION['profielfoto'] = $profiledata['profielfoto'];
 
   $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
     'type' => 'i',
     'value' => $userid,
+  ]);
+
+  $usertitle = fetch('SELECT * FROM tbltitels WHERE id = ?', [
+    'type' => 'i',
+    'value' => $profiledata['titleid'],
   ]);
   
   $admin = fetchsingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
@@ -49,7 +54,7 @@ if(isset($user)){
   $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
     'type' => 'i',
    
-    'value' => $change_theme['Level'],
+    'value' => $profiledata['Level'],
   ]);
 
 
@@ -150,16 +155,18 @@ if(isset($user)){
       <div class="relative">
           <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
           <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
-              <span class="text-white text-lg ">'.$change_theme['Level'].'</span>
+              <span class="text-white text-lg ">'.$profiledata['Level'].'</span>
           </div>
       </div>
   </div>
 
+  '.($usertitle['name'] != 0 ? '<p class = "mr-1 font-bold">['.$usertitle['name'].']</p>' : '').'
+    
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">
       <summary class="m-1 btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-        <img src="/public/img/profilePic/'.$change_theme['profielfoto'].'" alt="foto";" " class="w-12 h-12">
+        <img src="/public/img/profilePic/'.$profiledata['profielfoto'].'" alt="foto";" " class="w-12 h-12">
         </div>
       </summary>
       <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
@@ -169,6 +176,7 @@ if(isset($user)){
         <li> <a href="/user/friends" class="mr-2">friends</a> </li>
         <li>
         <li> <a href="/account/uploadprofile" class="mr-2">profile picture</a> </li>
+        <li><a href="/dashboard/title/user">your titles</a></li>
         <li>
         <details class="dropdown dropdown-left">
           <summary class="m-1">Admin Dashboard</summary>
@@ -179,6 +187,7 @@ if(isset($user)){
             <li><a href="/admin/level">levels</a></li>
             <li><a href="/admin/user/packs">packs</a></li>
             <li><a href="/dashboard/titels">titles</a></li>
+           
             
             
       </ul>
