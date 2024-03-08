@@ -27,7 +27,7 @@ if(isset($_SESSION['login'])){
 if($levelofPlayer['GroupID'] == 1){
 
     ?>
-  <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-20">
+  <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-16">
     <div class="">
       <a href=/levels/level-blueprint>
       <img src="public\img\arenaIMG\arena_barbarian.png" alt="Arena1" width="600" height="300" />
@@ -38,7 +38,7 @@ if($levelofPlayer['GroupID'] == 1){
 
 }elseif($levelofPlayer['GroupID'] == 2){
   ?>
-  <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
+  <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-16">
     <div class="">
     <a href=/levels/level-blueprint>
       <img src="public\img\arenaIMG\arena_bone.png" alt="Arena2" width="600" height="300" />

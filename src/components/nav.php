@@ -158,8 +158,9 @@ if(isset($user)){
           </div>
       </div>
   </div>
+  
+  '.(isset($usertitle['name']) && $usertitle['name'] != 0 ? '<p class = "mr-1 font-bold">['.$usertitle['name'].']</p>' : '').'
 
-  '.($usertitle['name'] != 0 ? '<p class = "mr-1 font-bold">['.$usertitle['name'].']</p>' : '').'
     
       <p>'.$data['gebruikernaam'].'</p>
       <details class="dropdown dropdown-end">
