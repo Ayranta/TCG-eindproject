@@ -14,7 +14,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once LIB . '/util/util.php';
 
 $levelId = $_GET['levelId'];
-$query = "SELECT * FROM PlayerLevels WHERE LevelID = ?";
+$query = "SELECT * FROM playerlevels WHERE LevelID = ?";
 $data = fetch($query, ['type' => 'i', 'value' => $levelId]);
 
 
@@ -37,7 +37,7 @@ function updateLevel($levelId, $formData) {
     $newGroupID = $formData['GroupID'];
     $newExpirience = $formData['ExpirienceRequired'];
 
-    $query = 'SELECT * FROM PlayerLevels WHERE LevelID = ?';
+    $query = 'SELECT * FROM playerlevels WHERE LevelID = ?';
     $data = fetch($query, ['type' => 'i', 'value' => $levelId]);
     
     if (
@@ -54,7 +54,7 @@ function updateLevel($levelId, $formData) {
     }
     
     $query =
-      'UPDATE PlayerLevels SET GroupID = ?, ExpirienceRequired = ? WHERE LevelID = ?';
+      'UPDATE playerlevels SET GroupID = ?, ExpirienceRequired = ? WHERE LevelID = ?';
     $update = insert(
       $query,
       ['type' => 's', 'value' => $newGroupID],

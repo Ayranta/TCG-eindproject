@@ -1,5 +1,5 @@
 <?php 
-$levelData=fetchSingle('SELECT * From PlayerLevels');
+$levelData=fetchSingle('SELECT * From playerlevels');
 
 $groupData = fetchSingle('SELECT * FROM levelgroups');
 

@@ -51,7 +51,7 @@ $namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
 //check the levels of the player
 if(isset($user)){
 
-  $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
+  $levelofPlayer=fetch('SELECT * From playerlevels Where LevelID = ? ',[
     'type' => 'i',
    
     'value' => $profiledata['Level'],

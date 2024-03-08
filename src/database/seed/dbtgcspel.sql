@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 05 mrt 2024 om 19:02
--- Serverversie: 10.4.28-MariaDB
--- PHP-versie: 8.2.4
+-- Host: localhost
+-- Gegenereerd op: 08 mrt 2024 om 09:24
+-- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP-versie: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -298,20 +298,21 @@ CREATE TABLE `tblgebruiker_profile` (
   `admin` int(20) NOT NULL,
   `Level` int(11) NOT NULL DEFAULT 1,
   `Expirience` int(11) NOT NULL,
-  `coins` double NOT NULL DEFAULT 0
+  `coins` double NOT NULL DEFAULT 0,
+  `titleid` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `tblgebruiker_profile`
 --
 
-INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`, `coins`) VALUES
-(9, 12, 'light', '65e651e4ce0f05.58493749.jpg', 1, 1, 0, 5106),
-(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 0),
-(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
-(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0),
-(18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0);
+INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`, `coins`, `titleid`) VALUES
+(9, 12, 'light', '65e651e4ce0f05.58493749.jpg', 1, 1, 0, 5106, 0),
+(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 0, 0),
+(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
+(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
+(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
+(18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -425,6 +426,25 @@ INSERT INTO `tbltitels` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `tbltitlegebruiker`
+--
+
+CREATE TABLE `tbltitlegebruiker` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `titleid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `tbltitlegebruiker`
+--
+
+INSERT INTO `tbltitlegebruiker` (`id`, `userid`, `titleid`) VALUES
+(1, 12, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `tblvrienden`
 --
 
@@ -521,6 +541,12 @@ ALTER TABLE `tbltitels`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `tbltitlegebruiker`
+--
+ALTER TABLE `tbltitlegebruiker`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexen voor tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
@@ -601,6 +627,12 @@ ALTER TABLE `tblpacks`
 --
 ALTER TABLE `tbltitels`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT voor een tabel `tbltitlegebruiker`
+--
+ALTER TABLE `tbltitlegebruiker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`

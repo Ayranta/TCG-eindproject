@@ -16,7 +16,7 @@ if(isset($_SESSION['login'])){
     'value' => $userid,
   ]);
 
-  $levelofPlayer=fetch('SELECT * From PlayerLevels Where LevelID = ? ',[
+  $levelofPlayer=fetch('SELECT * From playerlevels Where LevelID = ? ',[
     'type' => 'i',
    
     'value' => $arena['Level'],
