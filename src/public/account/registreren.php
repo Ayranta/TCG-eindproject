@@ -76,8 +76,19 @@ function insertUser($username, $password, $email) {
     ['type' => 's', 'value' => 'light'],
     ['type' => 'i', 'value' => '0'],
   );
+  $kaarten1 = insert(
+    "INSERT INTO tblgebruikerkaart (KaartID, GebruikerID) VALUES (?, ?)",
+    ["type" => 'i', 'value' => 26],
+    ["type" => 'i', 'value' => $userId]
+   );
+  $kaarten2 = insert(
+   "INSERT INTO tblgebruikerkaart (KaartID, GebruikerID) VALUES (?, ?)",
+   ["type" => 'i', 'value' => 31],
+   ["type" => 'i', 'value' => $userId]
+  );
 
-  return $userData && $userProfileData;
+
+  return $userData && $userProfileData && $kaarten2 && $kaarten1;
 }
 
 ?>

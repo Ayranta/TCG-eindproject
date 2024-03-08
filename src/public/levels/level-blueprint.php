@@ -44,11 +44,11 @@ echo '<div class="flex gap-4 text-center" >';
 <?
 //buttons
 ?>
-<form method="post" action="/levels/level-blueprint" class="flex flex-col gap-4 w-80 md:max-w-2xl p-4 shadow-md rounded-2xl mx-auto mt-16">
-  <button name="challange" class="btn justify-center p-30">Attack</button>
+<form method="post" action="/levels/level-blueprint" class="flex flex-col gap-4 w-80 align-middle md:max-w-2xl p-4 rounded-2xl mx-auto mt-16 pt-6">
+  <button name="challange" class="btn justify-center p-30 items-center ">Attack</button>
 </form>
-<form method="post" action="/" class="flex flex-col gap-4 w-80 md:max-w-2xl p-4 shadow-md rounded-2xl mx-auto mt-16">
-      <button name="back" class="btn justify-center p-30">Go Back</button>
+<form method="post" action="/" class="flex flex-col gap-4 w-80 md:max-w-2xl p-4 p-5 align-middle rounded-2xl mx-auto mt-16 pt-6">
+      <button name="back" class="btn justify-center">Go Back</button>
       </form>
 
 
@@ -99,13 +99,13 @@ echo '<div class="flex gap-4 text-center" >';
 
 if(isset($_POST["challange"])){
 
-  if($levensenemy < $levensgebruiker){
+  if($levensenemy > $levensgebruiker){
   ?>
 <p class="text-justify-center text-center uppercase">YOU LOSE</p>
   <?php
   exit;
   die;
-  }elseif($levensenemy > $levensgebruiker){
+  }elseif($levensenemy < $levensgebruiker){
     ?>
     <p class="text-justify-center text-center uppercase">YOU WIN</p>
     <?php
