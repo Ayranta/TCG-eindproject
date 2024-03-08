@@ -147,6 +147,36 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/dashboard/titels' => [
+    'view' => '/user/admin/title/title.php',
+    'title' => 'title',
+    'nav' => true,
+    'footer' => true,
+  ],
+  '/dashboard/title/add' => [
+    'view' => '/user/admin/title/add-title.php',
+    'title' => 'add title',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/dashboard/title/change' => [
+    'view' => '/user/admin/title/change-title.php',
+    'title' => 'title change',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/dashboard/title/user' => [
+    'view' => '/user/user/title/user-titles.php',
+    'title' => 'user titles',
+    'nav' => true,
+    'footer' => false,
+  ],
+  '/dashboard/title/user/equip' => [
+    'view' => '/user/user/title/equip-user-titles.php',
+    'title' => 'equip titles',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/dashboard/categorieen' => [
     'view' => '/user/admin/categorieen.php',
     'title' => 'categorieen',
