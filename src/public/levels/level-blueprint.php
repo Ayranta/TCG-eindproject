@@ -2,9 +2,8 @@
   <source src="public\music\Uprising.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
-
-
 <?php
+
 
 
 
@@ -56,6 +55,34 @@ echo '<div class="flex gap-4 text-center" >';
 <form method="post" action="/levels/level-blueprint" class="flex flex-col gap-4 w-80 align-middle md:max-w-2xl p-4 rounded-2xl mx-auto mt-16 pt-6">
   <button name="challange" class="btn justify-center p-30 items-center ">Attack</button>
 </form>
+<?php
+
+
+
+if(isset($_POST["challange"])){
+
+  if($levensenemy > $levensgebruiker){
+  ?>
+<p class="text-justify-center text-center uppercase">YOU LOSE</p>
+  <?php
+  exit;
+  die;
+  }elseif($levensenemy < $levensgebruiker){
+    ?>
+    <p class="text-justify-center text-center uppercase">YOU WIN</p>
+    <?php
+    exit;
+    die;
+  }else{
+    ?>
+    <p class="text-justify-center text-center uppercase">DRAW</p>
+    <?php
+    exit;
+    die;
+  }
+
+}
+?>
 <form method="post" action="/" class="flex flex-col gap-4 w-80 md:max-w-2xl p-4 p-5 align-middle rounded-2xl mx-auto mt-16 pt-6">
       <button name="back" class="btn justify-center">Go Back</button>
       </form>
@@ -104,30 +131,3 @@ echo '<div class="flex gap-4 text-center" >';
   ?>
 </div>
 
-<?php
-
-if(isset($_POST["challange"])){
-
-  if($levensenemy > $levensgebruiker){
-  ?>
-<p class="text-justify-center text-center uppercase">YOU LOSE</p>
-  <?php
-  exit;
-  die;
-  }elseif($levensenemy < $levensgebruiker){
-    ?>
-    <p class="text-justify-center text-center uppercase">YOU WIN</p>
-    <?php
-    exit;
-    die;
-  }else{
-    ?>
-    <p class="text-justify-center text-center uppercase">DRAW</p>
-    <?php
-    exit;
-    die;
-  }
-
-}
-exit;
-?>
