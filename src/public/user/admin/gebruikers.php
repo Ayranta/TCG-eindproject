@@ -50,7 +50,7 @@ foreach ($users as $user) {
   echo '
   <div class="card card-side bg-base-100 shadow mx-80   ">
     <figure class="rounded-full mx-4 w-28 h-28 my-auto">
-      <img src="/public/img/profilePic/'.$user['profielfoto'].'" alt="Movie"/>
+      <img  class="w-15 h-25" src="/public/img/profilePic/'.$user['profielfoto'].'" alt="Movie"/>
     </figure>
     <div class="card-body">
       <h2 class="card-title">' . $user['gebruikernaam'] . '</h2>
