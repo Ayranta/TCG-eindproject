@@ -147,7 +147,7 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
-  '/dashboard/titels' => [
+  '/dashboard/title' => [
     'view' => '/user/admin/title/title.php',
     'title' => 'title',
     'nav' => true,

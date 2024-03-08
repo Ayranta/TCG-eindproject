@@ -30,7 +30,7 @@ $titelgebruiker = fetchSingle('SELECT * FROM `tbltitlegebruiker` WHERE userid = 
         </thead>
         <?php foreach($titelgebruiker as $titel){ 
             $titels = fetch('SELECT * FROM tbltitels WHERE id = ? ', ['type' => 'i', 'value' => $titel['titleid']]);
-           $usertitle = fetch('SELECT * FROM tblgebruiker_profile WHERE userid = ? AND titleid = ? ', ['type' => 'i', 'value' => $userid], ['type'=> 'i', 'value' => $titel['titleid']]);
+            $usertitle = fetch('SELECT * FROM tblgebruiker_profile WHERE userid = ? AND titleid = ? ', ['type' => 'i', 'value' => $userid], ['type'=> 'i', 'value' => $titel['titleid']]);
            
             ?>
         <tbody>
@@ -40,13 +40,21 @@ $titelgebruiker = fetchSingle('SELECT * FROM `tbltitlegebruiker` WHERE userid = 
             <th><?php echo $titels['id'] ?></th>
             <td><?php echo $titels['name'] ?></td>
             <td><?php echo $titels['description'] ?></td>
-            <?php if($usertitle['titleid'] >= 1){ ?>
-                <td ><a href="/dashboard/title/user/equip?titleid=<?php echo $titel['id']?>&unequip=1"><button class="btn btn-primary">unequip</button></a></td>
+            <?php
+            if(isset($usertitle['titleid'])) {
+             if($usertitle['titleid'] >= 1){ ?>
+                <td ><a href="/dashboard/title/user/equip?titleid=<?php echo $titel['titleid']?>&unequip=1"><button class="btn btn-primary">unequip</button></a></td>
             <?php }else{
                 ?>
-                <td ><a href="/dashboard/title/user/equip?titleid=<?php echo $titel['id']?>&unequip=0 ?>"><button class="btn btn-primary">equip</button></a></td>
+                <td ><a href="/dashboard/title/user/equip?titleid=<?php echo $titel['titleid']?>&unequip=0 ?>"><button class="btn btn-primary">equip</button></a></td>
                 <?php
-            } ?>
+            }
+         }else{
+            ?>
+            <td ><a href="/dashboard/title/user/equip?titleid=<?php echo $titel['titleid']?>&unequip=0"><button class="btn btn-primary">equip</button></a></td>
+            <?php
+         
+         } ?>
         </tr>
         </tbody>
         <?php } ?>
