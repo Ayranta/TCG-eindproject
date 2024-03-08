@@ -1,3 +1,8 @@
+<audio autoplay loop>
+  <source src="public\music\Lobby.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 <?php
 
 include "./functions/Gebruikerfuncties.php";

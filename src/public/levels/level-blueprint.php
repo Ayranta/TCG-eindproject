@@ -1,4 +1,13 @@
+<audio autoplay loop>
+  <source src="public\music\Uprising.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
 <?php
+
+
+
 
 $random = fetch("SELECT kaartID FROM tblkaart");
 $random_card_picker = $random[rand(0, count($random) - 1)];

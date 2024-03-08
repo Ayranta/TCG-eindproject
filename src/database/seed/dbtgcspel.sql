@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 08 mrt 2024 om 14:37
--- Serverversie: 10.4.28-MariaDB
--- PHP-versie: 8.2.4
+-- Gegenereerd op: 08 mrt 2024 om 14:48
+-- Serverversie: 10.4.27-MariaDB
+-- PHP-versie: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -310,10 +310,10 @@ CREATE TABLE `tblgebruiker_profile` (
 
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`, `coins`, `titleid`) VALUES
 (9, 12, 'light', '65e651e4ce0f05.58493749.jpg', 1, 1, 0, 5557, 0),
-(11, 14, 'dark', 'https://avatars.githubusercontent.com/u/64209400?v=4', 1, 1, 0, 0, 0),
-(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
-(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
-(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
+(11, 14, 'dark', 'default.png', 1, 1, 0, 0, 0),
+(14, 19, 'light', 'default.png', 0, 1, 0, 0, 0),
+(15, 20, 'light', 'default.png', 0, 1, 0, 0, 0),
+(16, 21, 'light', 'default.png', 0, 1, 0, 0, 0),
 (18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
