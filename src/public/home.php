@@ -29,7 +29,7 @@ if($levelofPlayer['GroupID'] == 1){
     ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-16">
     <div class="">
-      <a href=/levels/level-blueprint>
+      <a href=/levels/randomizer>
       <img src="public\img\arenaIMG\arena_barbarian.png" alt="Arena1" width="600" height="300" />
     </div>
 </section>
@@ -40,7 +40,7 @@ if($levelofPlayer['GroupID'] == 1){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-16">
     <div class="">
-    <a href=/levels/level-blueprint>
+    <a href=/levels/randomizer>
       <img src="public\img\arenaIMG\arena_bone.png" alt="Arena2" width="600" height="300" />
     </div>
 </section>
@@ -50,7 +50,7 @@ if($levelofPlayer['GroupID'] == 1){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
-    <a href=/levels/level-blueprint>
+    <a href=//levels/randomizer>
       <img src="public\img\arenaIMG\arena6.png" alt="Arena3" width="600" height="300" />
     </div>
 </section>
@@ -59,7 +59,7 @@ if($levelofPlayer['GroupID'] == 1){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
-    <a href=/levels/level-blueprint>
+    <a href=/levels/randomizer>
       <img src="public\img\arenaIMG\arena_spell.png" alt="Arena4" width="600" height="300" />
     </div>
 </section>
@@ -68,7 +68,7 @@ if($levelofPlayer['GroupID'] == 1){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
-    <a href=/levels/level-blueprint>
+    <a href=/levels/randomizer>
       <img src="public\img\arenaIMG\Legendary_Arena.png" alt="Last Arena" width="600" height="300" />
     </div>
 </section>

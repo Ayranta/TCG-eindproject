@@ -29,7 +29,7 @@
     $fileExt = explode('.', $file_name);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png');
+    $allowed = array('jpg', 'jpeg', 'png','jfif');
 
     if (in_array($fileActualExt, $allowed)){
         if($file_error === 0){

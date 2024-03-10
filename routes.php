@@ -135,6 +135,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/levels/randomizer' => [
+    'view' => '/levels/randomizer.php',
+    'title' => 'battle',
+    'nav' => false,
+    'footer' => false,
+  ],
   '/dashboard/users' => [
     'view' => '/user/admin/gebruikers.php',
     'title' => 'see users',
