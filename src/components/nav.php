@@ -88,7 +88,7 @@ if(isset($user)){
       
       <li tabindex="0">
         <details>
-          <summary>talen</summary>
+          <summary><?=Vertalen('Languages')?></summary>
           <ul class="p-2">
             <li><a href="/?lang=en">English</a></li>
             <li><a href="/?lang=nl">Nederlands</a></li>
@@ -107,12 +107,12 @@ if(isset($user)){
             <?php
             if($admin[0]['admin'] === 1){
             ?>
-            <li><a href="/admin/user/toevoegenkaart"> maak kaart</a></li>
-            <li><a href="/admin/user/kaart">bekijk kaarten admin</a></li>
+            <li><a href="/admin/user/toevoegenkaart"><?=Vertalen('Make Card')?></a></li>
+            <li><a href="/admin/user/kaart"><?=Vertalen('See cards admin')?></a></li>
             <?php
           }
             ?>
-            <li><a href="/admin/user/kaartGebruiker">bekijk kaarten</a></li>
+            <li><a href="/admin/user/kaartGebruiker"><?=Vertalen('See cards')?></a></li>
           </ul>
         </details>  
     </li>

@@ -50,7 +50,7 @@ if($levelofPlayer['GroupID'] == 1){
   ?>
   <section class="hero container max-w-screen-lg mx-auto text-center pb-10 p-60">
     <div class="">
-    <a href=//levels/randomizer>
+    <a href=/levels/randomizer>
       <img src="public\img\arenaIMG\arena6.png" alt="Arena3" width="600" height="300" />
     </div>
 </section>
