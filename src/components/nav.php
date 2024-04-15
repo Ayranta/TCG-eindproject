@@ -69,7 +69,7 @@ if(isset($user)){
 
 ?>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 z-100">
   <div class="navbar-start">
 
     <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>

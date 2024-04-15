@@ -32,7 +32,9 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
   <script src="./tailwind.config.js"></script>
   <script src="https://kit.fontawesome.com/de1fdb2223.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/public/css/theme.css">
+  <link rel="stylesheet" href="public\css\background.css">
   <title><?php echo $route['title']; ?></title>
+
 </head>
 
 <body>
@@ -45,5 +47,29 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
 
     <?php //$route['footer'] ? include COMPONENTS . '/footer.php' : null; ?>
   </div>
+  
+<div class="area">
+      <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
 </body>
 </html>
