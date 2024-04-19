@@ -47,6 +47,14 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
 
     <?php //$route['footer'] ? include COMPONENTS . '/footer.php' : null; ?>
   </div>
+  <?php
+  if (isset($_SESSION['login'])) {
+    
+    $userid = $_SESSION['login'];
+    $update = insert('UPDATE tblgebruikers SET last_active = NOW() WHERE gebruikerId = ?', ['type' => 'i', 'value' => $userid]);
+    var_dump($update);
+}
+  ?>
   
 <div class="area">
       <ul class="circles">
