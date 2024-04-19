@@ -1,38 +1,4 @@
-
-<div class="area">
-      <ul class="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-      </ul>
 <?php
-/*<div>
-  HELLO FROM HOME.
-  ik hoop dat dit helpt met de verwarring
-</div>*/
-
-
-//var_dump($arena);
-
-
-
 if(isset($_SESSION['login'])){
 
   $arena = fetch('SELECT * FROM tblgebruiker_profile WHERE userid = ?' ,[
