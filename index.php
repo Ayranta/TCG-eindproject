@@ -52,7 +52,7 @@ $theme = $data ? THEME_MAPPING[$data['theme']] : THEME_MAPPING['default'];
     
     $userid = $_SESSION['login'];
     $update = insert('UPDATE tblgebruikers SET last_active = NOW() WHERE gebruikerId = ?', ['type' => 'i', 'value' => $userid]);
-    var_dump($update);
+  
 }
   ?>
   
