@@ -1,7 +1,5 @@
-
-<?php 
+<?php
 require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
-
 
 $user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
@@ -69,136 +67,93 @@ if(isset($user)){
 
 ?>
 
-<div class="navbar bg-base-100 z-100">
-  <div class="navbar-start">
-
-    <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
-
-  
-
-<audio autoplay loop>
-  <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      
-      <li tabindex="0">
-        <details>
-          <summary><?=Vertalen('Languages')?></summary>
-          <ul class="p-2">
-            <li><a href="/?lang=en">English</a></li>
-            <li><a href="/?lang=nl">Nederlands</a></li>
-            <li><a href="/?lang=fr">Français</a></li>
-            <li><a href="/?lang=zh">中文</a></li>
-          </ul>
-        </details>
-      </li>
-
-      <?php if(isset($_SESSION["login"])){
-      ?>
-      <li tabindex="0">
-      <details>
-          <summary><?=Vertalen('Card')?></summary>
-          <ul class="p-2">
-            <?php
-            if($admin[0]['admin'] === 1){
-            ?>
-            <li><a href="/admin/user/toevoegenkaart"><?=Vertalen('Make Card')?></a></li>
-            <li><a href="/admin/user/kaart"><?=Vertalen('See cards admin')?></a></li>
-            <?php
-          }
-            ?>
-            <li><a href="/admin/user/kaartGebruiker"><?=Vertalen('See cards')?></a></li>
-          </ul>
-        </details>  
-    </li>
-    <?php
-    }
-  ?>
-    </ul>
-  </div>
- 
- 
-  <div class="navbar-end">
-
-  <?php if ($yourfriendrequest){ 
-    echo'
-  <div class="alert shadow-lg flex mx-8" >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      <div class ="flex[1.2]">
-        <h3 class="font-bold">Friend request</h3>
-        <div class="text-xs">from '.$namesender['gebruikernaam'] .'</div>
+<div x-data="{ open: true }">
+    <!-- Sidebar Overlay -->
+    <div x-show="open" class="fixed inset-0 z-50 overflow-hidden">
+      <div x-show="open" x-transition:enter="transition-opacity ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+      <!-- Sidebar Content -->
+      <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
+        <div x-show="open" x-transition:enter="transition-transform ease-out duration-300" x-transition:enter-start="transform translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="transition-transform ease-in duration-300" x-transition:leave-start="transform translate-x-0" x-transition:leave-end="transform translate-x-full" class="w-screen max-w-md">
+          <div class="h-full flex flex-col py-6 bg-white shadow-xl">
+            <!-- Sidebar Header -->
+            <div class="flex items-center justify-between px-4">
+              <h2 class="text-xl font-semibold text-black"><?=Vertalen('Trading Card Game')?></h2>
+              <button x-on:click="open = false" class="text-gray-500 hover:text-gray-700">
+                <span class="sr-only">Close</span>
+                <svg class="h-6 w-6" x-description="Heroicon name: x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+          
+            <!-- Sidebar Content -->
+            <div class="mt-4 px-4 h-full overflow-auto">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Card 1 -->
+                
+                <nav class="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
+    <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div class="grid place-items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+          <path fill-rule="evenodd" d="M2.25 2.25a.75.75 0 000 1.5H3v10.5a3 3 0 003 3h1.21l-1.172 3.513a.75.75 0 001.424.474l.329-.987h8.418l.33.987a.75.75 0 001.422-.474l-1.17-3.513H18a3 3 0 003-3V3.75h.75a.75.75 0 000-1.5H2.25zm6.04 16.5l.5-1.5h6.42l.5 1.5H8.29zm7.46-12a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zm-3 2.25a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0V9zm-3 2.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z" clip-rule="evenodd"></path>
+        </svg>
       </div>
-      <div class="flex[0.8]">
-      <a href="/src/lib/user/member/acceptFriendrequest.php"><button class="btn btn-ghost">Accept</button></a>
-      <a href ="/src/lib/user/member/denyFriendrequest.php"><button class="btn btn-ghost">Deny</button></a>
-      </div>
+      Blocks
     </div>
-    
-        <?php } ?>
+    <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div class="grid place-items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+          <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clip-rule="evenodd"></path>
+        </svg>
+      </div>Books
     </div>
-    ';
-     } ?>
-   
-        
-
-  <?php echo isset($_SESSION['login'])
-  
-      ? '
-      
-
-      <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
-
-      <div class="flex items-center justify-center mr-2">
-      <div class="relative">
-          <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
-          <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
-              <span class="text-white text-lg ">'.$profiledata['Level'].'</span>
-          </div>
-      </div>
-  </div>
-  
-  '.(isset($usertitle['name']) && $usertitle['name'] != 0 ? '<p class = "mr-1 font-bold">['.$usertitle['name'].']</p>' : '').'
-
-    
-      <p>'.$data['gebruikernaam'].'</p>
-      <details class="dropdown dropdown-end">
-      <summary class="m-1 btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-        <img src="/public/img/profilePic/'.$profiledata['profielfoto'].'" alt="foto";" " class="w-12 h-12">
+    <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div class="grid place-items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+          <path fill-rule="evenodd" d="M6.912 3a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H6.912zm13.823 9.75l-2.213-7.191A1.5 1.5 0 0017.088 4.5H6.912a1.5 1.5 0 00-1.434 1.059L3.265 12.75H6.11a3 3 0 012.684 1.658l.256.513a1.5 1.5 0 001.342.829h3.218a1.5 1.5 0 001.342-.83l.256-.512a3 3 0 012.684-1.658h2.844z" clip-rule="evenodd"></path>
+        </svg>
+      </div>Example Pages <div class="grid place-items-center ml-auto justify-self-end">
+        <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-blue-500/20 text-blue-900 py-1 px-2 text-xs rounded-full" style="opacity: 1;">
+          <span class="">14</span>
         </div>
-      </summary>
-      <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
-        <li><a href = "/account/logout">logout</a></li>
-        <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
-        <li>    <a href="/account/settings/edit" class="mr-2"> settings </a> </li>
-        <li> <a href="/user/friends" class="mr-2">friends</a> </li>
-        <li>
-        <li> <a href="/account/uploadprofile" class="mr-2">profile picture</a> </li>
-        <li><a href="/dashboard/title/user">your titles</a></li>
-        '.( $admin[0]['admin'] ? ' <li>
-        <details class="dropdown dropdown-left">
-          <summary class="m-1">Admin Dashboard</summary>
-          <ul class="mr-4 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
-            
-            <li><a href="/dashboard/users">gebruikers</a></li>
-            <li><a href="/dashboard/categorieen">categorieen</a></li>
-            <li><a href="/admin/level">levels</a></li>
-            <li><a href="/admin/user/packs">packs</a></li>
-            <li><a href="/dashboard/title">titles</a></li>
-           
-            
-            
-      </ul>
-    </details>' : '').'
-       
-        ':
-      '<a href="/account/login" class="btn">Login</a>'; ?>
+      </div>
+    </div>
+    <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div class="grid place-items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+          <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div>Profile
+    </div>
+    <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div class="grid place-items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+          <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 00-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 00-2.282.819l-.922 1.597a1.875 1.875 0 00.432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 000 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 00-.432 2.385l.922 1.597a1.875 1.875 0 002.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 002.28-.819l.923-1.597a1.875 1.875 0 00-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 000-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 00-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 00-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 00-1.85-1.567h-1.843zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" clip-rule="evenodd"></path>
+        </svg>
+      </div>Settings
+    </div>
+    <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div class="grid place-items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+          <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div><a href = "/account/logout">Log Out</a>
+    </div>
+  </nav>
+                <!-- Add more cards as needed -->
+              </div>
+            </div>
+            <!-- Sidebar Footer -->
+            <div class="mt-6 px-4">
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Your main content goes here -->
+    <!-- Open sidebar button -->
+    <button x-on:click="open = true" class="px-4 py-2 text-white "> <img src="public\img\sidebarICON.png" alt="SideBar Icon" style="width:50px;height:50px;"> </button>
   </div>
-</div>
-
-
+<!-- Include Alpine.js -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>

@@ -1,114 +1,199 @@
-<div class="flex justify-center items-center min-h-screen">
-  <div x-data="{ open: true }">
-    <!-- Sidebar Overlay -->
-    <div x-show="open" class="fixed inset-0 z-50 overflow-hidden">
-      <div x-show="open" x-transition:enter="transition-opacity ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-      <!-- Sidebar Content -->
-      <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-        <div x-show="open" x-transition:enter="transition-transform ease-out duration-300" x-transition:enter-start="transform translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="transition-transform ease-in duration-300" x-transition:leave-start="transform translate-x-0" x-transition:leave-end="transform translate-x-full" class="w-screen max-w-md">
-          <div class="h-full flex flex-col py-6 bg-white shadow-xl">
-            <!-- Sidebar Header -->
-            <div class="flex items-center justify-between px-4">
-              <h2 class="text-xl font-semibold text-black">Search</h2>
-              <button x-on:click="open = false" class="text-gray-500 hover:text-gray-700">
-                <span class="sr-only">Close</span>
-                <svg class="h-6 w-6" x-description="Heroicon name: x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
-            <!-- Search Input -->
-            <div class="mt-4 px-4">
-              <input type="text" placeholder="Search post here" class="w-full p-2 border border-gray-300 rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
-            </div>
-            <div class="mt-4 px-4">
-              <p class="ml-2 text-gray-400">Results</p>
-            </div>
-            <!-- Sidebar Content -->
-            <div class="mt-4 px-4 h-full overflow-auto">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- Card 1 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 1</h3>
-                  <p class="text-gray-600">Content for card 1.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 2</h3>
-                  <p class="text-gray-600">Content for card 2.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 3</h3>
-                  <p class="text-gray-600">Content for card 3.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 4</h3>
-                  <p class="text-gray-600">Content for card 4.</p>
-                </div>
-                <!-- Card 5 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 5</h3>
-                  <p class="text-gray-600">Content for card 5.</p>
-                </div>
-                <!-- Card 6 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 6</h3>
-                  <p class="text-gray-600">Content for card 6.</p>
-                </div>
-                <!-- Card 7 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 7</h3>
-                  <p class="text-gray-600">Content for card 7.</p>
-                </div>
-                <!-- Card 8 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 8</h3>
-                  <p class="text-gray-600">Content for card 8.</p>
-                </div>
-                <!-- Card 9 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 9</h3>
-                  <p class="text-gray-600">Content for card 9.</p>
-                </div>
-                <!-- Card 10 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 10</h3>
-                  <p class="text-gray-600">Content for card 10.</p>
-                </div>
-                <!-- Card 11 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 11</h3>
-                  <p class="text-gray-600">Content for card 11.</p>
-                </div>
-                <!-- Card 12 -->
-                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                  <h3 class="text-lg font-semibold text-black mb-2">Card 12</h3>
-                  <p class="text-gray-600">Content for card 12.</p>
-                </div>
-                <!-- Add more cards as needed -->
-              </div>
-            </div>
-            <!-- Sidebar Footer -->
-            <div class="mt-6 px-4">
-              <button class="flex justify-center items-center bg-black text-white rounded-md text-sm p-2 gap-1">
-                <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 7C3 6.44772 3.44772 6 4 6H20C20.5523 6 21 6.44772 21 7C21 7.55228 20.5523 8 20 8H4C3.44772 8 3 7.55228 3 7ZM6 12C6 11.4477 6.44772 11 7 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H7C6.44772 13 6 12.5523 6 12ZM9 17C9 16.4477 9.44772 16 10 16H14C14.5523 16 15 16.4477 15 17C15 17.5523 14.5523 18 14 18H10C9.44772 18 9 17.5523 9 17Z" fill="currentColor"></path>
-                  </g>
-                </svg> Filters </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <!-- Your main content goes here -->
-    <!-- Open sidebar button -->
-    <button x-on:click="open = true" class="px-4 py-2 bg-black text-white rounded-md"> Open Sidebar </button>
+<?php 
+require $_SERVER['DOCUMENT_ROOT'] . '/src/public/lang.php';
+
+
+$user = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+
+
+$yourfriendrequest = false;
+if ($user) {
+  $profiledata = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $user]);
+
+  $data = fetch('SELECT * FROM tblgebruikers WHERE gebruikerid = ?', [
+    'type' => 'i',
+    'value' => $userid,
+  ]);
+  $theme = ($profiledata["theme"] === 'dark') ? 'light' : 'dark';
+  $_SESSION['profielfoto'] = $profiledata['profielfoto'];
+
+  $friendrequestData = fetchSingle('SELECT * From tblfriend_request Where receiverid = ? ' ,[
+    'type' => 'i',
+    'value' => $userid,
+  ]);
+
+  $usertitle = fetch('SELECT * FROM tbltitels WHERE id = ?', [
+    'type' => 'i',
+    'value' => $profiledata['titleid'],
+  ]);
+  
+  $admin = fetchSingle("SELECT admin FROM tblgebruiker_profile Where userid = ?",
+  ['type' => 'i', 'value' => $userid]);
+
+
+  foreach($friendrequestData as $data2){
+
+    if($data2['receiverid']==$userid){
+      $yourfriendrequest = true;
+      $friendrequestSender=$data2['senderid'];
+      break;
+
+    }
+    
+  }
+
+}
+if (isset($friendrequestSender)){
+$namesender = fetch('SELECT * From tblgebruikers Where gebruikerid = ?',[
+  'type' => 'i',
+  'value' => $friendrequestSender,
+]);
+}
+
+//check the levels of the player
+if(isset($user)){
+
+  $levelofPlayer=fetch('SELECT * From playerlevels Where LevelID = ? ',[
+    'type' => 'i',
+   
+    'value' => $profiledata['Level'],
+  ]);
+
+
+  $GroupLevelofPlayer=fetch('SELECT * From levelgroups Where GroupID = ?',[
+    'type' => 'i',
+    'value' => $levelofPlayer['GroupID'],
+  ]);
+}
+
+?>
+
+<div class="navbar bg-base-100 z-100">
+  <div class="navbar-start">
+
+    <a href="/" class="btn btn-ghost normal-case text-xl"><?=Vertalen('Trading Card Game')?></a>
+
+  
+
+<audio autoplay loop>
+  <source src="public\music\funny-kids_59sec-190857.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
   </div>
-</div>
-<!-- Include Alpine.js -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      
+      <li tabindex="0">
+        <details>
+          <summary><?=Vertalen('Languages')?></summary>
+          <ul class="p-2">
+            <li><a href="/?lang=en">English</a></li>
+            <li><a href="/?lang=nl">Nederlands</a></li>
+            <li><a href="/?lang=fr">Français</a></li>
+            <li><a href="/?lang=zh">中文</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <?php if(isset($_SESSION["login"])){
+      ?>
+      <li tabindex="0">
+      <details>
+          <summary><?=Vertalen('Card')?></summary>
+          <ul class="p-2">
+            <?php
+            if($admin[0]['admin'] === 1){
+            ?>
+            <li><a href="/admin/user/toevoegenkaart"><?=Vertalen('Make Card')?></a></li>
+            <li><a href="/admin/user/kaart"><?=Vertalen('See cards admin')?></a></li>
+            <?php
+          }
+            ?>
+            <li><a href="/admin/user/kaartGebruiker"><?=Vertalen('See cards')?></a></li>
+          </ul>
+        </details>  
+    </li>
+    <?php
+    }
+  ?>
+    </ul>
+  </div>
+ 
+ 
+  <div class="navbar-end">
+
+  <?php if ($yourfriendrequest){ 
+    echo'
+  <div class="alert shadow-lg flex mx-8" >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <div class ="flex[1.2]">
+        <h3 class="font-bold">Friend request</h3>
+        <div class="text-xs">from '.$namesender['gebruikernaam'] .'</div>
+      </div>
+      <div class="flex[0.8]">
+      <a href="/src/lib/user/member/acceptFriendrequest.php"><button class="btn btn-ghost">Accept</button></a>
+      <a href ="/src/lib/user/member/denyFriendrequest.php"><button class="btn btn-ghost">Deny</button></a>
+      </div>
+    </div>
+    
+        <?php } ?>
+    </div>
+    ';
+     } ?>
+   
+        
+
+  <?php echo isset($_SESSION['login'])
+  
+      ? '
+      
+
+      <a href = "/member/user/shop" ><i class="fa-solid fa-cart-shopping fa-xl pr-4" ></i></a>
+
+      <div class="flex items-center justify-center mr-2">
+      <div class="relative">
+          <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
+          <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
+              <span class="text-white text-lg ">'.$profiledata['Level'].'</span>
+              </div>
+              </div>
+          </div>
+          
+          '.(isset($usertitle['name']) && $usertitle['name'] != 0 ? '<p class = "mr-1 font-bold">['.$usertitle['name'].']</p>' : '').'
+        
+            
+              <p>'.$data['gebruikernaam'].'</p>
+              <details class="dropdown dropdown-end">
+              <summary class="m-1 btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                <img src="/public/img/profilePic/'.$profiledata['profielfoto'].'" alt="foto";" " class="w-12 h-12">
+                </div>
+              </summary>
+              <ul class="mt-2 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
+                <li><a href = "/account/logout">logout</a></li>
+                <li><a href="/src/lib/user/member/change-theme.php" >Switch to ' . $theme . '</a></li>
+                <li>    <a href="/account/settings/edit" class="mr-2"> settings </a> </li>
+                <li> <a href="/user/friends" class="mr-2">friends</a> </li>
+                <li>
+                <li> <a href="/account/uploadprofile" class="mr-2">profile picture</a> </li>
+                <li><a href="/dashboard/title/user">your titles</a></li>
+                '.( $admin[0]['admin'] ? ' <li>
+                <details class="dropdown dropdown-left">
+                  <summary class="m-1">Admin Dashboard</summary>
+                  <ul class="mr-4 p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
+                    
+                    <li><a href="/dashboard/users">gebruikers</a></li>
+                    <li><a href="/dashboard/categorieen">categorieen</a></li>
+                    <li><a href="/admin/level">levels</a></li>
+                    <li><a href="/admin/user/packs">packs</a></li>
+                    <li><a href="/dashboard/title">titles</a></li>
+                   
+                    
+                    
+              </ul>
+            </details>' : '').'
+               
+                ':
+              '<a href="/account/login" class="btn">Login</a>'; ?>
