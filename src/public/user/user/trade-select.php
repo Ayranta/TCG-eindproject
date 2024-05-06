@@ -25,6 +25,14 @@ if(isset($_POST)){
 function insertTradeItem($formData, $userId) {
         $cardId = $formData['select'];
 
+        $selectedItem = fetchSingle('SELECT * FROM trade_items WHERE userid = ? AND cardid = ?', ['type' => 'i', 'value' => $userId], ['type' => 'i', 'value' => $cardId]);
+
+        if ($selectedItem) {
+            $delete = insert('DELETE FROM trade_items WHERE userid = ? AND cardid = ?', ['type' => 'i', 'value' => $userId], ['type' => 'i', 'value' => $cardId]);
+            
+            header('Location: /user/trade?error=tradeItemAlreadyExists');
+            exit();
+        }
         $query ='INSERT INTO trade_items(userid, cardid) VALUES (?, ?)';
         var_dump($cardId);   
 
