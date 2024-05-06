@@ -99,6 +99,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/user/trade/select' => [
+    'view' => '/user/user/trade-select.php',
+    'title' => 'trade',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/user/friends' => [
     'view' => '/user/user/vrienden.php',
     'title' => 'vrienden',

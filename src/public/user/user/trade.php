@@ -10,31 +10,31 @@ if (isset($_POST['offerCard'], $_POST['requestCard'])) {
         echo json_encode(['status' => 'error', 'message' => 'Please select both cards.']);
         exit;
     }
-
+  
     // Update the database
-    $update = insert('INSERT INTO tbltrade (offerCard, requestCard) VALUES (?, ?)', ['type' => 'ii', 'values' => [$offerCard, $requestCard]]);
+    $update = insert('INSERT INTO tbltrade (offerCard, requestCard) VALUES (?, ?)', ['type' => 'i', 'value' => [$offerCard, $requestCard]]);
 
-    // Return a response
-    echo json_encode(['status' => 'success', 'message' => 'Trade offer submitted!']);
-    exit;
+
+    
 }
 ?>
 
-
+<div ></div>
 <div class="container mx-auto">
     <h1 class="text-center text-2xl my-4">Trade Cards</h1>
-    <form id="tradeForm" class="items-center">
+    <form id="tradeForm" method="post" action="/user/trade" class="items-center">
         <div class="flex items-center mt-4">
             <div class="flex-[0.5]">
                 <div class="flex flex-wrap gap-x-4">
+                
                     <?php 
                     $cards = fetchSingle('SELECT * FROM tblgebruikerkaart WHERE Gebruikerid = ?',['type'=>'i','value'=>$userid]);
                     foreach($cards as $card){
                         $usercard = fetch('SELECT * FROM tblkaart WHERE kaartid = ?',['type'=>'i','value'=>$card['KaartID']]);
                         $categorie = fetchSingle('SELECT * FROM `kaart_categorieen`WHERE naam = ?' , ['type' => 's', 'value' => $usercard['categorie']]);
-                        
                         foreach($categorie as $categorie){?>
-                            <div class="card card-bordered border-gray-600 w-48 h-80 bg-[#<?php echo $categorie["kleur hex"] ?>] shadow-xl my-2">
+                        <form  method="post" action="/user/trade/select" >
+                            <div id="card" data-card-id="<?= $usercard['kaartID'] ?>" class="card card-bordered border-gray-600 w-48 h-80 bg-[#<?php echo $categorie["kleur hex"] ?>] shadow-xl my-2">
                                 <figure>
                                     <img src="\public\img\<?php echo $usercard['foto'] ?>" alt="card" class="w-full h-full object-cover"/>
                                 </figure>
@@ -49,21 +49,25 @@ if (isset($_POST['offerCard'], $_POST['requestCard'])) {
                                         <br>
                                         <td><?php echo  $usercard["aanval2"] ?> --</td>
                                         <td><?php echo'damage: ' . $usercard["damage2"] ?></td>
-                                    </p>
+                                    </p><?php
+                                    ?>
+                                    <input type="hidden" name="select" value="<?= $usercard['kaartID'] ?>">
+                                    <input type="submit" name="submit" value="submit"> <button class="btn btn-primary">Select</button></input>
                                 </div>
                             </div>
+                        </form>
                     <?php } 
                     }
                     ?>
                 </div>
             </div> 
             <div class="flex-[0.5]">
-                <select id="requestCard" class="form-select block w-full mt-1">
-                    <!-- Options should be populated with all available cards -->
-                </select>
+                <!-- Card elements -->
+                <div id="friendSelectedCards"></div>    
             </div>
-        </div>
-        <div class="flex justify-center mt-4">
+                    </div>
+                </div>
+                 <div class="flex justify-center mt-4">
             <button type="submit" class="btn btn-primary">Submit Trade</button>
         </div>
     </form>
