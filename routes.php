@@ -135,6 +135,12 @@ $routes = [
     'nav' => true,
     'footer' => false,
   ],
+  '/levels/uitslag' => [
+    'view' => '/levels/uitslag.php',
+    'title' => 'uitslag',
+    'nav' => true,
+    'footer' => false,
+  ],
   '/levels/randomizer' => [
     'view' => '/levels/randomizer.php',
     'title' => 'battle',

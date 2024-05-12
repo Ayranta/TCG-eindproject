@@ -20,3 +20,5 @@ $_SESSION['kaartenSession'] = $kaarten;
 var_dump($_SESSION['kaartenSession']);
 
 header('location: /levels/level-blueprint');
+exit();
+?>

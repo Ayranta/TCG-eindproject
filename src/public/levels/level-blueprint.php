@@ -1,14 +1,11 @@
-<audio autoplay loop>
-  <source src="public\music\Uprising.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 <?php
 
 
 $kaart = $_SESSION['kaartSession'];
 echo '<div class="flex gap-4 text-center" >';
 
-?><div class="flex flex-wrap gap-3 p-20 place-content-center p-100"> <?php
+?>
+<div class="flex flex-wrap gap-3 p-20 place-content-center p-100"> <?php
   foreach ($kaart as $data) {
     $categorieen = fetchSingle('SELECT * FROM `kaart_categorieen`WHERE naam = ?', ['type' => 's', 'value' => $data['categorie']]);
   foreach ($categorieen as $categorie) { ?>
@@ -17,8 +14,13 @@ echo '<div class="flex gap-4 text-center" >';
       <div class="card card-bordered border-red-600 border-2 w-72 bg-[#<?php echo $categorie['kleur hex'] ?>] shadow-xl">
         <figure><img src="\public\img\<?php echo $data['foto'] ?>" alt="Shoes" class="w-full h-60" /></figure>
         <p class="text-left p-2 text-black "><?php echo 'hp: ' . $data["levens"] ?></p>
+ 
+        
         <?php
         $levensenemy = $data["levens"];
+
+        $_SESSION['levensenemy'] = $levensenemy;
+     
         ?>
         <div class="card-body text-black text-center ">
           <h2 class="font-bold"><?php echo $data["naam"] ?></h2>
@@ -46,7 +48,7 @@ echo '<div class="flex gap-4 text-center" >';
 <?
 //buttons
 ?>
-<form method="post" action="/levels/level-blueprint" class="flex flex-col gap-4 w-80 align-middle md:max-w-2xl p-4 rounded-2xl mx-auto mt-16 pt-6" id="formattack">
+<form method="post" action="/levels/uitslag" class="flex flex-col gap-4 w-80 align-middle md:max-w-2xl p-4 rounded-2xl mx-auto mt-16 pt-6" id="formattack">
   <button name="challange" class="btn justify-center p-30 items-center ">Attack</button>
 </form>
 <?php
@@ -73,8 +75,11 @@ echo '<div class="flex gap-4 text-center" >';
       <div class="card card-bordered border-green-600 border-2 w-72 bg-[#<?php echo $categorie['kleur hex'] ?>] shadow-xl">
         <figure><img src="\public\img\<?php echo $data['foto'] ?>" alt="foto" class="w-full h-60" /></figure>
         <p class="text-left p-2 text-black "><?php echo 'hp: ' . $data["levens"] ?></p>
+        <?
+        ?>
         <?php
         $levensgebruiker = $data["levens"];
+        $_SESSION['levensgebruiker'] = $levensgebruiker;
         ?>
         <div class="card-body text-black text-center ">
           <h2 class="font-bold"><?php echo $data["naam"] ?></h2>
@@ -99,26 +104,35 @@ echo '<div class="flex gap-4 text-center" >';
 
   ?>
 </div>
-<?php
+<?php  
 if(isset($_POST["challange"])){
+
 
 if($levensenemy > $levensgebruiker){
 $conc = "YOU LOSE";
+$_SESSION['uitslagSession'] = $conc;
 
 }elseif($levensenemy < $levensgebruiker){
 $conc = "YOU WIN";
+$_SESSION['uitslagSession'] = $conc;
+
 }else{
 $conc = "DRAW";
-}
+$_SESSION['uitslagSession'] = $conc;
 
-}
+};
+//var_dump($_SESSION['uitslagSession']);
+header('location: /levels/uitslag');
+};
 
 
-?>
+/*if($conc == "YOU LOSE" && $conc == "YOU WIN" && $conc == "DRAW"){
+  ?>
   <script>
     var conc ='<?= $conc ?>';
 
     alert(conc);
   </script>
-
-<?
+  <?
+}*/
+?>
