@@ -1,7 +1,7 @@
 <script>
     setInterval(function(){
         location.reload();
-    }, 5000);
+    }, 7000);
 </script>
 
 <?php
@@ -151,11 +151,15 @@ if (!isset($_SESSION['friend'])) {
 </div> 
 <div class="flex justify-center mt-4">
     <?php 
+
+     
         if ($selectedCards[0]['ready'] === 0) {
             echo '<button type="submit" class="btn btn-primary"> <a href="/src/lib/user/trade/trade.php"> ready </a></button>';
 
-        }else{
+        }else if ($selectedCards[0]['ready'] === 1){
             echo '<button type="submit" class="btn btn-primary"> <a href="/src/lib/user/trade/trade.php"> unready </a></button>';
+        }else{
+            echo '<button type="submit" class="btn btn-primary"> <a href="/src/lib/user/trade/trade.php"> select something </a></button>';
         }
     ?>
 </div>

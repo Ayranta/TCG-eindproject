@@ -64,39 +64,54 @@ function submitTrade($player1Id, $player2Id) {
         // Insert the item into player2's tblgebruikerkaart
         $query = 'INSERT INTO tblgebruikerkaart(gebruikerId, kaartId) VALUES (?, ?)';
         $result = insert($query, ['type' => 'i', 'value' => $player2Id], ['type' => 'i', 'value' => $item['cardid']]);
-
+    
         if (!$result) {
             return false;
         }
-
+    
         // Delete the item from trade_items
         $query = 'DELETE FROM trade_items WHERE userid = ? AND cardid = ?';
         $result = insert($query, ['type' => 'i', 'value' => $player1Id], ['type' => 'i', 'value' => $item['cardid']]);
-
+    
+        if (!$result) {
+            return false;
+        }
+    
+        // Delete the item from player1's tblgebruikerkaart
+        $query = 'DELETE FROM tblgebruikerkaart WHERE gebruikerId = ? AND kaartId = ?';
+        $result = insert($query, ['type' => 'i', 'value' => $player1Id], ['type' => 'i', 'value' => $item['cardid']]);
+    
         if (!$result) {
             return false;
         }
     }
-
+    
     // Loop over player2's items
     foreach ($player2Items as $item) {
         // Insert the item into player1's tblgebruikerkaart
         $query = 'INSERT INTO tblgebruikerkaart(gebruikerId, kaartId) VALUES (?, ?)';
         $result = insert($query, ['type' => 'i', 'value' => $player1Id], ['type' => 'i', 'value' => $item['cardid']]);
-
+    
         if (!$result) {
             return false;
         }
-
+    
         // Delete the item from trade_items
         $query = 'DELETE FROM trade_items WHERE userid = ? AND cardid = ?';
         $result = insert($query, ['type' => 'i', 'value' => $player2Id], ['type' => 'i', 'value' => $item['cardid']]);
-
+    
+        if (!$result) {
+            return false;
+        }
+    
+        // Delete the item from player2's tblgebruikerkaart
+        $query = 'DELETE FROM tblgebruikerkaart WHERE gebruikerId = ? AND kaartId = ?';
+        $result = insert($query, ['type' => 'i', 'value' => $player2Id], ['type' => 'i', 'value' => $item['cardid']]);
+    
         if (!$result) {
             return false;
         }
     }
-
     return true;
 }
 

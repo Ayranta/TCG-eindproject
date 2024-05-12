@@ -126,7 +126,7 @@ if(isset($user)){
       </li>
 
       <?php if(isset($_SESSION["login"])){
-      ?>$stmt->close();
+      ?>
       <li tabindex="0">
       <details>
           <summary><?=Vertalen('Card')?></summary>
