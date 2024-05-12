@@ -79,7 +79,7 @@ function insertUser($username, $password, $email) {
     ['type' => 's', 'value' => 'light'],
     ['type' => 'i', 'value' => '0'],
     ['type' => 'i', 'value' => '1'],
-    ['type' => 'i', 'value' => '0'],
+    ['type' => 'i', 'value' => '10'],
     ['type' => 'd', 'value' => '50.0'],
     ['type' => 'i', 'value' => '0'],
   );

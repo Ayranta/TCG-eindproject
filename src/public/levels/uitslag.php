@@ -67,22 +67,22 @@ $stmt->close();
 
 
 ?>
-
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex items-center justify-center">
+<div class="flex items-center justify-center mt-16">
+  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div class="flex justify-end px-4 pt-4">
     </div>
     <br>
     <div class="flex flex-col items-center pb-10">
-                <p class="text-white text-3xl p-10"><?=$conc?></p>
-        <br>
-        
-        <p class="text-white inline-block">gained experience: <div class="text-green-300 inline-block"><font size="5"><b><?=$experience?></b></font></div>
-        <p class="text-white inline-block">gained coins: <div class="text-amber-400 inline-block"><font size="5"><b><?=$coins?></b></font></div>
-        <form method="post" action="/" class="flex flex-col gap-4 w-80 md:max-w-2xl p-4 p-5 align-middle rounded-2xl mx-auto mt-16 pt-6" id="formgoback">
-      <button name="back" class="btn justify-center">Go Back</button>
+      <p class="text-white text-3xl p-10"><?=$conc?></p>
+      <br>
+      <p class="text-white inline-block">gained experience: <div class="text-green-300 inline-block"><font size="5"><b><?=$experience?></b></font></div>
+      <p class="text-white inline-block">gained coins: <div class="text-amber-400 inline-block"><font size="5"><b><?=$coins?></b></font></div>
+      <form method="post" action="/" class="flex flex-col gap-4 w-80 md:max-w-2xl p-4 p-5 align-middle rounded-2xl mx-auto mt-16 pt-6" id="formgoback">
+        <button name="back" class="btn justify-center">Go Back</button>
       </form>
+    </div>
+  </div>
 </div>
-
 
 
 
