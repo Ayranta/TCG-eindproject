@@ -57,7 +57,6 @@ $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
     </svg></a>
   
       <?php foreach ($vrienden as $vriend){ 
-
         if($vriend['gebruikerId']==$userid){
             $myfriend=$vriend['vriendenmetId'];
         }else{
@@ -66,28 +65,38 @@ $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
       
         $gebruiker = fetch('SELECT * From tblgebruikers Where gebruikerId = ?',['type'=>'i', 'value'=>$myfriend]);
         $gebruikerProfile = fetch('SELECT * FROM tblgebruiker_profile WHERE userid =?',['type'=>'i', 'value'=>$myfriend]);
-        //var_dump($gebruikerProfile);
+        
+        $timeSinceLastActive = time() - strtotime($gebruiker['last_active']);
+
+        // Display the user's online status
+        if ($timeSinceLastActive < 120) {
+          $lastonline =  'Online now</p>';
+        } else if ($timeSinceLastActive < 3600) {
+            $lastonline = 'Last online: ' . floor($timeSinceLastActive / 60) . ' minutes ago';
+        } else if ($timeSinceLastActive < 86400) {
+          $lastonline =  'Last online: ' . floor($timeSinceLastActive / 3600) . ' hours ago';
+        } else if ($timeSinceLastActive < 604800) {
+          $lastonline =  'Last online: ' . floor($timeSinceLastActive / 86400) . ' days ago';
+        } else if ($timeSinceLastActive < 31536000) {
+          $lastonline =  'Last online: ' . floor($timeSinceLastActive / 604800) . ' weeks ago';
+        } else {
+          $lastonline =  'Last online: ' . floor($timeSinceLastActive / 31536000) . ' years ago';
+        }
+
         ?>
       <h2 class="card-title"> <?php echo $gebruiker['gebruikernaam'] ?> </h2>
-
-      <?php /*<div class="flex items-center justify-center mr-2">
-      <div class="relative">
-          <img src="/public/img/'.<? $GroupLevelofPlayer['foto'] ?>.'" alt="Badge" class="w-12 h-12">
-          <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
-              <span class="text-white text-lg ">'.<?= $change_theme['Level']?>.'</span>
-          </div>
-      </div>
-  </div>*/?>
-
-      <div class="card-actions justify-between items-center">
-      <p>last online : A week ago</p>
+     
+      <p>Level : <?php echo $gebruikerProfile['Level'] ?></p>
+      
+      <div class="card-actions  ">
+      <p><?php echo$lastonline ?></p>
         <div class="flex flex-row gap-2">
-          <a href="" class="btn btn-primary">trade</a>
+          <a href="/user/trade?friend=<?php echo $vriend['id'] ?>" class="btn btn-primary">trade</a>
           <a href="/user/friends/delete?friendid=<?php echo $vriend['id'] ?>"><button class="btn btn-circle btn-outline">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
          </button></a>
         </div>
-      </div>
+      </div>  
       <?php } ?>
     </div>
   </div>
