@@ -57,7 +57,7 @@ if(isset($user)){
   $levelofPlayer=fetch('SELECT * From playerlevels Where LevelID = ? ',[
     'type' => 'i',
    
-    'value' => $profiledata['Level'],
+    'value' => $profiledata['Levels'],
   ]);
 
 
@@ -84,42 +84,9 @@ if(isset($user)){
 
   </div>
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      
-      <li tabindex="0">
-        <details>
-          <summary><?=Vertalen('Languages')?></summary>
-          <ul class="p-2">
-            <li><a href="/?lang=en">English</a></li>
-            <li><a href="/?lang=nl">Nederlands</a></li>
-            <li><a href="/?lang=fr">Français</a></li>
-            <li><a href="/?lang=zh">中文</a></li>
-          </ul>
-        </details>
-      </li>
-
-      <?php if(isset($_SESSION["login"])){
-      ?>
-      <li tabindex="0">
-      <details>
-          <summary><?=Vertalen('Card')?></summary>
-          <ul class="p-2">
-            <?php
-            if($admin[0]['admin'] === 1){
-            ?>
-            <li><a href="/admin/user/toevoegenkaart"><?=Vertalen('Make Card')?></a></li>
-            <li><a href="/admin/user/kaart"><?=Vertalen('See cards admin')?></a></li>
-            <?php
-          }
-            ?>
-            <li><a href="/admin/user/kaartGebruiker"><?=Vertalen('See cards')?></a></li>
-          </ul>
-        </details>  
-    </li>
-    <?php
-    }
-  ?>
-    </ul>
+<?
+//midden navbar
+?>
   </div>
  
  
@@ -144,7 +111,42 @@ if(isset($user)){
     ';
      } ?>
    
-        
+   <ul class="menu menu-horizontal px-1">
+      
+      <li tabindex="0">
+        <details>
+          <summary><?=Vertalen('Languages')?></summary>
+          <ul class="p-2">
+            <li><a href="/?lang=en">English</a></li>
+            <li><a href="/?lang=nl">Nederlands</a></li>
+            <li><a href="/?lang=fr">Français</a></li>
+            <li><a href="/?lang=zh">中文</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <?php if(isset($_SESSION["login"])){
+      ?>$stmt->close();
+      <li tabindex="0">
+      <details>
+          <summary><?=Vertalen('Card')?></summary>
+          <ul class="p-2">
+            <?php
+            if($admin[0]['admin'] === 1){
+            ?>
+            <li><a href="/admin/user/toevoegenkaart"><?=Vertalen('Make Card')?></a></li>
+            <li><a href="/admin/user/kaart"><?=Vertalen('See cards admin')?></a></li>
+            <?php
+          }
+            ?>
+            <li><a href="/admin/user/kaartGebruiker"><?=Vertalen('See cards')?></a></li>
+          </ul>
+        </details>  
+    </li>
+    <?php
+    }
+  ?>
+    </ul>        
 
   <?php echo isset($_SESSION['login'])
   
@@ -157,7 +159,7 @@ if(isset($user)){
       <div class="relative">
           <img src="/public/img/'.$GroupLevelofPlayer['foto'].'" alt="Badge" class="w-12 h-12">
           <div class="absolute top-1 left-0 w-full h-full flex items-center justify-center">
-              <span class="text-white text-lg ">'.$profiledata['Level'].'</span>
+              <span class="text-white text-lg ">'.$profiledata['Levels'].'</span>
           </div>
       </div>
   </div>

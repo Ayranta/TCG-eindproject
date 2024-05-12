@@ -70,13 +70,17 @@ function insertUser($username, $password, $email) {
   $profiel = fetch("SELECT * FROM tblgebruiker_profile ");
 
   $userProfileData = insert(
-    'INSERT INTO tblgebruiker_profile (userid,profielfoto,theme,admin) VALUES (?, ?, ?,?)',
+    'INSERT INTO tblgebruiker_profile (userid,profielfoto,theme,admin,Levels,Expirience,coins,titleid) VALUES (?, ?, ?,?,?, ?, ?,?)',
     ['type' => 'i', 'value' => $userId],
     [
       'type' => 's',
       'value' => 'default.png',
     ],
     ['type' => 's', 'value' => 'light'],
+    ['type' => 'i', 'value' => '0'],
+    ['type' => 'i', 'value' => '1'],
+    ['type' => 'i', 'value' => '0'],
+    ['type' => 'd', 'value' => '50.0'],
     ['type' => 'i', 'value' => '0'],
   );
   $kaarten1 = insert(
