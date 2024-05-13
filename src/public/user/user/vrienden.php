@@ -86,7 +86,7 @@ $change_theme = fetch("SELECT * from tblgebruiker_profile Where userid = ?",
         ?>
       <h2 class="card-title"> <?php echo $gebruiker['gebruikernaam'] ?> </h2>
      
-      <p>Level : <?php echo $gebruikerProfile['Level'] ?></p>
+      <p>Level : <?php echo $gebruikerProfile['Levels'] ?></p>
       
       <div class="card-actions  ">
       <p><?php echo$lastonline ?></p>
