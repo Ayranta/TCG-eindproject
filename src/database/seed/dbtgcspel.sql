@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 08 mrt 2024 om 14:48
--- Serverversie: 10.4.27-MariaDB
--- PHP-versie: 8.2.0
+-- Host: localhost
+-- Gegenereerd op: 13 mei 2024 om 08:51
+-- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP-versie: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,8 +44,7 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (5, 'grass', '549d0b'),
 (6, 'fire', 'e64c0a'),
 (7, 'water', '1caaf0'),
-(8, 'dragon', '7b80cc'),
-(10, 'Default', 'ffffff');
+(8, 'dragon', '7b80cc');
 
 -- --------------------------------------------------------
 
@@ -156,7 +155,6 @@ CREATE TABLE `tblfriend_request` (
 --
 
 INSERT INTO `tblfriend_request` (`id`, `senderid`, `receiverid`) VALUES
-(33, 12, 14),
 (37, 12, 20);
 
 -- --------------------------------------------------------
@@ -182,10 +180,22 @@ INSERT INTO `tblgebruikerkaart` (`Gebkaartid`, `KaartID`, `GebruikerID`) VALUES
 (26, 27, 12),
 (27, 26, 12),
 (28, 28, 12),
-(29, 22, 12),
 (30, 31, 12),
 (31, 31, 23),
-(32, 28, 23);
+(32, 28, 23),
+(34, 26, 21),
+(35, 27, 21),
+(36, 17, 21),
+(39, 13, 21),
+(41, 17, 21),
+(42, 16, 21),
+(65, 22, 21),
+(66, 28, 12),
+(67, 22, 14),
+(68, 26, 14),
+(69, 28, 14),
+(70, 26, 28),
+(71, 31, 28);
 
 -- --------------------------------------------------------
 
@@ -199,20 +209,26 @@ CREATE TABLE `tblgebruikers` (
   `wachtwoord` text NOT NULL,
   `gebruikernaam` text NOT NULL,
   `reset_token_hash` varchar(64) DEFAULT NULL,
-  `reset_token_expires_at` datetime DEFAULT NULL
+  `reset_token_expires_at` datetime DEFAULT NULL,
+  `last_active` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `tblgebruikers`
 --
 
-INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`, `reset_token_hash`, `reset_token_expires_at`) VALUES
-(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL),
-(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', NULL, NULL),
-(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL),
-(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL),
-(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL),
-(23, 'casper.nauwelaerts@bazandpoort.be', '$2y$10$Q0T7Cz1VhvGwzSy4nNtIy.IkWGnqnXnXImmQNOqX9/DLPk/l7.rHO', 'casperr', NULL, NULL);
+INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`, `reset_token_hash`, `reset_token_expires_at`, `last_active`) VALUES
+(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL, '2024-05-12 19:38:01'),
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', 'c937d651ca58fb16039b451bd3948188cf1f560d5345fb98e722ba6070ac1ca4', '2024-05-11 14:55:58', '2024-05-13 06:39:37'),
+(19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL, '2024-04-24 06:49:03'),
+(20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL, '2024-04-24 06:49:03'),
+(21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL, '2024-05-12 19:38:13'),
+(23, 'casper.nauwelaerts@bazandpoort.be', '$2y$10$Q0T7Cz1VhvGwzSy4nNtIy.IkWGnqnXnXImmQNOqX9/DLPk/l7.rHO', 'casperr', 'cd07ef13ca4884e4a093746feaeced8b2a26ecde5c4aa4372a97a294c2860234', '2024-05-13 09:15:06', '2024-04-24 06:49:03'),
+(24, 'oma@oma', '$argon2id$v=19$m=65536,t=4,p=1$ODc3ajdjamc4UWxQQUVEeg$xefSmMApJa+MsAV/pngEtXv59kir7OLa493Ex5XTI5k', 'oma', NULL, NULL, '2024-05-12 08:30:13'),
+(25, 'opa@opa', '$argon2id$v=19$m=65536,t=4,p=1$S3FrRnZQMEtaZHY0RUpTRg$TQ65D70kxNxPofT+4YyJsOF+UYFoQ8whnH+ZMdp5Xoc', 'opa', NULL, NULL, '2024-05-12 10:20:39'),
+(26, 'test@test2.com', '$argon2id$v=19$m=65536,t=4,p=1$TmdHTTB2N3hVOGNlcU5mWA$JAEmpvsIDSfWNrZFzX8Zcfkm37c4aZ2iEQtlhDMrPuA', 'test2', NULL, NULL, '2024-05-12 11:06:18'),
+(27, '100@100', '$argon2id$v=19$m=65536,t=4,p=1$ZHZEUFZreWpQa09JeTJ6cg$sKT+HP14fVsgpUqPJ5pecmOOpQGp2Ywof9P0llIFhBA', '100', NULL, NULL, '2024-05-12 11:46:16'),
+(28, 'dvdnils6@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$VFhSRGVkcm8uam44NzI1eQ$0Ii4+W+6OtOAmqhtkGAbZJTR++9ANzWbLgUy8oUkQSU', 'dvd_nils', NULL, NULL, '2024-05-13 06:44:42');
 
 -- --------------------------------------------------------
 
@@ -284,7 +300,10 @@ INSERT INTO `tblgebruiker_packsbought` (`id`, `userid`, `packid`, `purchasedate`
 (59, 12, 2, '2024-03-04 16:22:17', 300),
 (60, 12, 13, '2024-03-04 17:42:34', 200),
 (61, 12, 2, '2024-03-04 18:12:28', 300),
-(62, 12, 14, '2024-03-08 14:31:38', 455);
+(62, 21, 2, '2024-04-28 17:57:53', 300),
+(63, 14, 13, '2024-05-11 14:53:08', 200),
+(64, 26, 3, '2024-05-12 13:08:35', 0),
+(65, 14, 13, '2024-05-13 08:36:12', 200);
 
 -- --------------------------------------------------------
 
@@ -298,7 +317,7 @@ CREATE TABLE `tblgebruiker_profile` (
   `theme` text NOT NULL,
   `profielfoto` text NOT NULL,
   `admin` int(20) NOT NULL,
-  `Level` int(11) NOT NULL DEFAULT 1,
+  `Levels` int(11) NOT NULL DEFAULT 1,
   `Expirience` int(11) NOT NULL,
   `coins` double NOT NULL DEFAULT 0,
   `titleid` int(11) NOT NULL DEFAULT 0
@@ -308,13 +327,16 @@ CREATE TABLE `tblgebruiker_profile` (
 -- Gegevens worden geëxporteerd voor tabel `tblgebruiker_profile`
 --
 
-INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Level`, `Expirience`, `coins`, `titleid`) VALUES
-(9, 12, 'light', '65e651e4ce0f05.58493749.jpg', 1, 1, 0, 5557, 0),
-(11, 14, 'dark', 'default.png', 1, 1, 0, 0, 0),
-(14, 19, 'light', 'default.png', 0, 1, 0, 0, 0),
-(15, 20, 'light', 'default.png', 0, 1, 0, 0, 0),
-(16, 21, 'light', 'default.png', 0, 1, 0, 0, 0),
-(18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0, 0);
+INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Levels`, `Expirience`, `coins`, `titleid`) VALUES
+(9, 12, 'dark', '6628abbfd1b548.36759252.jpg', 1, 7, 100, 5116, 1),
+(11, 14, 'dark', '6641b512f402b5.85415428.jpg', 1, 10, 450, 9607, 0),
+(14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
+(15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
+(16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 9699, 0),
+(18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0, 0),
+(19, 26, 'light', '6640a2e0a99c50.29467852.png', 0, 15, 2700, 105, 0),
+(20, 27, 'light', 'default.png', 0, 1, 0, 50, 0),
+(21, 28, 'light', 'default.png', 0, 5, 60, 55, 0);
 
 -- --------------------------------------------------------
 
@@ -345,9 +367,9 @@ INSERT INTO `tblkaart` (`kaartID`, `naam`, `categorie`, `levens`, `aanval1`, `da
 (19, 'a', 'Rood', 1, 'a', 1, 'a', 1, '6563a4a5b1c069.89643839.png'),
 (22, 'bumba', 'Rood', 500, 'body slam', 222, 'slap', 35, '65699a168f99a3.19701218.png'),
 (26, 'dragon', 'dragon', 8000, 'breath', 3000, 'fire ball', 5000, '65699c636b1e52.59233588.jpg'),
-(27, 'ass', 'grass', 1, '1', 2, '3', 4, '6569d4c4c39616.11415296.jpeg'),
 (28, 'yamaha r7', 'ice', 266, 'he', 123, 'vuut', 222, '6569d9321c9699.56519162.jpeg'),
-(31, 'Bobber', 'water', 800, 'cuteness overload', 200, 'ta mere', 68, '65e5d5a2327a54.37009224.png');
+(31, 'Bobber', 'water', 800, 'cuteness overload', 200, 'ta mere', 68, '65e5d5a2327a54.37009224.png'),
+(32, 'halo', 'water', 50, 'Aanval1', 10, 'Aanval2', 20, '6641b46c4904e6.25197677.jpg');
 
 -- --------------------------------------------------------
 
@@ -374,11 +396,9 @@ INSERT INTO `tblpackcards` (`packID`, `kaartID`, `id`) VALUES
 (13, 27, 16),
 (13, 28, 17),
 (13, 31, 18),
-(14, 22, 19),
-(14, 26, 20),
-(14, 27, 21),
-(14, 28, 22),
-(14, 31, 23);
+(14, 13, 19),
+(14, 16, 20),
+(14, 28, 21);
 
 -- --------------------------------------------------------
 
@@ -406,9 +426,8 @@ INSERT INTO `tblpacks` (`packId`, `packNaam`, `packImg`, `releaseDate`, `price`)
 (6, 'test3', 'pokemon packs.png', '2024-02-08 11:03:22', 0),
 (7, 'test5', 'pokemon packs.png', '2024-02-08 11:03:40', 0),
 (8, 'test6', 'pokemon packs.png', '2024-02-08 11:03:58', 0),
-(10, 'capser', '65db0533464850.76514361.jpg', '2024-02-25 10:15:31', 2345),
 (13, 'Bobber Kurwa', '65e5d6601dbea6.09178215.jpg', '2024-03-04 15:10:40', 200),
-(14, 'pica', '65eb131f8169f0.39212432.png', '2024-03-08 14:31:11', 455);
+(14, 'pack', '6641b57713b760.44158146.jpg', '2024-05-13 08:38:47', 200);
 
 -- --------------------------------------------------------
 
@@ -448,8 +467,7 @@ CREATE TABLE `tbltitlegebruiker` (
 --
 
 INSERT INTO `tbltitlegebruiker` (`id`, `userid`, `titleid`) VALUES
-(1, 12, 1),
-(2, 12, 3);
+(1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -469,7 +487,21 @@ CREATE TABLE `tblvrienden` (
 
 INSERT INTO `tblvrienden` (`id`, `gebruikerId`, `vriendenmetId`) VALUES
 (6, 21, 14),
-(10, 21, 12);
+(10, 21, 12),
+(12, 12, 14);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `trade_items`
+--
+
+CREATE TABLE `trade_items` (
+  `trade_id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `cardid` int(11) NOT NULL,
+  `ready` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -562,6 +594,12 @@ ALTER TABLE `tblvrienden`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `trade_items`
+--
+ALTER TABLE `trade_items`
+  ADD PRIMARY KEY (`trade_id`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
@@ -569,7 +607,7 @@ ALTER TABLE `tblvrienden`
 -- AUTO_INCREMENT voor een tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT voor een tabel `levelgroups`
@@ -593,37 +631,37 @@ ALTER TABLE `tblfriend_request`
 -- AUTO_INCREMENT voor een tabel `tblgebruikerkaart`
 --
 ALTER TABLE `tblgebruikerkaart`
-  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_packsbought`
 --
 ALTER TABLE `tblgebruiker_packsbought`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblkaart`
 --
 ALTER TABLE `tblkaart`
-  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `kaartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpackcards`
 --
 ALTER TABLE `tblpackcards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblpacks`
@@ -635,19 +673,25 @@ ALTER TABLE `tblpacks`
 -- AUTO_INCREMENT voor een tabel `tbltitels`
 --
 ALTER TABLE `tbltitels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `tbltitlegebruiker`
 --
 ALTER TABLE `tbltitlegebruiker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblvrienden`
 --
 ALTER TABLE `tblvrienden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT voor een tabel `trade_items`
+--
+ALTER TABLE `trade_items`
+  MODIFY `trade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
