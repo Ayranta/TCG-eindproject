@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Gegenereerd op: 13 mei 2024 om 08:51
+-- Gegenereerd op: 13 mei 2024 om 09:40
 -- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP-versie: 8.1.2-1ubuntu2.14
 
@@ -219,7 +219,7 @@ CREATE TABLE `tblgebruikers` (
 
 INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`, `reset_token_hash`, `reset_token_expires_at`, `last_active`) VALUES
 (12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL, '2024-05-12 19:38:01'),
-(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', 'c937d651ca58fb16039b451bd3948188cf1f560d5345fb98e722ba6070ac1ca4', '2024-05-11 14:55:58', '2024-05-13 06:39:37'),
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', 'c937d651ca58fb16039b451bd3948188cf1f560d5345fb98e722ba6070ac1ca4', '2024-05-11 14:55:58', '2024-05-13 07:38:51'),
 (19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL, '2024-04-24 06:49:03'),
 (20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL, '2024-04-24 06:49:03'),
 (21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL, '2024-05-12 19:38:13'),
@@ -329,7 +329,7 @@ CREATE TABLE `tblgebruiker_profile` (
 
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Levels`, `Expirience`, `coins`, `titleid`) VALUES
 (9, 12, 'dark', '6628abbfd1b548.36759252.jpg', 1, 7, 100, 5116, 1),
-(11, 14, 'dark', '6641b512f402b5.85415428.jpg', 1, 10, 450, 9607, 0),
+(11, 14, 'dark', '6641b512f402b5.85415428.jpg', 1, 11, 475, 9609, 0),
 (14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
 (15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
 (16, 21, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 9699, 0),
@@ -691,7 +691,7 @@ ALTER TABLE `tblvrienden`
 -- AUTO_INCREMENT voor een tabel `trade_items`
 --
 ALTER TABLE `trade_items`
-  MODIFY `trade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `trade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
