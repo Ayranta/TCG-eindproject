@@ -34,14 +34,14 @@ function insertTradeItem($formData, $userId) {
             exit();
         }
         $query ='INSERT INTO trade_items(userid, cardid) VALUES (?, ?)';
-        var_dump($cardId);   
+        
 
         $insert = insert(
             $query,
             ['type' => 'i', 'value' => $userId],
             ['type' => 'i', 'value' => $cardId],
         );
-        var_dump($insert);
+        
 
         if ($insert) {
                 header('Location: /user/trade?success=addedTradeItem');

@@ -16,7 +16,7 @@ function users($userid) {
   
     foreach ($users as &$user) {
       if (strlen($user['gebruikernaam']) > 20) {
-        $user['gebruikernaam'] = substr_replace($user['name'], '...', 21);
+        $user['gebruikernaam'] = substr_replace($user['gebruikernaam'], '...', 21);
       }
   
       if (strlen($user['email']) > 40) {

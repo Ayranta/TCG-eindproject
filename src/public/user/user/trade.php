@@ -84,7 +84,7 @@ if (!isset($_SESSION['friend'])) {
                     foreach ($cards as $card) {
                         $usercard = fetch('SELECT * FROM tblkaart WHERE kaartid = ?', ['type' => 'i', 'value' => $card['KaartID']]);
                         $categorie = fetchSingle('SELECT * FROM `kaart_categorieen`WHERE naam = ?', ['type' => 's', 'value' => $usercard['categorie']]);
-                        
+
                         foreach ($categorie as $categorie) { ?>
                             <form method="post" action="/user/trade/select">
                                 <div id="card" data-card-id="<?= $usercard['kaartID'] ?>" class="card card-bordered border-gray-600 w-48 h-80 bg-[#<?php echo $categorie["kleur hex"] ?>] shadow-xl my-2">
@@ -151,16 +151,16 @@ if (!isset($_SESSION['friend'])) {
 </div> 
 <div class="flex justify-center mt-4">
     <?php 
-
-     
+    
+    if ( !isset($selectedCards[0]['ready'])) {
+        echo '<a href="/src/lib/user/trade/trade.php" class="btn btn-primary"> select something </a>';
+    } else {
         if ($selectedCards[0]['ready'] === 0) {
-            echo '<button type="submit" class="btn btn-primary"> <a href="/src/lib/user/trade/trade.php"> ready </a></button>';
-
-        }else if ($selectedCards[0]['ready'] === 1){
-            echo '<button type="submit" class="btn btn-primary"> <a href="/src/lib/user/trade/trade.php"> unready </a></button>';
-        }else{
-            echo '<button type="submit" class="btn btn-primary"> <a href="/src/lib/user/trade/trade.php"> select something </a></button>';
-        }
+            echo '<a href="/src/lib/user/trade/trade.php" class="btn btn-primary"> ready </a>';
+        } else if ($selectedCards[0]['ready'] === 1) {
+            echo '<a href="/src/lib/user/trade/trade.php" class="btn btn-primary"> unready </a>';
+        } 
+    }
     ?>
 </div>
 
