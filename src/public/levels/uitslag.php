@@ -68,7 +68,7 @@ $stmt->close();
 
 ?>
 <div class="flex items-center justify-center mt-16">
-  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+  <div class="w-full max-w-sm bg-black border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div class="flex justify-end px-4 pt-4">
     </div>
     <br>
