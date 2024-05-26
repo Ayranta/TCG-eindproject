@@ -31,7 +31,7 @@ if ($mysqli->affected_rows) {
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
     
-    Click <a href="http://localhost:8080/account/reset-password?token=$token">here</a>
+    Click <a href="https://tradingcardgame.virtualmin.cedricverlinden.com/account/reset-password?token=$token">here</a>
     to reset your password.
 
     END;
