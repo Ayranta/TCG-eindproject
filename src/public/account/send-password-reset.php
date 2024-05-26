@@ -10,8 +10,8 @@ $token = bin2hex(random_bytes(16));
 //geeft een 64 character string
 $token_hash = hash("sha256", $token);
 
-//zorgt dat het 30 minuten valid is 60sec * 30
-$expiry = date("Y-m-d H:i:s", time() + 60 * 30);
+//zorgt dat het 30 minuten valid is 60sec * 120
+$expiry = date("Y-m-d H:i:s", time() + 60 * 120);
 
 $sql = "UPDATE tblgebruikers
         SET reset_token_hash = ?,
