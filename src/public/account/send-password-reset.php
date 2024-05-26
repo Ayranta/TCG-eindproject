@@ -26,7 +26,7 @@ $stmt->execute();
 
 if ($mysqli->affected_rows) {
 
-    require  "src\public\account\mailer.php";
+    require  "src/public/account/mailer.php";
     $mail->addAddress($email);
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
