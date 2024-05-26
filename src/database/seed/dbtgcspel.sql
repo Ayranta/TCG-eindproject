@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Gegenereerd op: 13 mei 2024 om 09:40
+-- Gegenereerd op: 26 mei 2024 om 11:27
 -- Serverversie: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP-versie: 8.1.2-1ubuntu2.14
 
@@ -44,7 +44,8 @@ INSERT INTO `kaart_categorieen` (`id`, `naam`, `kleur hex`) VALUES
 (5, 'grass', '549d0b'),
 (6, 'fire', 'e64c0a'),
 (7, 'water', '1caaf0'),
-(8, 'dragon', '7b80cc');
+(8, 'dragon', '7b80cc'),
+(10, 'default', 'ffffff');
 
 -- --------------------------------------------------------
 
@@ -177,14 +178,12 @@ INSERT INTO `tblgebruikerkaart` (`Gebkaartid`, `KaartID`, `GebruikerID`) VALUES
 (23, 13, 12),
 (24, 17, 12),
 (25, 16, 12),
-(26, 27, 12),
 (27, 26, 12),
 (28, 28, 12),
 (30, 31, 12),
 (31, 31, 23),
 (32, 28, 23),
 (34, 26, 21),
-(35, 27, 21),
 (36, 17, 21),
 (39, 13, 21),
 (41, 17, 21),
@@ -195,7 +194,10 @@ INSERT INTO `tblgebruikerkaart` (`Gebkaartid`, `KaartID`, `GebruikerID`) VALUES
 (68, 26, 14),
 (69, 28, 14),
 (70, 26, 28),
-(71, 31, 28);
+(71, 31, 28),
+(72, 26, 29),
+(73, 31, 29),
+(74, 22, 12);
 
 -- --------------------------------------------------------
 
@@ -218,8 +220,8 @@ CREATE TABLE `tblgebruikers` (
 --
 
 INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaam`, `reset_token_hash`, `reset_token_expires_at`, `last_active`) VALUES
-(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL, '2024-05-12 19:38:01'),
-(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', 'c937d651ca58fb16039b451bd3948188cf1f560d5345fb98e722ba6070ac1ca4', '2024-05-11 14:55:58', '2024-05-13 07:38:51'),
+(12, 'bobdejef@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$UzJhYjByRnBQLlZlcTcyRA$AtAMrnpax5kLsESYTKkkLtxXLPFXURrbMgCtmD7KFfA', 'xandanman', NULL, NULL, '2024-05-26 09:21:50'),
+(14, 'casper.nauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dmo5SC9PWFJYMEo5NE0vUg$evppIN5pcsDsbVM/JYx/NnxBVjRK+QgRSXwZ+HzpiMo', 'casper', 'f91f2d683ec7d97b69a03dabd2c72eeb6ee88cd7caed9a0ef052934488f1c454', '2024-05-13 15:46:09', '2024-05-13 07:38:51'),
 (19, 'moris@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$TXRwY29UNlRxR3NZQzhyNA$3Eiy1IbBf6fK8gjFAamm4JJIhqPqbSCfm+mcaAYy4hw', 'password', NULL, NULL, '2024-04-24 06:49:03'),
 (20, 'jaaaaaaasper@hotmail.com', '$argon2id$v=19$m=65536,t=4,p=1$ZEY4MllQakZlOGtsb2xLeQ$6zVRVX8aKRLxA1dHMQP/VCnH9E0VgYgBsQrKGFFTzK4', 'xander', NULL, NULL, '2024-04-24 06:49:03'),
 (21, 'cedric@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NU1OZkJDWTBDdmplVjZ6Vg$WhXMzAwg3ROAbcx7JYRjqnaajRoSSuy0vVIo7zvFB/o', 'cedric', NULL, NULL, '2024-05-12 19:38:13'),
@@ -228,7 +230,8 @@ INSERT INTO `tblgebruikers` (`gebruikerid`, `email`, `wachtwoord`, `gebruikernaa
 (25, 'opa@opa', '$argon2id$v=19$m=65536,t=4,p=1$S3FrRnZQMEtaZHY0RUpTRg$TQ65D70kxNxPofT+4YyJsOF+UYFoQ8whnH+ZMdp5Xoc', 'opa', NULL, NULL, '2024-05-12 10:20:39'),
 (26, 'test@test2.com', '$argon2id$v=19$m=65536,t=4,p=1$TmdHTTB2N3hVOGNlcU5mWA$JAEmpvsIDSfWNrZFzX8Zcfkm37c4aZ2iEQtlhDMrPuA', 'test2', NULL, NULL, '2024-05-12 11:06:18'),
 (27, '100@100', '$argon2id$v=19$m=65536,t=4,p=1$ZHZEUFZreWpQa09JeTJ6cg$sKT+HP14fVsgpUqPJ5pecmOOpQGp2Ywof9P0llIFhBA', '100', NULL, NULL, '2024-05-12 11:46:16'),
-(28, 'dvdnils6@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$VFhSRGVkcm8uam44NzI1eQ$0Ii4+W+6OtOAmqhtkGAbZJTR++9ANzWbLgUy8oUkQSU', 'dvd_nils', NULL, NULL, '2024-05-13 06:44:42');
+(28, 'dvdnils6@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$VFhSRGVkcm8uam44NzI1eQ$0Ii4+W+6OtOAmqhtkGAbZJTR++9ANzWbLgUy8oUkQSU', 'dvd_nils', NULL, NULL, '2024-05-13 06:44:42'),
+(29, 'xnauwelaerts@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NUJQMFFJLkRQam5kdHh4eA$JnhXda2cTuFGpqWOdXgpFPS/o3ntERdpb5nsLVJRdzk', 'xander2', '3c13d585407ea55def31cfd29bf22d4324b93f52c7de5d5b4f405cf0d51fc1f5', '2024-05-13 15:39:28', '2024-05-13 13:09:21');
 
 -- --------------------------------------------------------
 
@@ -303,7 +306,9 @@ INSERT INTO `tblgebruiker_packsbought` (`id`, `userid`, `packid`, `purchasedate`
 (62, 21, 2, '2024-04-28 17:57:53', 300),
 (63, 14, 13, '2024-05-11 14:53:08', 200),
 (64, 26, 3, '2024-05-12 13:08:35', 0),
-(65, 14, 13, '2024-05-13 08:36:12', 200);
+(65, 14, 13, '2024-05-13 08:36:12', 200),
+(66, 12, 14, '2024-05-26 11:15:55', 200),
+(67, 12, 13, '2024-05-26 11:16:00', 200);
 
 -- --------------------------------------------------------
 
@@ -328,7 +333,7 @@ CREATE TABLE `tblgebruiker_profile` (
 --
 
 INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `admin`, `Levels`, `Expirience`, `coins`, `titleid`) VALUES
-(9, 12, 'dark', '6628abbfd1b548.36759252.jpg', 1, 7, 100, 5116, 1),
+(9, 12, 'dark', '6628abbfd1b548.36759252.jpg', 1, 7, 100, 7620, 1),
 (11, 14, 'dark', '6641b512f402b5.85415428.jpg', 1, 11, 475, 9609, 0),
 (14, 19, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
 (15, 20, 'light', 'https://avatars.githubusercontent.com/u/64209400?v=4', 0, 1, 0, 0, 0),
@@ -336,7 +341,8 @@ INSERT INTO `tblgebruiker_profile` (`id`, `userid`, `theme`, `profielfoto`, `adm
 (18, 23, 'dark', '65e75cb4189232.86496291.jfif', 1, 1, 0, 0, 0),
 (19, 26, 'light', '6640a2e0a99c50.29467852.png', 0, 15, 2700, 105, 0),
 (20, 27, 'light', 'default.png', 0, 1, 0, 50, 0),
-(21, 28, 'light', 'default.png', 0, 5, 60, 55, 0);
+(21, 28, 'light', 'default.png', 0, 5, 60, 55, 0),
+(22, 29, 'light', 'default.png', 0, 1, 10, 50, 0);
 
 -- --------------------------------------------------------
 
@@ -390,10 +396,8 @@ CREATE TABLE `tblpackcards` (
 INSERT INTO `tblpackcards` (`packID`, `kaartID`, `id`) VALUES
 (2, 26, 2),
 (2, 28, 3),
-(2, 27, 4),
 (13, 22, 14),
 (13, 26, 15),
-(13, 27, 16),
 (13, 28, 17),
 (13, 31, 18),
 (14, 13, 19),
@@ -607,7 +611,7 @@ ALTER TABLE `trade_items`
 -- AUTO_INCREMENT voor een tabel `kaart_categorieen`
 --
 ALTER TABLE `kaart_categorieen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT voor een tabel `levelgroups`
@@ -631,25 +635,25 @@ ALTER TABLE `tblfriend_request`
 -- AUTO_INCREMENT voor een tabel `tblgebruikerkaart`
 --
 ALTER TABLE `tblgebruikerkaart`
-  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `Gebkaartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruikers`
 --
 ALTER TABLE `tblgebruikers`
-  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `gebruikerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_packsbought`
 --
 ALTER TABLE `tblgebruiker_packsbought`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblgebruiker_profile`
 --
 ALTER TABLE `tblgebruiker_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT voor een tabel `tblkaart`
