@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
@@ -85,17 +82,22 @@ function insertUser($username, $password, $email) {
   );
   $kaarten1 = insert(
     "INSERT INTO tblgebruikerkaart (KaartID, GebruikerID) VALUES (?, ?)",
-    ["type" => 'i', 'value' => 26],
+    ["type" => 'i', 'value' => 12],
     ["type" => 'i', 'value' => $userId]
    );
   $kaarten2 = insert(
    "INSERT INTO tblgebruikerkaart (KaartID, GebruikerID) VALUES (?, ?)",
-   ["type" => 'i', 'value' => 31],
+   ["type" => 'i', 'value' => 2],
    ["type" => 'i', 'value' => $userId]
+  );
+  $title = insert(
+   "INSERT INTO tbltitlegebruiker (userid, titleid) VALUES (?, ?)",
+   ["type" => 'i', 'value' => $userId],
+   ["type" => 'i', 'value' => 1]
   );
 
 
-  return $userData && $userProfileData && $kaarten2 && $kaarten1;
+  return $userData && $userProfileData && $kaarten2 && $kaarten1 && $title;
 }
 
 ?>
