@@ -14,12 +14,12 @@ $coins = 0;
 }elseif($levensenemy < $levensgebruiker){
 $conc = "YOU WIN";
 $experience = 50;
-$coins = 5;
+$coins = 20;
 
 }else{
 $conc = "DRAW";
 $experience = 25;
-$coins = 2;
+$coins = 5;
 
 }
 
