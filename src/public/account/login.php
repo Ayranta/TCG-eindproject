@@ -63,7 +63,9 @@ if (isset($_POST["submit"])) {
             
         </div>
         <div class="flex justify-center mt-2">
-        <a href="/account/password" class="link text-black">Forgot password</a>
+          <?php
+        //<a href="/account/password" class="link text-black">Forgot password</a>
+              ?>
         </div>
     </div>
 </div>
